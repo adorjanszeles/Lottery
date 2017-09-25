@@ -1,2 +1,4 @@
-# Lottery
+﻿# Lottery
 Lottó Drools Projekt.
+
+# dctgfdgfcrgcfr
