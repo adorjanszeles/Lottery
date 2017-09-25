@@ -1,0 +1,2 @@
+# Lottery
+Lottó Drools Projekt.
