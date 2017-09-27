@@ -1,7 +1,7 @@
-package kie;
+package com.lottery.kie;
 
-import common.enums.KieSessionName;
-import common.exceptions.MissingKieServicesException;
+import com.lottery.common.enums.KieSessionName;
+import com.lottery.common.exceptions.MissingKieServicesException;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -25,18 +25,18 @@ public class KieServiceImpl implements KieService {
     public KieSession generateNewKieSession(KieSessionName kieSessionName) throws MissingKieServicesException {
         KieServices kieServices = KieServices.Factory.get();
         if (kieServices == null) {
-            KieServiceImpl.LOGGER.debug("Hiányzó kie service");
-            throw new MissingKieServicesException("Hiányzó kie service");
+            KieServiceImpl.LOGGER.debug("Hiányzó com.lottery.kie service");
+            throw new MissingKieServicesException("Hiányzó com.lottery.kie service");
         }
         KieContainer kContainer = kieServices.getKieClasspathContainer();
         if (kContainer == null) {
-            KieServiceImpl.LOGGER.debug("Hiányzó kie konténer");
-            throw new MissingKieServicesException("Hiányzó kie konténer");
+            KieServiceImpl.LOGGER.debug("Hiányzó com.lottery.kie konténer");
+            throw new MissingKieServicesException("Hiányzó com.lottery.kie konténer");
         }
         this.kSession = kContainer.newKieSession(kieSessionName.getKieSessionName());
         if (this.kSession == null) {
-            KieServiceImpl.LOGGER.debug("Hiányzó kie session");
-            throw new MissingKieServicesException("Hiányzó kie session");
+            KieServiceImpl.LOGGER.debug("Hiányzó com.lottery.kie session");
+            throw new MissingKieServicesException("Hiányzó com.lottery.kie session");
         }
         KieServiceImpl.LOGGER.debug("kieSession sikeresen létrejött");
         return this.kSession;

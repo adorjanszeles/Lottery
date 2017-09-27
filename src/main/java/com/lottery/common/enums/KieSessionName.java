@@ -1,12 +1,12 @@
-package common.enums;
+package com.lottery.common.enums;
 
 /**
- * Enum konstans nevek kie sessiönökhöz
+ * Enum konstans nevek com.lottery.kie sessiönökhöz
  */
 
 public enum KieSessionName {
 
-    //default kie session, for new session names add enums below
+    //default com.lottery.kie session, for new session names add enums below
     KIE_SESSION("ksession");
 
     private final String name;

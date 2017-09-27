@@ -1,7 +1,7 @@
-package common.exceptions;
+package com.lottery.common.exceptions;
 
 /**
- * Egyedi kivétel kie service-hez
+ * Egyedi kivétel com.lottery.kie service-hez
  */
 
 public class MissingKieServicesException extends Exception {
