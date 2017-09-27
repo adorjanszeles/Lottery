@@ -1,5 +1,6 @@
 package com.lottery.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,10 +13,11 @@ public class Lottery {
     private List<WeeklyDraw> lotteryList;
 
     private Lottery() {
+        this.lotteryList = new ArrayList<WeeklyDraw>();
     }
 
-    public static Lottery getInstance(){
-        if(Lottery.instance == null){
+    public static Lottery getInstance() {
+        if (Lottery.instance == null) {
             Lottery.instance = new Lottery();
         }
         return Lottery.instance;
@@ -25,7 +27,4 @@ public class Lottery {
         return this.lotteryList;
     }
 
-    public void setLotteryList(List<WeeklyDraw> lotteryList) {
-        this.lotteryList = lotteryList;
-    }
 }
