@@ -1,0 +1,7 @@
+
+rule "Sample rule 1"
+    when
+        eval(true)
+    then
+        assert true;
+    end

@@ -1,7 +1,7 @@
-package kie;
+package com.lottery.kie;
 
-import common.enums.KieSessionName;
-import common.exceptions.MissingKieServicesException;
+import com.lottery.common.enums.KieSessionName;
+import com.lottery.common.exceptions.MissingKieServicesException;
 import org.kie.api.runtime.KieSession;
 
 public interface KieService {
