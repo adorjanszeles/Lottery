@@ -1,4 +1,4 @@
-package model;
+package com.lottery.model;
 
 import java.util.List;
 
