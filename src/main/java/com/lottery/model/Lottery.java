@@ -8,9 +8,9 @@ import java.util.List;
  */
 
 public class Lottery {
-
     private static Lottery instance = null;
     private List<WeeklyDraw> lotteryList;
+    private static Object mutex = new Object();
 
     private Lottery() {
         this.lotteryList = new ArrayList<WeeklyDraw>();
@@ -18,7 +18,11 @@ public class Lottery {
 
     public static Lottery getInstance() {
         if (Lottery.instance == null) {
-            Lottery.instance = new Lottery();
+            synchronized (Lottery.mutex) {
+                if(Lottery.instance == null) {
+                    Lottery.instance = new Lottery();
+                }
+            }
         }
         return Lottery.instance;
     }
