@@ -1,4 +1,4 @@
-package com.lottery.model;
+package com.lottery.service;
 
 /**
  * A heti lottószám húzásokat olvassa be fileból
