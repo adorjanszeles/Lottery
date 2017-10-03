@@ -39,8 +39,7 @@ public class TestMostFrequentFiveNumber {
 
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setLotteryPreparedForDrools(Lottery.getInstance());
-        List<WeeklyDraw> drawList = this.weeklyDrawList.getLotteryPreparedForDrools();
+        List<WeeklyDraw> drawList = new ArrayList<>();
         Lottery.getInstance().getLotteryList().clear();
         Integer[] firstDraw = {1, 2, 3, 4, 5};
         Integer[] secondDraw = {4, 5, 6, 7, 8};
@@ -53,6 +52,7 @@ public class TestMostFrequentFiveNumber {
 
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);
+        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
 
     }
 
