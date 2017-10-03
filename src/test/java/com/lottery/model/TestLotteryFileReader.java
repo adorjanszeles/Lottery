@@ -38,12 +38,12 @@ public class TestLotteryFileReader {
 
         Calendar calendarFirstDraw = Calendar.getInstance();
         calendarFirstDraw.set(Calendar.YEAR, 2017);
-        calendarFirstDraw.set(Calendar.MONTH, 9);
+        calendarFirstDraw.set(Calendar.MONTH, 8);
         calendarFirstDraw.set(Calendar.DAY_OF_MONTH, 23);
 
         Calendar calendarSecondDraw = Calendar.getInstance();
         calendarSecondDraw.set(Calendar.YEAR, 2017);
-        calendarSecondDraw.set(Calendar.MONTH, 9);
+        calendarSecondDraw.set(Calendar.MONTH, 8);
         calendarSecondDraw.set(Calendar.DAY_OF_MONTH, 16);
 
         firstWeeklyDraw.setYear(2017);
@@ -117,6 +117,8 @@ public class TestLotteryFileReader {
     public void testLotteryWeeklyDrawnNumbers() throws FileNotFoundException {
         this.lotteryFileReader.readFromFile(TestLotteryFileReader.FILE_PATH);
         this.generateResult();
+        System.out.println(this.lotteryList.get(0).getDrawDate());
+        System.out.println(this.result.get(0).getDrawDate());
         assertTrue(compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
                 compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
     }
