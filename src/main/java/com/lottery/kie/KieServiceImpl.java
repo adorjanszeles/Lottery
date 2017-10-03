@@ -22,6 +22,7 @@ public class KieServiceImpl implements KieService {
     }
 
 
+    @Override
     public KieSession generateNewKieSession(KieSessionName kieSessionName) throws MissingKieServicesException {
         KieServices kieServices = KieServices.Factory.get();
         if (kieServices == null) {
