@@ -13,4 +13,4 @@ notifications:
     - marti.kecskemeti@gmail.com
     on_success: always
     on_failure: always
-script: mvn clean install
+script: mvn clean install -source 1.8
