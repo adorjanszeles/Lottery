@@ -48,7 +48,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         }
 
         this.weeklyDrawList  = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(getStubbedDrawList());
+        this.weeklyDrawList.setDrawListPreparedForDrools(this.getStubbedDrawList());
         this.result = new AverageTimeBetweenTwoMatchFiveDrawsResult();
     }
 

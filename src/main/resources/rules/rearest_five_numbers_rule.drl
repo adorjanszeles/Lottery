@@ -44,9 +44,9 @@ function void generateNodeList(List nodeList, int length) {
 }
 
 function void fillNodeList(WeeklyDrawList dList, List nodeList) {
-   for(int i = 0; i < dList.getLotteryPreparedForDrools().size(); i++) {
+   for(int i = 0; i < dList.getDrawListPreparedForDrools().size(); i++) {
        for(int j = 0; j < 5; j++) {
-          int d = dList.getLotteryPreparedForDrools().get(i).getDrawnNumbers()[j];
+          int d = dList.getDrawListPreparedForDrools().get(i).getDrawnNumbers()[j];
           Node tempNode = (Node) nodeList.get(d - 1);
           tempNode.setCount(tempNode.getCount() + 1);
        }
