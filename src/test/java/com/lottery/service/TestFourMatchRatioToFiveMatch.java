@@ -15,6 +15,7 @@ import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -33,8 +34,7 @@ public class TestFourMatchRatioToFiveMatch {
 
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setLotteryPreparedForDrools(Lottery.getInstance());
-        List<WeeklyDraw> drawList = this.weeklyDrawList.getLotteryPreparedForDrools();
+        List<WeeklyDraw> drawList = new ArrayList<>();
         Lottery.getInstance().getLotteryList().clear();
 
         Integer firstDrawFiveMatch = 0;
@@ -72,12 +72,13 @@ public class TestFourMatchRatioToFiveMatch {
         drawList.add(fourthWeeklyDraw);
         drawList.add(fifthWeeklyDraw);
 
+        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
+
     }
 
     private void generateWeeklyDrawListDivisionByZero() {
         this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setLotteryPreparedForDrools(Lottery.getInstance());
-        List<WeeklyDraw> drawList = this.weeklyDrawList.getLotteryPreparedForDrools();
+        List<WeeklyDraw> drawList = new ArrayList<>();
         Lottery.getInstance().getLotteryList().clear();
 
         Integer firstDrawFiveMatch = 0;
@@ -89,6 +90,8 @@ public class TestFourMatchRatioToFiveMatch {
         firstWeeklyDraw.setFourMatch(firstDrawFourMatch);
 
         drawList.add(firstWeeklyDraw);
+
+        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
     }
 
     /**
