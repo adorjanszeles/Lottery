@@ -1,0 +1,24 @@
+import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.model.AverageResult;
+
+rule "Find average number"
+    lock-on-active true
+    no-loop true
+
+    when
+        $drawList : WeeklyDrawList();
+        $result : AverageResult();
+    then
+        int all = 0;
+        int count = 0;
+
+        for(int i = 0; i < $drawList.getDrawListPreparedForDrools().size(); i++){
+            for(int j = 0; j < 5; j++) {
+                all += $drawList.getDrawListPreparedForDrools().get(i).getDrawnNumbers()[j];
+            }
+            count += 5;
+        }
+
+        $result.setResult((float) all/count);
+    end

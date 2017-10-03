@@ -1,0 +1,54 @@
+import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.model.Node;
+import com.lottery.model.RearestFiveResult;
+//import com.lottery.model.RearestComparator;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+
+rule "Find rearest five numbers"
+    lock-on-active true
+    no-loop true
+    when
+        $drawList : WeeklyDrawList();
+        $result : RearestFiveResult();
+    then
+        List<Node> nodeList = new ArrayList<Node>();
+
+        // Lottószámok generálása 1-90-ig
+        generateNodeList(nodeList, 90);
+
+        // Lottószámok gyakoriságának feltöltése input adatok alapján
+        fillNodeList($drawList, nodeList);
+
+        Collections.sort(nodeList);
+
+        List<Integer> rearest = $result.getResult();
+        for(int i = 0; i < 5; i++) {
+            System.out.println("VALUE: " + nodeList.get(i).getValue() + ", COUNT: " + nodeList.get(i).getCount());
+            rearest.add(nodeList.get(i).getValue());
+        }
+
+        System.out.println(rearest);
+
+    end
+
+function void generateNodeList(List nodeList, int length) {
+    for(int i = 0; i < length; i++) {
+        Node node = new Node();
+        node.setValue(i+1);
+        node.setCount(0);
+        nodeList.add(node);
+    }
+}
+
+function void fillNodeList(WeeklyDrawList dList, List nodeList) {
+   for(int i = 0; i < dList.getDrawListPreparedForDrools().size(); i++) {
+       for(int j = 0; j < 5; j++) {
+          int d = dList.getDrawListPreparedForDrools().get(i).getDrawnNumbers()[j];
+          Node tempNode = (Node) nodeList.get(d - 1);
+          tempNode.setCount(tempNode.getCount() + 1);
+       }
+   }
+}
