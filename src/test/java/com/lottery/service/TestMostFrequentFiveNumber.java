@@ -7,6 +7,7 @@ import com.lottery.kie.KieServiceImpl;
 import com.lottery.model.Lottery;
 import com.lottery.model.MostFrequentFiveNumberResult;
 import com.lottery.model.WeeklyDraw;
+import com.lottery.model.WeeklyDrawList;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,15 +29,19 @@ public class TestMostFrequentFiveNumber {
 
     private KieSession kieSession;
     private static final Logger LOGGER = LoggerFactory.getLogger(TestMostFrequentFiveNumber.class);
-    private List<WeeklyDraw> weeklyDrawList;
-    private List<Integer> result;
+    private WeeklyDrawList weeklyDrawList;
+    private MostFrequentFiveNumberResult result;
+    private List<Integer> expected;
 
     /**
      * heti lottószám húzás példányok létrehozása teszteléshez
      */
 
     private void generateWeeklyDrawList() {
-        this.weeklyDrawList = Lottery.getInstance().getLotteryList();
+        this.weeklyDrawList = new WeeklyDrawList();
+        this.weeklyDrawList.setLotteryPreparedForDrools(Lottery.getInstance());
+        List<WeeklyDraw> drawList = this.weeklyDrawList.getLotteryPreparedForDrools();
+        Lottery.getInstance().getLotteryList().clear();
         Integer[] firstDraw = {1, 2, 3, 4, 5};
         Integer[] secondDraw = {4, 5, 6, 7, 8};
 
@@ -46,8 +51,8 @@ public class TestMostFrequentFiveNumber {
         firstWeeklyDraw.setDrawnNumbers(firstDraw);
         secondWeeklyDraw.setDrawnNumbers(secondDraw);
 
-        this.weeklyDrawList.add(firstWeeklyDraw);
-        this.weeklyDrawList.add(secondWeeklyDraw);
+        drawList.add(firstWeeklyDraw);
+        drawList.add(secondWeeklyDraw);
 
     }
 
@@ -66,7 +71,10 @@ public class TestMostFrequentFiveNumber {
 
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
         this.generateWeeklyDrawList();
-        this.result = mostFrequentFiveNumberResult.getResult();
+        this.result = mostFrequentFiveNumberResult;
+        this.kieSession.insert(this.weeklyDrawList);
+        this.kieSession.insert(this.result);
+        this.expected = new ArrayList<Integer>(Arrays.asList(4, 5, 1, 2, 3));
     }
 
     /**
@@ -89,27 +97,19 @@ public class TestMostFrequentFiveNumber {
 
     @Test
     public void testMostFrequentFiveNumbersListSize() {
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        assertEquals(5, this.result.size());
+        assertEquals(5, this.result.getResult().size());
     }
 
     @Test
     public void testResultNumbersAreSubsetOfWeeklyDrawList() {
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        List<Integer> expected = new ArrayList<Integer>(Arrays.asList(4, 5, 1, 2, 3));
-        assertEquals(true, (!this.result.isEmpty() && expected.containsAll(this.result)));
+        assertEquals(true, (!this.result.getResult().isEmpty() && this.expected.containsAll(this.result.getResult())));
     }
 
     @Test
     public void testMostFrequentFiveNumbersValues() {
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        List<Integer> expected = new ArrayList<Integer>(Arrays.asList(4, 5, 1, 2, 3));
-        assertEquals(expected, this.result);
+        assertEquals(this.expected, this.result.getResult());
     }
 }
