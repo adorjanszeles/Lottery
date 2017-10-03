@@ -13,9 +13,9 @@ rule "Find average number"
         int all = 0;
         int count = 0;
 
-        for(int i = 0; i < $drawList.getLotteryPreparedForDrools().size(); i++){
+        for(int i = 0; i < $drawList.getDrawListPreparedForDrools().size(); i++){
             for(int j = 0; j < 5; j++) {
-                all += $drawList.getLotteryPreparedForDrools().get(i).getDrawnNumbers()[j];
+                all += $drawList.getDrawListPreparedForDrools().get(i).getDrawnNumbers()[j];
             }
             count += 5;
         }

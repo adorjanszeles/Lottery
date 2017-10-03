@@ -15,6 +15,8 @@ import org.junit.Test;
 import org.kie.api.runtime.KieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -35,8 +37,7 @@ public class TestDrawAverage {
      */
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setLotteryPreparedForDrools(Lottery.getInstance());
-        List<WeeklyDraw> drawList = this.weeklyDrawList.getLotteryPreparedForDrools();
+        List<WeeklyDraw> drawList = new ArrayList<>();
         Lottery.getInstance().getLotteryList().clear();
 
         Integer[] firstDraw = {1,2,3,4,5};
@@ -54,6 +55,7 @@ public class TestDrawAverage {
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);
         drawList.add(thirdWeeklyDraw);
+        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
     }
 
     @Before
