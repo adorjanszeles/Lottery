@@ -11,11 +11,10 @@ public class WeeklyDrawList {
 
     private List<WeeklyDraw> weeklyDrawList;
 
-    public List<WeeklyDraw> getLotteryPreparedForDrools() {
+    public List<WeeklyDraw> getDrawListPreparedForDrools() {
         return this.weeklyDrawList;
     }
-
-    public void setLotteryPreparedForDrools(Lottery lottery) {
-        this.weeklyDrawList = lottery.getLotteryList();
+    public void setDrawListPreparedForDrools(List<WeeklyDraw> weeklyDrawList) {
+        this.weeklyDrawList = weeklyDrawList;
     }
 }
