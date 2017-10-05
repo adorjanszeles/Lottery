@@ -1,78 +1,84 @@
 package com.lottery.model;
 
-import java.util.ArrayList;
+import com.lottery.model.mfop_utils.DrawsInTwoDimension;
+import com.lottery.model.mfop_utils.Row;
+
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * A Most Frequently Occurring Pairs rule eredményeit gyüjtő osztály.
  */
 public class MostFrequentlyOccurringPairsResult {
 
-    private Integer[][] result;
-
-    public List<Integer[]> lottoArray;
+    private DrawsInTwoDimension lottoArray;
+    private DrawsInTwoDimension resultArray;
 
     public MostFrequentlyOccurringPairsResult(){
-        this.lottoArray = makeLottoFiveArray();
-    }
 
-    public Integer[][] getResult() {
-        return result;
-    }
-
-    public void setResult(Integer[][] result) {
-        this.result = result;
-    }
-
-
-    /**
-     * @return Egy List-et ad vissza 89db Integer[]-el feltöltve.
-     * Az Integer[]-ek összes mezelyének 0 kezdőértéket ad.
-     */
-    private List<Integer[]> makeLottoFiveArray(){
-        List<Integer[]> lottoArray = new ArrayList<Integer[]>();
+        this.lottoArray = new DrawsInTwoDimension();
+        this.resultArray = new DrawsInTwoDimension();
         int columnCounter = 89;
 
         while(columnCounter >= 0){
-            lottoArray.add(new Integer[columnCounter]);
+
+            Row row = new Row(new Integer[columnCounter]);
+
+            this.lottoArray.addRow(row);
             columnCounter--;
         }
 
-        for(Integer[] arr : lottoArray){
-            Arrays.fill(arr,0);
+        for(Row arr : this.lottoArray.getRows()){
+            Arrays.fill(arr.getColumns(),0);
         }
-
-        return lottoArray;
     }
 
     /**
-     * Csinál egy átlátható printet a lottoArray-emből
+     * A lottoArray field teszt print-jére alkalmazható method.
      */
     public void lottoArraySTDOUT(){
-        for(int n = 0; n < this.lottoArray.size(); n++) {
+        for(int n = 0; n < this.lottoArray.getRows().size(); n++) {
             if( n < 9) {
-                System.out.print("0" + (n + 1) + " : num of possible pairs:" + this.lottoArray.get(n).length + " - ");
+                System.out.print("0" + (n + 1) + " : num of possible pairs:" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
             }else {
-                if(this.lottoArray.get(n).length < 10) {
-                    System.out.print(n + 1 + " : num of possible pairs:0" + this.lottoArray.get(n).length + " - ");
+                if(this.lottoArray.getRows().size() < 10) {
+                    System.out.print(n + 1 + " : num of possible pairs:0" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
                 }else{
-                    System.out.print(n + 1 + " : num of possible pairs:" + this.lottoArray.get(n).length + " - ");
+                    System.out.print(n + 1 + " : num of possible pairs:" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
 
                 }
             }
-            for (int i = 0; i < this.lottoArray.get(n).length; i++) {
-                System.out.print(" " + this.lottoArray.get(n)[i] + " ");
+            for (int i = 0; i < this.lottoArray.getRows().get(n).getColumns().length; i++) {
+                System.out.print(" " + this.lottoArray.getRows().get(n).getColumns()[i] + " ");
             }
 
             System.out.println();
         }
     }
 
-    public List<Integer[]> getLottoArray() {
+    /**
+     * A resultArray field teszt nyomtatására alkalmazható method.
+     */
+    public void resultArraySTDOUT(){
+
+        for(Row resultList : this.resultArray.getRows()){
+            System.out.println("Pair of " + resultList.getColumns()[0] + " and " + resultList.getColumns()[1] );
+        }
+    }
+
+    public DrawsInTwoDimension getResultArray() {
+        return resultArray;
+    }
+
+    public void setResultArray(DrawsInTwoDimension resultArray) {
+        this.resultArray = resultArray;
+    }
+
+    public DrawsInTwoDimension getLottoArray() {
         return lottoArray;
     }
 
-
+    public void setLottoArray(DrawsInTwoDimension lottoArray) {
+        this.lottoArray = lottoArray;
+    }
 
 }
