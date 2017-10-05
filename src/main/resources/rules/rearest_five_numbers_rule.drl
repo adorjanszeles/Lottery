@@ -6,6 +6,8 @@ import com.lottery.model.RearestFiveResult;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "Find rearest five numbers"
     lock-on-active true
@@ -17,13 +19,17 @@ rule "Find rearest five numbers"
         List<Node> nodeList = new ArrayList<Node>();
 
         // Lottószámok generálása 1-90-ig
+        LOGGER.debug("Lottószámok generálása 1-től 90-ig");
         generateNodeList(nodeList, 90);
 
         // Lottószámok gyakoriságának feltöltése input adatok alapján
+        LOGGER.debug("Lottószámok gyakoriságának feltöltése input adatok alapján");
         fillNodeList($drawList, nodeList);
 
+        LOGGER.debug("Node objektumok sorbarendezése gyakoriság szerint");
         Collections.sort(nodeList);
 
+        LOGGER.debug("Result objektum feltöltése a legritkábban előforduló számokkal");
         List<Integer> rearest = $result.getResult();
         for(int i = 0; i < 5; i++) {
             System.out.println("VALUE: " + nodeList.get(i).getValue() + ", COUNT: " + nodeList.get(i).getCount());
