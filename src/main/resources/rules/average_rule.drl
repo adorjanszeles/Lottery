@@ -1,6 +1,8 @@
 import com.lottery.model.WeeklyDrawList;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.AverageResult;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "Find average number"
     lock-on-active true
@@ -20,5 +22,6 @@ rule "Find average number"
             count += 5;
         }
 
+        LOGGER.debug("Result objektum feltöltése a lottószámok átlagával");
         $result.setResult((float) all/count);
     end
