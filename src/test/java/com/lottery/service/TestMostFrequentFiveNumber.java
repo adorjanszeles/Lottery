@@ -40,7 +40,6 @@ public class TestMostFrequentFiveNumber {
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
-        Lottery.getInstance().getLotteryList().clear();
         Integer[] firstDraw = {1, 2, 3, 4, 5};
         Integer[] secondDraw = {4, 5, 6, 7, 8};
 
@@ -90,7 +89,6 @@ public class TestMostFrequentFiveNumber {
 
     @Test
     public void testIsRuleFired() {
-        this.kieSession.insert(this.weeklyDrawList);
         int activation = this.kieSession.fireAllRules();
         assertEquals(1, activation);
     }

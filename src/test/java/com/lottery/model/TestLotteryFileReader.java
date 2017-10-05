@@ -96,10 +96,12 @@ public class TestLotteryFileReader {
 
 
     @Before
-    public void setup() {
+    public void setup() throws FileNotFoundException {
         this.lotteryFileReader = new LotteryFileReaderImpl();
         this.lotteryList = TestLotteryFileReader.LOTTERY.getLotteryList();
         this.lotteryList.clear();
+        this.lotteryFileReader.readFromFile(TestLotteryFileReader.FILE_PATH);
+        this.generateResult();
     }
 
     @Test(expected = FileNotFoundException.class)
@@ -109,16 +111,11 @@ public class TestLotteryFileReader {
 
     @Test
     public void testLotteryListSize() throws FileNotFoundException {
-        this.lotteryFileReader.readFromFile(TestLotteryFileReader.FILE_PATH);
         assertEquals(2, this.lotteryList.size());
     }
 
     @Test
     public void testLotteryWeeklyDrawnNumbers() throws FileNotFoundException {
-        this.lotteryFileReader.readFromFile(TestLotteryFileReader.FILE_PATH);
-        this.generateResult();
-        System.out.println(this.lotteryList.get(0).getDrawDate());
-        System.out.println(this.result.get(0).getDrawDate());
         assertTrue(compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
                 compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
     }
