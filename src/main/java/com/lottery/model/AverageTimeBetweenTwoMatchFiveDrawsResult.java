@@ -2,13 +2,13 @@ package com.lottery.model;
 
 public class AverageTimeBetweenTwoMatchFiveDrawsResult {
 
-    private Integer result;
+    private Float result;
 
-    public Integer getResult() {
+    public Float getResult() {
         return result;
     }
 
-    public void setResult(int result) {
+    public void setResult(float result) {
         this.result = result;
     }
 }

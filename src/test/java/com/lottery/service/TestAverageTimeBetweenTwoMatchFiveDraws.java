@@ -6,7 +6,7 @@ import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.kie.KieService;
 import com.lottery.kie.KieServiceImpl;
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
-import com.lottery.model.Lottery;
+
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
@@ -62,6 +62,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     @Test
     public void testRuleFired() {
         this.kieSession.insert(this.weeklyDrawList);
+        this.kieSession.insert(this.result);
         int fire = this.kieSession.fireAllRules();
         assertTrue(fire > 0);
     }
@@ -69,14 +70,15 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     @Test
     public void testRuleFiredOnce() {
         this.kieSession.insert(this.weeklyDrawList);
+        this.kieSession.insert(this.result);
         int fire = this.kieSession.fireAllRules();
         assertEquals(1, fire);
     }
 
     @Test
     public void testAverageTimeBetweenTwoMatchFiveDrawsFiredOnly() throws Exception {
-
         this.kieSession.insert(this.weeklyDrawList);
+        this.kieSession.insert(this.result);
         int rulesFired = this.kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Average Time Between Two Match Five Draws" ) );
         assertEquals( 1, rulesFired );
     }
@@ -87,7 +89,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer resultInt = this.result.getResult();
+        Float resultInt = this.result.getResult();
         assertTrue(resultInt != null);
     }
 
@@ -97,7 +99,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer resultInt = this.result.getResult();
+        Float resultInt = this.result.getResult();
         assertTrue(resultInt > 0);
     }
 
@@ -107,8 +109,8 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer resultInt = this.result.getResult();
-        assertEquals(52, resultInt.intValue());
+        float resultFloat = this.result.getResult();
+        assertEquals(0.5, resultFloat, 0.0001);
     }
 
     /**
@@ -146,7 +148,6 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw0.setThreeMatch(56);
         weeklyDraw0.setTwoMatch(250);
 
-        weeklyDraw1.setFiveMatch(2);
         weeklyDraw1.setThreeMatch(78);
         weeklyDraw1.setTwoMatch(320);
 
@@ -159,12 +160,16 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw3.setThreeMatch(25);
         weeklyDraw3.setTwoMatch(309);
 
-        weeklyDraw4.setFourMatch(1);
         weeklyDraw4.setThreeMatch(65);
         weeklyDraw4.setTwoMatch(456);
 
-        weeklyDraw4.setThreeMatch(41);
-        weeklyDraw4.setTwoMatch(246);
+        weeklyDraw5.setFiveMatch(1);
+        weeklyDraw5.setThreeMatch(41);
+        weeklyDraw5.setTwoMatch(246);
+
+        weeklyDraw8.setFiveMatch(1);
+        weeklyDraw8.setThreeMatch(41);
+        weeklyDraw8.setTwoMatch(246);
 
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy");

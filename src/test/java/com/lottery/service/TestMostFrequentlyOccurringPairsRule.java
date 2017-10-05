@@ -7,6 +7,7 @@ import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.kie.KieServiceImpl;
 import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
 import org.junit.After;
 import org.junit.Before;
@@ -77,7 +78,7 @@ public class TestMostFrequentlyOccurringPairsRule {
 
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
-        int rulesFired = this.kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Most Frequented Occurring Pair" ) );
+        int rulesFired = this.kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Most Frequently Occurring Pairs" ) );
         assertEquals( 1, rulesFired );
     }
 
@@ -87,8 +88,8 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer[][] resultArray = this.result.getResult();
-        assertTrue(resultArray.length > 0);
+        DrawsInTwoDimension resultArray = this.result.getResultArray();
+        assertTrue(this.result.getResultArray().getRows().size() > 0);
     }
 
     @Test
@@ -97,19 +98,9 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer[][] resultArray = this.result.getResult();
-        assertEquals(1 , resultArray[0][0].intValue());
-        assertEquals(2, resultArray[0][1].intValue());
-    }
-
-    @Test
-    public void testPairOfOneAndTwoOccurTenTimes() throws Exception {
-
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
-        this.kieSession.fireAllRules();
-        Integer[][] resultArray = this.result.getResult();
-        assertEquals( 10,resultArray[0][0].intValue() );
+        DrawsInTwoDimension resultArray = this.result.getResultArray();
+        assertEquals(1 , resultArray.getRows().get(0).getColumns()[0].intValue());
+        assertEquals(2, resultArray.getRows().get(0).getColumns()[1].intValue());
     }
 
     @Test
@@ -119,8 +110,8 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer[][] resultArray = this.result.getResult();
-        assertEquals(2, resultArray.length);
+        DrawsInTwoDimension resultArray = this.result.getResultArray();
+        assertEquals(2, resultArray.getRows().size());
     }
 
     @Test
@@ -130,11 +121,11 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        Integer[][] resultArray = this.result.getResult();
-        assertEquals(1 , resultArray[0][0].intValue());
-        assertEquals(2, resultArray[0][1].intValue());
-        assertEquals(3 , resultArray[1][0].intValue());
-        assertEquals(4, resultArray[1][1].intValue());
+        DrawsInTwoDimension resultArray = this.result.getResultArray();
+        assertEquals(1 , resultArray.getRows().get(0).getColumns()[0].intValue());
+        assertEquals(2, resultArray.getRows().get(0).getColumns()[1].intValue());
+        assertEquals(3 ,resultArray.getRows().get(1).getColumns()[0].intValue());
+        assertEquals(4, resultArray.getRows().get(1).getColumns()[1].intValue());
     }
 
 
