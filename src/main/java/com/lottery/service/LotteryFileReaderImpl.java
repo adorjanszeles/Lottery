@@ -18,8 +18,8 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
     private List<WeeklyDraw> weeklyDrawList;
     private static final int COL_NUM = 16;
     private static String CURRENCY = "Ft";
-    private static String BREAK_LINE;
-    private static String LINE_DELIMITER = "\r\n";
+    private static String BREAK_LINE = "\n";
+    private static String LINE_DELIMITER;
     private static String LINE_SEPARATOR = ";";
     private static String DATE_SEPARATOR = "\\.";
     private static final int DATE_YEAR_IDX = 0;
@@ -28,14 +28,15 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
 
     public LotteryFileReaderImpl() {
         String osType = System.getProperty("os.name");
-        if (osType.startsWith("Mac") || osType.startsWith("Linux") || osType.startsWith("Unix")) {
-            LotteryFileReaderImpl.BREAK_LINE = "\n";
+        String osTypeLower = osType.toLowerCase();
+        if (osTypeLower.startsWith("mac") || osTypeLower.startsWith("linux") || osTypeLower.startsWith("unix")) {
+            LotteryFileReaderImpl.LINE_DELIMITER = "\n";
         }
-        else if (osType.startsWith("Windows")) {
-            LotteryFileReaderImpl.BREAK_LINE = "\r\n";
+        else if (osTypeLower.startsWith("windows")) {
+            LotteryFileReaderImpl.LINE_DELIMITER = "\r\n";
         }
         else {
-            LotteryFileReaderImpl.BREAK_LINE = "\r";
+            LotteryFileReaderImpl.LINE_DELIMITER = "\r";
         }
     }
 
