@@ -6,6 +6,8 @@ import java.util.Collections;
 import com.lottery.model.MostFrequentComparator;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "Find most frequent five numbers"
     lock-on-active true
@@ -16,15 +18,19 @@ rule "Find most frequent five numbers"
     then
         List<Node> nodeList = new ArrayList<Node>();
 
+        LOGGER.debug("lottószámok lista létrehozása");
         // Lottószámok létrehozása 1-90-ig
         createNodeList(nodeList, 90);
 
+        LOGGER.debug("kihúzott számok összeszámolása");
         // Lottószámok előfordulásának kiszámítása input adatok alapján
         countDrawnNumbers($drawList, nodeList);
 
         //kihúzott számok sorbarendezése gyakoriság alapján
+        LOGGER.debug("kihúzott számok sorbarendezve.");
         Collections.sort(nodeList, new MostFrequentComparator());
 
+        LOGGER.debug("eredmény generálása");
         generateResult($result.getResult(),nodeList);
 
     end

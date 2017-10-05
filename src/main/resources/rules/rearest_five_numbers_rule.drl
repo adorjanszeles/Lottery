@@ -30,8 +30,6 @@ rule "Find rearest five numbers"
             rearest.add(nodeList.get(i).getValue());
         }
 
-        System.out.println(rearest);
-
     end
 
 function void generateNodeList(List nodeList, int length) {
