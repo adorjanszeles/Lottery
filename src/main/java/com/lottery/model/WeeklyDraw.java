@@ -1,5 +1,6 @@
 package com.lottery.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /** Heti kihúzott lottó számok osztálya
@@ -11,7 +12,7 @@ public class WeeklyDraw {
 
     private Integer year;
     private Integer week;
-    private Date drawDate;
+    private SimpleDateFormat drawDate;
     private Integer fiveMatch;
     private Long fiveMatchPrize;
     private Integer fourMatch;
@@ -41,11 +42,11 @@ public class WeeklyDraw {
         this.week = week;
     }
 
-    public Date getDrawDate() {
+    public SimpleDateFormat getDrawDate() {
         return drawDate;
     }
 
-    public void setDrawDate(Date drawDate) {
+    public void setDrawDate(SimpleDateFormat drawDate) {
         this.drawDate = drawDate;
     }
 

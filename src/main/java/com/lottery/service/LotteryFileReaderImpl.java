@@ -6,6 +6,7 @@ import com.lottery.model.WeeklyDraw;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -17,14 +18,26 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
     private List<WeeklyDraw> weeklyDrawList;
     private static final int COL_NUM = 16;
     private static String CURRENCY = "Ft";
-    private static String BREAK_LINE = "\n";
-    private static String LINE_DELIMITER = "\\r";
+    private static String BREAK_LINE;
+    private static String LINE_DELIMITER = "\r\n";
     private static String LINE_SEPARATOR = ";";
     private static String DATE_SEPARATOR = "\\.";
     private static final int DATE_YEAR_IDX = 0;
     private static final int DATE_MONTH_IDX = 1;
     private static final int DATE_DAY_IDX = 2;
 
+    public LotteryFileReaderImpl() {
+        String osType = System.getProperty("os.name");
+        if (osType.startsWith("Mac") || osType.startsWith("Linux") || osType.startsWith("Unix")) {
+            LotteryFileReaderImpl.BREAK_LINE = "\n";
+        }
+        else if (osType.startsWith("Windows")) {
+            LotteryFileReaderImpl.BREAK_LINE = "\r\n";
+        }
+        else {
+            LotteryFileReaderImpl.BREAK_LINE = "\r";
+        }
+    }
 
     /**
      * az input fileból beolvasott sorokból kivesszük a Ft toldalékot, szóközöket és az új sor karaktert
@@ -53,16 +66,16 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @param date az input fileból érkező string dátum
      * @return date objektum
      */
-    private Date generateDateFromString(String date) {
-        Calendar calendar = Calendar.getInstance();
+    private SimpleDateFormat generateDateFromString(String date) {
         if (date.equals("")) {
             return null;
         }
         String[] dateElement = date.split(LotteryFileReaderImpl.DATE_SEPARATOR);
-        calendar.set(Calendar.YEAR, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_YEAR_IDX]));
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_MONTH_IDX])-1);
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_DAY_IDX]));
-        return calendar.getTime();
+        String year = dateElement[LotteryFileReaderImpl.DATE_YEAR_IDX];
+        String month = dateElement[LotteryFileReaderImpl.DATE_MONTH_IDX];
+        String day = dateElement[LotteryFileReaderImpl.DATE_DAY_IDX];
+        SimpleDateFormat drawDate = new SimpleDateFormat(year + "-" + month + "-" + day);
+        return drawDate;
     }
 
     /**
