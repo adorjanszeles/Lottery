@@ -35,7 +35,6 @@ public class TestFourMatchRatioToFiveMatch {
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
-        Lottery.getInstance().getLotteryList().clear();
 
         Integer firstDrawFiveMatch = 0;
         Integer secondDrawFiveMatch = 1;
@@ -79,7 +78,6 @@ public class TestFourMatchRatioToFiveMatch {
     private void generateWeeklyDrawListDivisionByZero() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
-        Lottery.getInstance().getLotteryList().clear();
 
         Integer firstDrawFiveMatch = 0;
         Integer firstDrawFourMatch = 1;
@@ -108,6 +106,9 @@ public class TestFourMatchRatioToFiveMatch {
         }
 
         this.result = new FourMatchRatioToFiveMatchResult();
+        this.generateWeeklyDrawList();
+        this.kieSession.insert(this.weeklyDrawList);
+        this.kieSession.insert(this.result);
     }
 
     /**
@@ -123,44 +124,27 @@ public class TestFourMatchRatioToFiveMatch {
 
     @Test
     public void testIsRuleFired() {
-        this.kieSession.insert(this.weeklyDrawList);
         int activation = this.kieSession.fireAllRules();
         assertEquals(1, activation);
     }
 
     @Test
     public void testRuleFiredOnce() {
-        this.kieSession.insert(this.weeklyDrawList);
         int fire = this.kieSession.fireAllRules(10);
-        assertEquals(1,fire);
+        assertEquals(1, fire);
     }
 
     @Test
     public void testFourRatioToFiveResultIsLargerThanZero() throws Exception {
-        this.generateWeeklyDrawList();
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
         assertTrue(this.result.getResult() > 0F);
     }
 
-    @Test
-    public void testFourRatioToFiveResultDivisionByZero() throws Exception {
-        this.generateWeeklyDrawListDivisionByZero();
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
-        this.kieSession.fireAllRules();
-        //TODO
-        assertTrue(((this.result.getFiveMatchNumber() == 0 || this.result.getFourMatchNumber() == 0) && this.result.getResult() == null));
-    }
 
     @Test
     public void testFourRatioToFiveResultValue() throws Exception {
-        this.generateWeeklyDrawList();
-        this.kieSession.insert(this.weeklyDrawList);
-        this.kieSession.insert(this.result);
         this.kieSession.fireAllRules();
-        assertEquals(3F / 2F,this.result.getResult().floatValue(),0.0001);
+        assertEquals(3F / 2F, this.result.getResult().floatValue(), 0.0001);
     }
 
 

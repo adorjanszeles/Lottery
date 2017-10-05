@@ -1,0 +1,31 @@
+import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.model.Node;
+import com.lottery.model.FourMatchRatioToFiveMatchResult;
+import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
+
+rule "get four match ratio to five match"
+    lock-on-active true
+    no-loop true
+    when
+        $drawList : WeeklyDrawList();
+        $result : FourMatchRatioToFiveMatchResult();
+    then
+        $result.setResult(countRatio($drawList));
+
+    end
+
+    function float countRatio(WeeklyDrawList drawList) {
+       Integer fiveMatchCounter = 0;
+       Integer fourMatchCounter = 0;
+       for(int i=0; i < drawList.getDrawListPreparedForDrools().size(); i++) {
+           if(drawList.getDrawListPreparedForDrools().get(i).getFiveMatch() != null &&
+                   drawList.getDrawListPreparedForDrools().get(i).getFourMatch() != null){
+               fiveMatchCounter += drawList.getDrawListPreparedForDrools().get(i).getFiveMatch();
+               fourMatchCounter += drawList.getDrawListPreparedForDrools().get(i).getFourMatch();
+           }
+       }
+       return (float) fourMatchCounter/fiveMatchCounter;
+    }
