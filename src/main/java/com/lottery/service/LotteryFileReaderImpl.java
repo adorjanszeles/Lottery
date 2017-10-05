@@ -60,7 +60,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         }
         String[] dateElement = date.split(LotteryFileReaderImpl.DATE_SEPARATOR);
         calendar.set(Calendar.YEAR, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_YEAR_IDX]));
-        calendar.set(Calendar.MONTH, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_MONTH_IDX])+1);
+        calendar.set(Calendar.MONTH, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_MONTH_IDX])-1);
         calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateElement[LotteryFileReaderImpl.DATE_DAY_IDX]));
         return calendar.getTime();
     }

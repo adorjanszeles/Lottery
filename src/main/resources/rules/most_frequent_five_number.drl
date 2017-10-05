@@ -1,0 +1,57 @@
+import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.model.Node;
+import com.lottery.model.MostFrequentFiveNumberResult;
+import java.util.Collections;
+import com.lottery.model.MostFrequentComparator;
+import java.util.ArrayList;
+import java.util.List;
+
+rule "Find most frequent five numbers"
+    lock-on-active true
+    no-loop true
+    when
+        $drawList : WeeklyDrawList();
+        $result : MostFrequentFiveNumberResult();
+    then
+        List<Node> nodeList = new ArrayList<Node>();
+
+        // Lottószámok létrehozása 1-90-ig
+        createNodeList(nodeList, 90);
+
+        // Lottószámok előfordulásának kiszámítása input adatok alapján
+        countDrawnNumbers($drawList, nodeList);
+
+        //kihúzott számok sorbarendezése gyakoriság alapján
+        Collections.sort(nodeList, new MostFrequentComparator());
+
+        generateResult($result.getResult(),nodeList);
+
+    end
+
+function void createNodeList(List nodeList, int length) {
+    for(int i = 0; i < length; i++) {
+        Node node = new Node();
+        node.setValue(i+1);
+        node.setCount(0);
+        nodeList.add(node);
+    }
+}
+
+function void countDrawnNumbers(WeeklyDrawList numList, List nodeList) {
+   List<WeeklyDraw> lotteryNums = numList.getDrawListPreparedForDrools();
+   for(int i = 0; i < lotteryNums.size(); i++) {
+        for(int j = 0; j < 5; j++) {
+             int num = lotteryNums.get(i).getDrawnNumbers()[j];
+             Node node = (Node) nodeList.get(num - 1);
+             node.setCount(node.getCount() + 1);
+        }
+   }
+}
+
+function void generateResult(List mostFrequentResult, List nodeList) {
+   for(int i = 0; i < 5; i++) {
+        Node node = (Node) nodeList.get(i);
+        mostFrequentResult.add(node.getValue());
+   }
+}
