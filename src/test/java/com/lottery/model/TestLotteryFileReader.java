@@ -5,6 +5,7 @@ import com.lottery.service.LotteryFileReaderImpl;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 public class TestLotteryFileReader {
 
-    private static final String FILE_PATH = "src\\test\\resources\\LotteryWeeklyDraws.csv";
+    private static final String FILE_PATH = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "LotteryWeeklyDraws.csv";
     private static final Lottery LOTTERY = Lottery.getInstance();
     private LotteryFileReader lotteryFileReader;
     private List<WeeklyDraw> lotteryList;
