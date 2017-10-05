@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -37,19 +38,22 @@ public class TestLotteryFileReader {
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
 
-        Calendar calendarFirstDraw = Calendar.getInstance();
-        calendarFirstDraw.set(Calendar.YEAR, 2017);
-        calendarFirstDraw.set(Calendar.MONTH, 8);
-        calendarFirstDraw.set(Calendar.DAY_OF_MONTH, 23);
+//        Calendar calendarFirstDraw = Calendar.getInstance();
+//        calendarFirstDraw.set(Calendar.YEAR, 2017);
+//        calendarFirstDraw.set(Calendar.MONTH, 8);
+//        calendarFirstDraw.set(Calendar.DAY_OF_MONTH, 23);
+//
+//        Calendar calendarSecondDraw = Calendar.getInstance();
+//        calendarSecondDraw.set(Calendar.YEAR, 2017);
+//        calendarSecondDraw.set(Calendar.MONTH, 8);
+//        calendarSecondDraw.set(Calendar.DAY_OF_MONTH, 16);
 
-        Calendar calendarSecondDraw = Calendar.getInstance();
-        calendarSecondDraw.set(Calendar.YEAR, 2017);
-        calendarSecondDraw.set(Calendar.MONTH, 8);
-        calendarSecondDraw.set(Calendar.DAY_OF_MONTH, 16);
+        SimpleDateFormat drawOneDate = new SimpleDateFormat("2017-09-23");
+        SimpleDateFormat drawTwoDate = new SimpleDateFormat("2017-09-16");
 
         firstWeeklyDraw.setYear(2017);
         firstWeeklyDraw.setWeek(38);
-        firstWeeklyDraw.setDrawDate(calendarFirstDraw.getTime());
+        firstWeeklyDraw.setDrawDate(drawOneDate);
         firstWeeklyDraw.setFiveMatch(0);
         firstWeeklyDraw.setFiveMatchPrize(0L);
         firstWeeklyDraw.setFourMatch(19);
@@ -62,7 +66,7 @@ public class TestLotteryFileReader {
 
         secondWeeklyDraw.setYear(2017);
         secondWeeklyDraw.setWeek(37);
-        secondWeeklyDraw.setDrawDate(calendarSecondDraw.getTime());
+        secondWeeklyDraw.setDrawDate(drawTwoDate);
         secondWeeklyDraw.setFiveMatch(0);
         secondWeeklyDraw.setFiveMatchPrize(0L);
         secondWeeklyDraw.setFourMatch(11);

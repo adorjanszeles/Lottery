@@ -38,16 +38,15 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestAverageTimeBetweenTwoMatchFiveDraws.class);
 
     @Before
-    public void setup(){
+    public void setup() {
         KieService kieService = new KieServiceImpl();
         try {
             this.kieSession = kieService.generateNewKieSession(KieSessionName.KIE_SESSION);
-        }
-        catch (MissingKieServicesException e){
+        } catch (MissingKieServicesException e) {
             TestAverageTimeBetweenTwoMatchFiveDraws.LOGGER.debug("Hiányzó com.lottery.kie service", e);
         }
 
-        this.weeklyDrawList  = new WeeklyDrawList();
+        this.weeklyDrawList = new WeeklyDrawList();
         this.weeklyDrawList.setDrawListPreparedForDrools(this.getStubbedDrawList());
         this.result = new AverageTimeBetweenTwoMatchFiveDrawsResult();
     }
@@ -79,8 +78,8 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     public void testAverageTimeBetweenTwoMatchFiveDrawsFiredOnly() throws Exception {
         this.kieSession.insert(this.weeklyDrawList);
         this.kieSession.insert(this.result);
-        int rulesFired = this.kieSession.fireAllRules( new RuleNameEqualsAgendaFilter( "Average Time Between Two Match Five Draws" ) );
-        assertEquals( 1, rulesFired );
+        int rulesFired = this.kieSession.fireAllRules(new RuleNameEqualsAgendaFilter("Average Time Between Two Match Five Draws"));
+        assertEquals(1, rulesFired);
     }
 
     @Test
@@ -171,29 +170,13 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw8.setThreeMatch(41);
         weeklyDraw8.setTwoMatch(246);
 
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd_MM_yyyy");
-            String dateInString0 = "31_08_1993";
-            String dateInString1 = "12_07_1994";
-            String dateInString2 = "23_05_1995";
-            String dateInString3 = "11_08_1986";
-            String dateInString4 = "04_02_1997";
-            String dateInString5 = "01_04_1998";
-            Date date0 = sdf.parse(dateInString0);
-            Date date1 = sdf.parse(dateInString1);
-            Date date2 = sdf.parse(dateInString2);
-            Date date3 = sdf.parse(dateInString3);
-            Date date4 = sdf.parse(dateInString4);
-            Date date5 = sdf.parse(dateInString5);
-            weeklyDraw0.setDrawDate(date0);
-            weeklyDraw1.setDrawDate(date1);
-            weeklyDraw2.setDrawDate(date2);
-            weeklyDraw3.setDrawDate(date3);
-            weeklyDraw4.setDrawDate(date4);
-            weeklyDraw5.setDrawDate(date5);
-        } catch (ParseException e) {
-            TestAverageTimeBetweenTwoMatchFiveDraws.LOGGER.debug("Dátum formátum parse-olásánál fellépő probléma.", e);
-        }
+
+        weeklyDraw0.setDrawDate(new SimpleDateFormat("31-08-1993"));
+        weeklyDraw1.setDrawDate(new SimpleDateFormat("12-07-1994"));
+        weeklyDraw2.setDrawDate(new SimpleDateFormat("23-05-1995"));
+        weeklyDraw3.setDrawDate(new SimpleDateFormat("11-08-1986"));
+        weeklyDraw4.setDrawDate(new SimpleDateFormat("04_02_1997"));
+        weeklyDraw5.setDrawDate(new SimpleDateFormat("01_04_1998"));
 
         List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
 
