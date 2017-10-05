@@ -38,16 +38,6 @@ public class TestLotteryFileReader {
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
 
-//        Calendar calendarFirstDraw = Calendar.getInstance();
-//        calendarFirstDraw.set(Calendar.YEAR, 2017);
-//        calendarFirstDraw.set(Calendar.MONTH, 8);
-//        calendarFirstDraw.set(Calendar.DAY_OF_MONTH, 23);
-//
-//        Calendar calendarSecondDraw = Calendar.getInstance();
-//        calendarSecondDraw.set(Calendar.YEAR, 2017);
-//        calendarSecondDraw.set(Calendar.MONTH, 8);
-//        calendarSecondDraw.set(Calendar.DAY_OF_MONTH, 16);
-
         SimpleDateFormat drawOneDate = new SimpleDateFormat("2017-09-23");
         SimpleDateFormat drawTwoDate = new SimpleDateFormat("2017-09-16");
 
@@ -121,8 +111,8 @@ public class TestLotteryFileReader {
 
     @Test
     public void testLotteryWeeklyDrawnNumbers() throws FileNotFoundException {
-        assertTrue(compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
-                compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
+        assertTrue(this.compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
+                this.compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
     }
 
 

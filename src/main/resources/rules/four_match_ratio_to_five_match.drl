@@ -5,6 +5,8 @@ import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "get four match ratio to five match"
     lock-on-active true
@@ -13,6 +15,7 @@ rule "get four match ratio to five match"
         $drawList : WeeklyDrawList();
         $result : FourMatchRatioToFiveMatchResult();
     then
+        LOGGER.debug("4-es aránya az 5-ös találatokhoz eredmény generálása");
         $result.setResult(countRatio($drawList));
 
     end
