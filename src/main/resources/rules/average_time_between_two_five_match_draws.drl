@@ -4,13 +4,20 @@ import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 import com.lottery.model.WeeklyDrawList;
 import com.lottery.model.WeeklyDraw;
 import java.util.Arrays;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "Average Time Between Two Match Five Draws"
     when
         $drawList : WeeklyDrawList()
         $result : AverageTimeBetweenTwoMatchFiveDrawsResult()
     then
+        LOGGER.debug("Average Time Between Two Match Five Draws futás: INDUL");
+        LOGGER.debug("findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL");
         $result.setResult(findAverageTimeBetweenTwoFiveMatchDraws($drawList, $result));
+        LOGGER.debug("findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE");
+        LOGGER.debug("Average Time Between Two Match Five Draws futás: VÉGE");
+
     end
 
 /*

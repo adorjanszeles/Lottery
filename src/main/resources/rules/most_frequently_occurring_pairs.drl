@@ -5,25 +5,26 @@ import com.lottery.model.WeeklyDrawList;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.mfop_utils.Row;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
+import org.slf4j.Logger;
+global Logger LOGGER;
 
 rule "Most Frequently Occurring Pairs"
     when
         $drawList : WeeklyDrawList()
         $result : MostFrequentlyOccurringPairsResult()
     then
-        logic($drawList,$result);
-    end
-
-/*
- *Az egyszerűsítés kedvéért a teljes logikát lefuttatja a beküldött WeeklydrawList és
- * MostFrequentlyOccurringPairsResult elemeire.
- */
-function void logic(WeeklyDrawList drawList, MostFrequentlyOccurringPairsResult result){
-        for(WeeklyDraw draw : drawList.getDrawListPreparedForDrools()){
-            mFOPLogic(draw, result);
+        LOGGER.debug("Most Frequently Occurring Pairs futás: INDUL");
+        LOGGER.debug("mFOPLogic hívása a drawlist összes elemére: INDUL");
+        for(WeeklyDraw draw : $drawList.getDrawListPreparedForDrools()){
+            mFOPLogic(draw, $result);
         }
-        resultFiller(result.getLottoArray(),result.getResultArray());
-}
+        LOGGER.debug("mFOPLogic hívása a drawlist összes elemére: VÉGE");
+
+        LOGGER.debug("resultFiller futás: INDUL");
+        resultFiller($result.getLottoArray(),$result.getResultArray());
+        LOGGER.debug("resultFiller futás: VÉGE");
+        LOGGER.debug("Most Frequently Occurring Pairs futás: VÉGE");
+    end
 
 /*
  * A 2D lottó struktúrát tölti fel a húzások alapján. Minden sor egy lehetséges húzást jelöl.
