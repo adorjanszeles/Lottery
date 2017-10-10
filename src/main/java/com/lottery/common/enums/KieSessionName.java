@@ -7,7 +7,8 @@ package com.lottery.common.enums;
 public enum KieSessionName {
 
     //default com.lottery.kie session, for new session names add enums below
-    KIE_SESSION("ksession");
+    KIE_SESSION("ksession"),
+    STATELESS_KIE_SESSION("statelessKsession");
 
     private final String name;
 

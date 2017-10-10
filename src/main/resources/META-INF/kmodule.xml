@@ -5,4 +5,8 @@
         <ksession name="ksession"/>
     </kbase>
 
+    <kbase name="statelessRules" packages="rules">
+        <ksession name="statelessKsession" type="stateless"/>
+    </kbase>
+
 </kmodule>
