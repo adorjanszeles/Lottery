@@ -1,22 +1,18 @@
 package com.lottery.service;
 
-import com.lottery.common.enums.KieSessionName;
 import com.lottery.common.exceptions.MissingKieServicesException;
-import com.lottery.kie.KieService;
-import com.lottery.kie.KieServiceImpl;
+import com.lottery.config.LotteryConfig;
 import com.lottery.model.AverageResult;
-import com.lottery.model.Lottery;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
-import org.drools.core.base.RuleNameEqualsAgendaFilter;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -27,9 +23,10 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestDrawAverage {
 
-    private KieSession kieSession;
+    private StatelessKieSession statelessKieSession;
     private WeeklyDrawList weeklyDrawList;
     private AverageResult averageResult;
+    private List<Object> facts;
     private static final Logger LOGGER = LoggerFactory.getLogger(TestDrawAverage.class);
 
     /**
@@ -38,9 +35,9 @@ public class TestDrawAverage {
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
-        Integer[] firstDraw = {1,2,3,4,5};
-        Integer[] secondDraw = {6,7,8,9,10};
-        Integer[] thirdDraw = {1,2,3,4,5};
+        Integer[] firstDraw = {1, 2, 3, 4, 5};
+        Integer[] secondDraw = {6, 7, 8, 9, 10};
+        Integer[] thirdDraw = {1, 2, 3, 4, 5};
 
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
@@ -57,59 +54,28 @@ public class TestDrawAverage {
     }
 
     @Before
-    public void setup(){
-        KieService kieService = new KieServiceImpl();
+    public void setup() {
+        LotteryConfig lotteryConfig = new LotteryConfig();
         try {
-            this.kieSession = kieService.generateNewKieSession(KieSessionName.KIE_SESSION);
-        }
-        catch (MissingKieServicesException e){
+            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
+        } catch (MissingKieServicesException e) {
             TestDrawAverage.LOGGER.debug("Hiányzó com.lottery.kie service", e);
         }
         this.generateWeeklyDrawList();
-
-        this.kieSession.insert(this.weeklyDrawList);
         this.averageResult = new AverageResult();
-        this.kieSession.insert(this.averageResult);
-    }
 
-    @After
-    public void tearDown() {
-        if (this.kieSession != null) {
-            this.kieSession.dispose();
-        }
-    }
-
-    @Test
-    public void testRuleFired() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules();
-
-        assertTrue(rulesFired > 0);
-    }
-
-    @Test
-    public void testRuleFiredOnce() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules(10);
-
-        assertEquals(1, rulesFired);
-    }
-
-    @Test
-    public void testAverageNumberRuleFired() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules(new RuleNameEqualsAgendaFilter("Find average number"));
-
-        assertEquals(1, rulesFired);
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.averageResult));
+        this.statelessKieSession.execute(this.facts);
     }
 
     @Test
     public void testResultNotZero() throws Exception {
-        this.kieSession.fireAllRules();
 
         assertTrue(this.averageResult.getResult() > 0f);
     }
 
     @Test
     public void testDrawAverageResult() throws Exception {
-        this.kieSession.fireAllRules();
 
         assertEquals(4.6666665f, this.averageResult.getResult(), 0.0001);
     }
