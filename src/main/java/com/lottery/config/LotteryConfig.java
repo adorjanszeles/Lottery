@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Spring konfigurációs osztály stateless kiesession bean létrehozásához
+ */
 @Configuration
 public class LotteryConfig {
 
@@ -29,7 +32,8 @@ public class LotteryConfig {
             LotteryConfig.LOGGER.debug("Hiányzó com.lottery.kie konténer");
             throw new MissingKieServicesException("Hiányzó com.lottery.kie konténer");
         }
-        StatelessKieSession statelesskSession = kContainer.newStatelessKieSession(KieSessionName.STATELESS_KIE_SESSION.getKieSessionName());
+        StatelessKieSession statelesskSession = kContainer.newStatelessKieSession(
+                KieSessionName.STATELESS_KIE_SESSION.getKieSessionName());
         if (statelesskSession == null) {
             LotteryConfig.LOGGER.debug("Hiányzó com.lottery.kie session");
             throw new MissingKieServicesException("Hiányzó com.lottery.kie session");
