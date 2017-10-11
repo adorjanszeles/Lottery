@@ -1,8 +1,8 @@
 package com.lottery.service;
 
 import com.lottery.config.LotteryQualifier;
+import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import com.lottery.model.Lottery;
-import com.lottery.model.MostFrequentFiveNumberResult;
 import com.lottery.model.WeeklyDrawList;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -15,34 +15,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * {@link MostFrequentFiveNumberService interfész implementációja.
- */
-
 @Service
-public class MostFrequentFiveNumberServiceImpl implements MostFrequentFiveNumberService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MostFrequentFiveNumberServiceImpl.class);
+public class FourMatchRatioToFiveServiceImpl implements FourMatchRatioToFiveService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(FourMatchRatioToFiveServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
     private WeeklyDrawList weeklyDrawList;
-    private MostFrequentFiveNumberResult mostFrequentFiveNumberResult;
+    private FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult;
 
     @Autowired
-    public MostFrequentFiveNumberServiceImpl(
+    public FourMatchRatioToFiveServiceImpl(
             @Qualifier(LotteryQualifier.statelessKieSessionName) StatelessKieSession kieSession, Lottery lottery) {
         this.kieSession = kieSession;
         this.lottery = lottery;
     }
 
     @Override
-    public MostFrequentFiveNumberResult executeRule() {
-        MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
+    public FourMatchRatioToFiveMatchResult executeRule() {
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
         this.weeklyDrawList = new WeeklyDrawList();
         this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        this.mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
-        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.mostFrequentFiveNumberResult));
+        System.out.println(this.weeklyDrawList.getDrawListPreparedForDrools().size());
+        this.fourMatchRatioToFiveMatchResult = new FourMatchRatioToFiveMatchResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.fourMatchRatioToFiveMatchResult));
         this.kieSession.execute(facts);
-        MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.mostFrequentFiveNumberResult;
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
+        return this.fourMatchRatioToFiveMatchResult;
     }
 }
