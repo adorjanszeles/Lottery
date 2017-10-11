@@ -1,6 +1,10 @@
 package com.lottery.controller;
 
 
+import com.lottery.model.MostFrequentFiveNumberResult;
+import com.lottery.service.MostFrequentFiveNumberService;
+import com.lottery.service.MostFrequentFiveNumberServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,16 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LotteryController {
 
-    @RequestMapping("/most-frequent-five-number")
-    @ResponseBody
-    public String getMostFrequentFiveNumber() {
-        //TODO
+    private MostFrequentFiveNumberService mostFrequentFiveNumberService;
 
-        return "success";
+    @Autowired
+    public LotteryController(MostFrequentFiveNumberService mostFrequentFiveNumberService) {
+        this.mostFrequentFiveNumberService = mostFrequentFiveNumberService;
+    }
+
+    @RequestMapping("/most-frequent-five-number")
+    public MostFrequentFiveNumberResult getMostFrequentFiveNumber() {
+        MostFrequentFiveNumberResult mostFrequentFiveNumberResult = this.mostFrequentFiveNumberService.executeRule();
+        return mostFrequentFiveNumberResult;
     }
 
     @RequestMapping("/four-match-ratio-to-five-match")
-    @ResponseBody
     public String getFourMatchRatioToFiveMatch() {
         //TODO
 
@@ -26,7 +34,6 @@ public class LotteryController {
     }
 
     @RequestMapping("/rearest-five-number")
-    @ResponseBody
     public String getRearestFiveNumber() {
         //TODO
 
@@ -34,7 +41,6 @@ public class LotteryController {
     }
 
     @RequestMapping("/average")
-    @ResponseBody
     public String getAverage() {
         //TODO
 
@@ -42,7 +48,6 @@ public class LotteryController {
     }
 
     @RequestMapping("/most-frequently-occuring-five-number")
-    @ResponseBody
     public String getMostFrequentlyOccuringFiveNumber() {
         //TODO
 
@@ -50,7 +55,6 @@ public class LotteryController {
     }
 
     @RequestMapping("/average-time-between-two-match-five-draws")
-    @ResponseBody
     public String getAverageTimeBetweenTwoMatchFiveDraws() {
         //TODO
 

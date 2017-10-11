@@ -39,8 +39,6 @@ public class TestRearestFiveNumberRule {
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
-        Lottery.getInstance().getLotteryList().clear();
-
         Integer[] firstDraw = {1,2,3,4,5};
         Integer[] secondDraw = {6,7,8,9,10};
         Integer[] thirdDraw = {1,2,3,4,5};
