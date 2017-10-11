@@ -3,10 +3,8 @@ package com.lottery.model;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Result segédosztály a Drools működésének könnyítéséhez, amely a
- * legritkább 5 számból álló listát tartalmazza
+ * Result segédosztály a Drools működésének könnyítéséhez, amely a legritkább 5 számból álló listát tartalmazza
  */
 public class RearestFiveResult {
 

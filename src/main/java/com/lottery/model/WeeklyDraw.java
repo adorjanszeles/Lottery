@@ -1,11 +1,10 @@
 package com.lottery.model;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
-/** Heti kihúzott lottó számok osztálya
- *  húzás dátummal, találatokkal, nyeremények összegével
- *  és a kihúzott 5 számmal, amit tömben tárolunk
+/**
+ * Heti kihúzott lottó számok osztálya húzás dátummal, találatokkal, nyeremények összegével és a kihúzott 5 számmal,
+ * amit tömben tárolunk
  */
 
 public class WeeklyDraw {
