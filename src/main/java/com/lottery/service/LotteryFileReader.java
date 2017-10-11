@@ -1,5 +1,6 @@
 package com.lottery.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -11,8 +12,8 @@ public interface LotteryFileReader {
     /**
      * beolvassa a csv fileból az adatokat
      *
-     * @param filePath a csv file helye
+     * @param file a csv file
      */
-    void readFromFile(String filePath) throws FileNotFoundException;
+    void readFromFile(File file) throws FileNotFoundException;
 
 }
