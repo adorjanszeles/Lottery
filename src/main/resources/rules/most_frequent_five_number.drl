@@ -13,8 +13,9 @@ rule "Find most frequent five numbers"
     lock-on-active true
     no-loop true
     when
-        $drawList : WeeklyDrawList();
-        $result : MostFrequentFiveNumberResult();
+        $factsList : List();
+        $drawList : WeeklyDrawList() from $factsList;
+        $result : MostFrequentFiveNumberResult() from $factsList;
     then
         List<Node> nodeList = new ArrayList<Node>();
 
