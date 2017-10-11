@@ -4,14 +4,13 @@ import com.lottery.service.LotteryFileReader;
 import com.lottery.service.LotteryFileReaderImpl;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
@@ -23,10 +22,40 @@ import static org.junit.Assert.assertEquals;
 
 public class TestLotteryFileReader {
 
-    private static final String FILE_PATH = "src" + File.separator + "test" + File.separator + "resources" + File.separator + "LotteryWeeklyDraws.csv";
+    private static final String FILE_PATH =
+            "src" + File.separator + "test" + File.separator + "resources" + File.separator + "LotteryWeeklyDraws.csv";
     private LotteryFileReader lotteryFileReader;
     private List<WeeklyDraw> lotteryList;
     private List<WeeklyDraw> result;
+
+    @Before
+    public void setup() throws IOException {
+        Lottery lottery = new Lottery();
+        lottery.setLotteryList();
+        this.lotteryFileReader = new LotteryFileReaderImpl(lottery);
+        this.lotteryList = lottery.getLotteryList();
+        //this.lotteryList.clear();
+        File file = new File(TestLotteryFileReader.FILE_PATH);
+        this.lotteryFileReader.readFromFile(file);
+        this.lotteryList = lottery.getLotteryList();
+        this.generateResult();
+    }
+
+    @Test
+    public void testLotteryListSize() throws FileNotFoundException {
+        assertEquals(2, this.lotteryList.size());
+    }
+
+    @Test
+    public void testLotteryWeeklyDrawnNumbers() throws FileNotFoundException {
+        assertTrue(this.compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
+                   this.compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
+    }
+
+    //    @Test(expected = FileNotFoundException.class)
+    //    public void testFileNotFound() throws FileNotFoundException {
+    //        this.lotteryFileReader.readFromFile("/bad_path");
+    //    }
 
     /**
      * heti lottószám húzás eredmények létrehozása teszteléshez
@@ -72,51 +101,20 @@ public class TestLotteryFileReader {
     }
 
     private boolean compareWeeklyDraws(WeeklyDraw drawOne, WeeklyDraw drawTwo) {
-        if (drawOne.getYear().equals(drawTwo.getYear()) &&
-                (drawOne.getWeek()).equals(drawTwo.getWeek()) &&
-                (drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
-                (drawOne.getFiveMatch().equals(drawTwo.getFiveMatch())) &&
-                (drawOne.getFiveMatchPrize().equals(drawTwo.getFiveMatchPrize())) &&
-                (drawOne.getFourMatch().equals(drawTwo.getFourMatch())) &&
-                (drawOne.getFourMatchPrize().equals(drawTwo.getFourMatchPrize())) &&
-                (drawOne.getThreeMatch().equals(drawTwo.getThreeMatch())) &&
-                (drawOne.getThreeMatchPrize().equals(drawTwo.getThreeMatchPrize())) &&
-                (drawOne.getTwoMatch().equals(drawTwo.getTwoMatch())) &&
-                (drawOne.getTwoMatchPrize().equals(drawTwo.getTwoMatchPrize())) &&
-                (Arrays.equals(drawOne.getDrawnNumbers(), drawTwo.getDrawnNumbers()))) {
+        if (drawOne.getYear().equals(drawTwo.getYear()) && (drawOne.getWeek()).equals(drawTwo.getWeek()) &&
+            (drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
+            (drawOne.getFiveMatch().equals(drawTwo.getFiveMatch())) &&
+            (drawOne.getFiveMatchPrize().equals(drawTwo.getFiveMatchPrize())) &&
+            (drawOne.getFourMatch().equals(drawTwo.getFourMatch())) &&
+            (drawOne.getFourMatchPrize().equals(drawTwo.getFourMatchPrize())) &&
+            (drawOne.getThreeMatch().equals(drawTwo.getThreeMatch())) &&
+            (drawOne.getThreeMatchPrize().equals(drawTwo.getThreeMatchPrize())) &&
+            (drawOne.getTwoMatch().equals(drawTwo.getTwoMatch())) &&
+            (drawOne.getTwoMatchPrize().equals(drawTwo.getTwoMatchPrize())) &&
+            (Arrays.equals(drawOne.getDrawnNumbers(), drawTwo.getDrawnNumbers()))) {
             return true;
         }
         return false;
     }
-
-
-    @Before
-    public void setup() throws FileNotFoundException {
-        Lottery lottery = new Lottery();
-        lottery.setLotteryList();
-        this.lotteryFileReader = new LotteryFileReaderImpl(lottery);
-        this.lotteryList = lottery.getLotteryList();
-        //this.lotteryList.clear();
-        this.lotteryFileReader.readFromFile(TestLotteryFileReader.FILE_PATH);
-        this.lotteryList = lottery.getLotteryList();
-        this.generateResult();
-    }
-
-//    @Test(expected = FileNotFoundException.class)
-//    public void testFileNotFound() throws FileNotFoundException {
-//        this.lotteryFileReader.readFromFile("/bad_path");
-//    }
-
-    @Test
-    public void testLotteryListSize() throws FileNotFoundException {
-        assertEquals(2, this.lotteryList.size());
-    }
-
-    @Test
-    public void testLotteryWeeklyDrawnNumbers() throws FileNotFoundException {
-        assertTrue(this.compareWeeklyDraws(this.result.get(0), this.lotteryList.get(0)) &&
-                this.compareWeeklyDraws(this.result.get(1), this.lotteryList.get(1)));
-    }
-
 
 }
