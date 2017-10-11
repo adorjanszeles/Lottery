@@ -3,11 +3,12 @@ package com.lottery.service;
 import com.lottery.common.enums.InputColumn;
 import com.lottery.model.Lottery;
 import com.lottery.model.WeeklyDraw;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * {@link LotteryFileReader} interfész implementációja.
@@ -15,28 +16,51 @@ import java.util.*;
 
 public class LotteryFileReaderImpl implements LotteryFileReader {
 
-    private List<WeeklyDraw> weeklyDrawList;
     private static final int COL_NUM = 16;
+    private static final int DATE_YEAR_IDX = 0;
+    private static final int DATE_MONTH_IDX = 1;
+    private static final int DATE_DAY_IDX = 2;
     private static String CURRENCY = "Ft";
     private static String BREAK_LINE = "\n";
     private static String LINE_DELIMITER;
     private static String LINE_SEPARATOR = ";";
     private static String DATE_SEPARATOR = "\\.";
-    private static final int DATE_YEAR_IDX = 0;
-    private static final int DATE_MONTH_IDX = 1;
-    private static final int DATE_DAY_IDX = 2;
+    private Lottery lottery;
 
-    public LotteryFileReaderImpl() {
+    @Autowired
+    public LotteryFileReaderImpl(Lottery lottery) {
+        this.lottery = lottery;
         String osType = System.getProperty("os.name");
         String osTypeLower = osType.toLowerCase();
         if (osTypeLower.startsWith("mac") || osTypeLower.startsWith("linux") || osTypeLower.startsWith("unix")) {
             LotteryFileReaderImpl.LINE_DELIMITER = "\n";
-        }
-        else if (osTypeLower.startsWith("windows")) {
+        } else if (osTypeLower.startsWith("windows")) {
             LotteryFileReaderImpl.LINE_DELIMITER = "\r\n";
-        }
-        else {
+        } else {
             LotteryFileReaderImpl.LINE_DELIMITER = "\r";
+        }
+    }
+
+    /**
+     * az adatok input fileból való beolvasása
+     *
+     * @param filePath az input file elérési útja
+     */
+    @Override
+    public void readFromFile(String filePath) {
+        try (Scanner lotteryFile = new Scanner(new File(filePath))) {
+            lotteryFile.useDelimiter(LotteryFileReaderImpl.LINE_DELIMITER);
+            while (lotteryFile.hasNext()) {
+                String nextLine = lotteryFile.next();
+                String[] splitLines = nextLine.split(LotteryFileReaderImpl.LINE_SEPARATOR);
+                if (splitLines.length == LotteryFileReaderImpl.COL_NUM) {
+                    String[] lines = this.cleanLine(splitLines);
+                    String[] drawLines = this.checkForZeros(lines);
+                    this.lottery.getLotteryList().add(this.createWeeklyDraws(drawLines));
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
@@ -106,8 +130,9 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
     }
 
     /**
-     * az input file-ban '98 előtti találatokról nincs adat, a csv-ben 0-val jelölik ezt.
-     * ez a metódus ellenőrzi, hogy az adott fieldek mindegyike 0 értékkel rendelkezik-e és ha igen, akkor 0 helyett üres stringgel jelöljük a továbbiakban, ha nincs adatunk
+     * az input file-ban '98 előtti találatokról nincs adat, a csv-ben 0-val jelölik ezt. ez a metódus ellenőrzi, hogy
+     * az adott fieldek mindegyike 0 értékkel rendelkezik-e és ha igen, akkor 0 helyett üres stringgel jelöljük a
+     * továbbiakban, ha nincs adatunk
      *
      * @param cleanedLine sor az input fileból
      * @return String tömb, amiben a megtisztított adatok vannak, a hiányzó húzások pedig null-ra állítva
@@ -149,34 +174,12 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         weeklyDraw.setTwoMatch(parseStringToInt(cleanedLine[InputColumn.TWO_MATCH.getColNum()]));
         weeklyDraw.setTwoMatchPrize(parseStringToLong(cleanedLine[InputColumn.TWO_MATCH_PRIZE.getColNum()]));
         weeklyDraw.setDrawnNumbers(new Integer[]{Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]),
-                Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]),
-                Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]),
-                Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]),
-                Integer.parseInt(cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()])});
-
+                                                 Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]),
+                                                 Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]),
+                                                 Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]),
+                                                 Integer.parseInt(
+                                                         cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()])});
 
         return weeklyDraw;
-    }
-
-    /**
-     * az adatok input fileból való beolvasása
-     *
-     * @param filePath az input file elérési útja
-     */
-    @Override
-    public void readFromFile(String filePath) throws FileNotFoundException {
-        this.weeklyDrawList = Lottery.getInstance().getLotteryList();
-        try(Scanner lotteryFile = new Scanner(new File(filePath))){
-            lotteryFile.useDelimiter(LotteryFileReaderImpl.LINE_DELIMITER);
-            while (lotteryFile.hasNext()) {
-                String nextLine = lotteryFile.next();
-                String[] splitLines = nextLine.split(LotteryFileReaderImpl.LINE_SEPARATOR);
-                if (splitLines.length == LotteryFileReaderImpl.COL_NUM) {
-                    String[] lines = this.cleanLine(splitLines);
-                    String[] drawLines = this.checkForZeros(lines);
-                    this.weeklyDrawList.add(this.createWeeklyDraws(drawLines));
-                }
-            }
-        }
     }
 }
