@@ -39,7 +39,6 @@ public class MostFrequentFiveNumberServiceImpl implements MostFrequentFiveNumber
     public MostFrequentFiveNumberResult executeRule() {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
         this.weeklyDrawList = new WeeklyDrawList();
-        this.lottery.setLotteryList("otos.csv");
         this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
         this.mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
         List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.mostFrequentFiveNumberResult));
