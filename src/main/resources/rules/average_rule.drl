@@ -9,8 +9,8 @@ rule "Find average number"
     no-loop true
 
     when
-        $drawList : WeeklyDrawList();
-        $result : AverageResult();
+        $drawList : WeeklyDrawList()
+        $result : AverageResult()
     then
         int all = 0;
         int count = 0;
