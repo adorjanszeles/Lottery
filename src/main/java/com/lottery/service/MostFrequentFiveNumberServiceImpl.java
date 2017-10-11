@@ -42,7 +42,7 @@ public class MostFrequentFiveNumberServiceImpl implements MostFrequentFiveNumber
         this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
         this.mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
         List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.mostFrequentFiveNumberResult));
-        this.kieSession.execute(CommandFactory.newInsert(facts));
+        this.kieSession.execute(facts);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
         return this.mostFrequentFiveNumberResult;
     }
