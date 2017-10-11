@@ -44,11 +44,11 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
     /**
      * az adatok input fileból való beolvasása
      *
-     * @param filePath az input file elérési útja
+     * @param file az input file
      */
     @Override
-    public void readFromFile(String filePath) {
-        try (Scanner lotteryFile = new Scanner(new File(filePath))) {
+    public void readFromFile(File file) {
+        try (Scanner lotteryFile = new Scanner(file)) {
             lotteryFile.useDelimiter(LotteryFileReaderImpl.LINE_DELIMITER);
             while (lotteryFile.hasNext()) {
                 String nextLine = lotteryFile.next();
