@@ -13,13 +13,13 @@ public class MostFrequentlyOccurringPairsResult {
     private DrawsInTwoDimension lottoArray;
     private DrawsInTwoDimension resultArray;
 
-    public MostFrequentlyOccurringPairsResult(){
+    public MostFrequentlyOccurringPairsResult() {
 
         this.lottoArray = new DrawsInTwoDimension();
         this.resultArray = new DrawsInTwoDimension();
         int columnCounter = 89;
 
-        while(columnCounter >= 0){
+        while (columnCounter >= 0) {
 
             Row row = new Row(new Integer[columnCounter]);
 
@@ -27,23 +27,27 @@ public class MostFrequentlyOccurringPairsResult {
             columnCounter--;
         }
 
-        for(Row arr : this.lottoArray.getRows()){
-            Arrays.fill(arr.getColumns(),0);
+        for (Row arr : this.lottoArray.getRows()) {
+            Arrays.fill(arr.getColumns(), 0);
         }
     }
 
     /**
      * A lottoArray field teszt print-jére alkalmazható method.
      */
-    public void lottoArraySTDOUT(){
-        for(int n = 0; n < this.lottoArray.getRows().size(); n++) {
-            if( n < 9) {
-                System.out.print("0" + (n + 1) + " : num of possible pairs:" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
-            }else {
-                if(this.lottoArray.getRows().size() < 10) {
-                    System.out.print(n + 1 + " : num of possible pairs:0" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
-                }else{
-                    System.out.print(n + 1 + " : num of possible pairs:" + this.lottoArray.getRows().get(n).getColumns().length + " - ");
+    public void lottoArraySTDOUT() {
+        for (int n = 0; n < this.lottoArray.getRows().size(); n++) {
+            if (n < 9) {
+                System.out.print("0" + (n + 1) + " : num of possible pairs:" +
+                                 this.lottoArray.getRows().get(n).getColumns().length + " - ");
+            } else {
+                if (this.lottoArray.getRows().size() < 10) {
+                    System.out.print(n + 1 + " : num of possible pairs:0" +
+                                     this.lottoArray.getRows().get(n).getColumns().length + " - ");
+                } else {
+                    System.out.print(
+                            n + 1 + " : num of possible pairs:" + this.lottoArray.getRows().get(n).getColumns().length +
+                            " - ");
 
                 }
             }
@@ -58,10 +62,10 @@ public class MostFrequentlyOccurringPairsResult {
     /**
      * A resultArray field teszt nyomtatására alkalmazható method.
      */
-    public void resultArraySTDOUT(){
+    public void resultArraySTDOUT() {
 
-        for(Row resultList : this.resultArray.getRows()){
-            System.out.println("Pair of " + resultList.getColumns()[0] + " and " + resultList.getColumns()[1] );
+        for (Row resultList : this.resultArray.getRows()) {
+            System.out.println("Pair of " + resultList.getColumns()[0] + " and " + resultList.getColumns()[1]);
         }
     }
 

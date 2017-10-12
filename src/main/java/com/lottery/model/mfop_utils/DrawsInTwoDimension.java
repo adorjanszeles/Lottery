@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A lottóhúzásokban előforduló 2D-s struktúrában való tárolását valósítja meg.
- * A 'rows' lista Row elemei a lehetséges húzások.
+ * A lottóhúzásokban előforduló 2D-s struktúrában való tárolását valósítja meg. A 'rows' lista Row elemei a lehetséges
+ * húzások.
  */
 public class DrawsInTwoDimension {
 
     private List<Row> rows;
 
-    public DrawsInTwoDimension(){
+    public DrawsInTwoDimension() {
         this.rows = new ArrayList<>();
     }
 
@@ -23,7 +23,7 @@ public class DrawsInTwoDimension {
         this.rows = rows;
     }
 
-    public void addRow(Row row){
+    public void addRow(Row row) {
         this.rows.add(row);
     }
 }
