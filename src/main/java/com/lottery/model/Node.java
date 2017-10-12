@@ -1,30 +1,26 @@
 package com.lottery.model;
 
 /**
- * Segédosztály a lottószámok sorbarendezésének használatára
- * value -> lottószám,
- * count -> lottószám előfordulása
+ * Segédosztály a lottószámok sorbarendezésének használatára value -> lottószám, count -> lottószám előfordulása
  */
-public class Node implements Comparable<Node>{
+public class Node implements Comparable<Node> {
 
     private Integer value;
     private Integer count;
 
-    public Node() {}
+    public Node() {
+    }
 
     @Override
     public int compareTo(Node node) {
         if (this.count < node.getCount()) {
             return -1;
-        }
-        else if (this.count > node.getCount()) {
+        } else if (this.count > node.getCount()) {
             return 1;
-        }
-        else {
+        } else {
             if (this.value < node.getValue()) {
                 return -1;
-            }
-            else {
+            } else {
                 return 1;
             }
         }
@@ -45,6 +41,5 @@ public class Node implements Comparable<Node>{
     public void setCount(Integer count) {
         this.count = count;
     }
-
 
 }

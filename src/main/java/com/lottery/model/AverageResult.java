@@ -1,8 +1,7 @@
 package com.lottery.model;
 
 /**
- * Result segédosztály a Drools működésének könnyítéséhez, amely a
- * kihúzott számok átlagát tartalmazza
+ * Result segédosztály a Drools működésének könnyítéséhez, amely a kihúzott számok átlagát tartalmazza
  */
 public class AverageResult {
 

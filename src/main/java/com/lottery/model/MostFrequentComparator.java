@@ -12,15 +12,12 @@ public class MostFrequentComparator implements Comparator<Node> {
     public int compare(Node nodeOne, Node nodeTwo) {
         if (nodeOne.getCount() < nodeTwo.getCount()) {
             return 1;
-        }
-        else if (nodeOne.getCount() > nodeTwo.getCount()) {
+        } else if (nodeOne.getCount() > nodeTwo.getCount()) {
             return -1;
-        }
-        else {
+        } else {
             if (nodeOne.getValue() < nodeTwo.getValue()) {
                 return -1;
-            }
-            else {
+            } else {
                 return 1;
             }
         }

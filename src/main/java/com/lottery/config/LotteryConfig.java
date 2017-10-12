@@ -25,13 +25,13 @@ import java.io.IOException;
 public class LotteryConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LotteryConfig.class);
+    private static final String FILE_PATH = "otos.csv";
 
     @Bean
     public Lottery generateLottery() throws IOException {
-        String filePath = "otos.csv";
         Lottery lottery = new Lottery();
         lottery.setLotteryList();
-        File file = new ClassPathResource(filePath).getFile();
+        File file = new ClassPathResource(LotteryConfig.FILE_PATH).getFile();
         LotteryFileReader lotteryFileReader = new LotteryFileReaderImpl(lottery);
         lotteryFileReader.readFromFile(file);
         return lottery;

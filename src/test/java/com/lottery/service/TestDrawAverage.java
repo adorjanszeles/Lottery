@@ -27,91 +27,91 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestDrawAverage {
 
-    private KieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private AverageResult averageResult;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestDrawAverage.class);
-
-    /**
-     * Heti lottószám húzás példányok generálása teszteléshez.
-     */
-    private void generateWeeklyDrawList() {
-        this.weeklyDrawList = new WeeklyDrawList();
-        List<WeeklyDraw> drawList = new ArrayList<>();
-        Integer[] firstDraw = {1,2,3,4,5};
-        Integer[] secondDraw = {6,7,8,9,10};
-        Integer[] thirdDraw = {1,2,3,4,5};
-
-        WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
-        WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
-        WeeklyDraw thirdWeeklyDraw = new WeeklyDraw();
-
-        firstWeeklyDraw.setDrawnNumbers(firstDraw);
-        secondWeeklyDraw.setDrawnNumbers(secondDraw);
-        thirdWeeklyDraw.setDrawnNumbers(thirdDraw);
-
-        drawList.add(firstWeeklyDraw);
-        drawList.add(secondWeeklyDraw);
-        drawList.add(thirdWeeklyDraw);
-        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
-    }
-
-    @Before
-    public void setup(){
-        KieService kieService = new KieServiceImpl();
-        try {
-            this.kieSession = kieService.generateNewKieSession(KieSessionName.KIE_SESSION);
-        }
-        catch (MissingKieServicesException e){
-            TestDrawAverage.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
-        this.generateWeeklyDrawList();
-
-        this.kieSession.insert(this.weeklyDrawList);
-        this.averageResult = new AverageResult();
-        this.kieSession.insert(this.averageResult);
-    }
-
-    @After
-    public void tearDown() {
-        if (this.kieSession != null) {
-            this.kieSession.dispose();
-        }
-    }
-
-    @Test
-    public void testRuleFired() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules();
-
-        assertTrue(rulesFired > 0);
-    }
-
-    @Test
-    public void testRuleFiredOnce() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules(10);
-
-        assertEquals(1, rulesFired);
-    }
-
-    @Test
-    public void testAverageNumberRuleFired() throws Exception {
-        int rulesFired = this.kieSession.fireAllRules(new RuleNameEqualsAgendaFilter("Find average number"));
-
-        assertEquals(1, rulesFired);
-    }
-
-    @Test
-    public void testResultNotZero() throws Exception {
-        this.kieSession.fireAllRules();
-
-        assertTrue(this.averageResult.getResult() > 0f);
-    }
-
-    @Test
-    public void testDrawAverageResult() throws Exception {
-        this.kieSession.fireAllRules();
-
-        assertEquals(4.6666665f, this.averageResult.getResult(), 0.0001);
-    }
+//    private KieSession kieSession;
+//    private WeeklyDrawList weeklyDrawList;
+//    private AverageResult averageResult;
+//    private static final Logger LOGGER = LoggerFactory.getLogger(TestDrawAverage.class);
+//
+//    /**
+//     * Heti lottószám húzás példányok generálása teszteléshez.
+//     */
+//    private void generateWeeklyDrawList() {
+//        this.weeklyDrawList = new WeeklyDrawList();
+//        List<WeeklyDraw> drawList = new ArrayList<>();
+//        Integer[] firstDraw = {1,2,3,4,5};
+//        Integer[] secondDraw = {6,7,8,9,10};
+//        Integer[] thirdDraw = {1,2,3,4,5};
+//
+//        WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
+//        WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
+//        WeeklyDraw thirdWeeklyDraw = new WeeklyDraw();
+//
+//        firstWeeklyDraw.setDrawnNumbers(firstDraw);
+//        secondWeeklyDraw.setDrawnNumbers(secondDraw);
+//        thirdWeeklyDraw.setDrawnNumbers(thirdDraw);
+//
+//        drawList.add(firstWeeklyDraw);
+//        drawList.add(secondWeeklyDraw);
+//        drawList.add(thirdWeeklyDraw);
+//        this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
+//    }
+//
+//    @Before
+//    public void setup(){
+//        KieService kieService = new KieServiceImpl();
+//        try {
+//            this.kieSession = kieService.generateNewKieSession(KieSessionName.KIE_SESSION);
+//        }
+//        catch (MissingKieServicesException e){
+//            TestDrawAverage.LOGGER.debug("Hiányzó com.lottery.kie service", e);
+//        }
+//        this.generateWeeklyDrawList();
+//
+//        this.kieSession.insert(this.weeklyDrawList);
+//        this.averageResult = new AverageResult();
+//        this.kieSession.insert(this.averageResult);
+//    }
+//
+//    @After
+//    public void tearDown() {
+//        if (this.kieSession != null) {
+//            this.kieSession.dispose();
+//        }
+//    }
+//
+//    @Test
+//    public void testRuleFired() throws Exception {
+//        int rulesFired = this.kieSession.fireAllRules();
+//
+//        assertTrue(rulesFired > 0);
+//    }
+//
+//    @Test
+//    public void testRuleFiredOnce() throws Exception {
+//        int rulesFired = this.kieSession.fireAllRules(10);
+//
+//        assertEquals(1, rulesFired);
+//    }
+//
+//    @Test
+//    public void testAverageNumberRuleFired() throws Exception {
+//        int rulesFired = this.kieSession.fireAllRules(new RuleNameEqualsAgendaFilter("Find average number"));
+//
+//        assertEquals(1, rulesFired);
+//    }
+//
+//    @Test
+//    public void testResultNotZero() throws Exception {
+//        this.kieSession.fireAllRules();
+//
+//        assertTrue(this.averageResult.getResult() > 0f);
+//    }
+//
+//    @Test
+//    public void testDrawAverageResult() throws Exception {
+//        this.kieSession.fireAllRules();
+//
+//        assertEquals(4.6666665f, this.averageResult.getResult(), 0.0001);
+//    }
 
 }
