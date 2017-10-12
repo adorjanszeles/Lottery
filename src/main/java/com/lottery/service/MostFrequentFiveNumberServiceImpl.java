@@ -24,8 +24,6 @@ public class MostFrequentFiveNumberServiceImpl implements MostFrequentFiveNumber
     private static final Logger LOGGER = LoggerFactory.getLogger(MostFrequentFiveNumberServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private MostFrequentFiveNumberResult mostFrequentFiveNumberResult;
 
     @Autowired
     public MostFrequentFiveNumberServiceImpl(
@@ -37,12 +35,12 @@ public class MostFrequentFiveNumberServiceImpl implements MostFrequentFiveNumber
     @Override
     public MostFrequentFiveNumberResult executeRule() {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        this.mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
-        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.mostFrequentFiveNumberResult));
+        WeeklyDrawList weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(weeklyDrawList, mostFrequentFiveNumberResult));
         this.kieSession.execute(facts);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.mostFrequentFiveNumberResult;
+        return mostFrequentFiveNumberResult;
     }
 }

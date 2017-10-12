@@ -21,8 +21,6 @@ public class RearestFiveServiceImpl implements RearestFiveService {
     private static final Logger LOGGER = LoggerFactory.getLogger(RearestFiveServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private RearestFiveResult rearestFiveResult;
 
     @Autowired
     public RearestFiveServiceImpl(@Qualifier(LotteryQualifier.statelessKieSessionName) StatelessKieSession kieSession,
@@ -34,13 +32,13 @@ public class RearestFiveServiceImpl implements RearestFiveService {
     @Override
     public RearestFiveResult executeRule() {
         RearestFiveServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        System.out.println(this.weeklyDrawList.getDrawListPreparedForDrools().size());
-        this.rearestFiveResult = new RearestFiveResult();
-        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.rearestFiveResult));
+        WeeklyDrawList weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        System.out.println(weeklyDrawList.getDrawListPreparedForDrools().size());
+        RearestFiveResult rearestFiveResult = new RearestFiveResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(weeklyDrawList, rearestFiveResult));
         this.kieSession.execute(facts);
         RearestFiveServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.rearestFiveResult;
+        return rearestFiveResult;
     }
 }

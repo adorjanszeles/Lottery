@@ -13,11 +13,12 @@ import com.lottery.service.MostFrequentFiveNumberService;
 import com.lottery.service.MostFrequentlyOccuringPairsService;
 import com.lottery.service.RearestFiveService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/lottery")
 @RestController
+@RequestMapping(value = "/lottery", produces = MediaType.APPLICATION_JSON_VALUE)
 public class LotteryController {
 
     private MostFrequentFiveNumberService mostFrequentFiveNumberService;

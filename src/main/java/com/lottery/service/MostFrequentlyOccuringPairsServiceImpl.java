@@ -21,8 +21,6 @@ public class MostFrequentlyOccuringPairsServiceImpl implements MostFrequentlyOcc
     private static final Logger LOGGER = LoggerFactory.getLogger(MostFrequentlyOccuringPairsServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private MostFrequentlyOccurringPairsResult mostFrequentlyOccurringPairsResult;
 
     @Autowired
     public MostFrequentlyOccuringPairsServiceImpl(
@@ -34,15 +32,14 @@ public class MostFrequentlyOccuringPairsServiceImpl implements MostFrequentlyOcc
     @Override
     public MostFrequentlyOccurringPairsResult executeRule() {
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        System.out.println(this.weeklyDrawList.getDrawListPreparedForDrools().size());
-        this.mostFrequentlyOccurringPairsResult = new MostFrequentlyOccurringPairsResult();
-        List<Object> facts = new ArrayList<>(
-                Arrays.asList(this.weeklyDrawList, this.mostFrequentlyOccurringPairsResult));
+        WeeklyDrawList weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        System.out.println(weeklyDrawList.getDrawListPreparedForDrools().size());
+        MostFrequentlyOccurringPairsResult mostFrequentlyOccurringPairsResult = new MostFrequentlyOccurringPairsResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(weeklyDrawList, mostFrequentlyOccurringPairsResult));
         this.kieSession.execute(facts);
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.mostFrequentlyOccurringPairsResult;
+        return mostFrequentlyOccurringPairsResult;
     }
 
 }

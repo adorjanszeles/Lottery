@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * {@link FourMatchRatioToFiveService interfész implementációja.
+ */
 @Service
 public class FourMatchRatioToFiveServiceImpl implements FourMatchRatioToFiveService {
     private static final Logger LOGGER = LoggerFactory.getLogger(FourMatchRatioToFiveServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult;
 
     @Autowired
     public FourMatchRatioToFiveServiceImpl(
@@ -33,13 +34,13 @@ public class FourMatchRatioToFiveServiceImpl implements FourMatchRatioToFiveServ
     @Override
     public FourMatchRatioToFiveMatchResult executeRule() {
         FourMatchRatioToFiveServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        System.out.println(this.weeklyDrawList.getDrawListPreparedForDrools().size());
-        this.fourMatchRatioToFiveMatchResult = new FourMatchRatioToFiveMatchResult();
-        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.fourMatchRatioToFiveMatchResult));
+        WeeklyDrawList weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        System.out.println(weeklyDrawList.getDrawListPreparedForDrools().size());
+        FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult = new FourMatchRatioToFiveMatchResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(weeklyDrawList, fourMatchRatioToFiveMatchResult));
         this.kieSession.execute(facts);
         FourMatchRatioToFiveServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.fourMatchRatioToFiveMatchResult;
+        return fourMatchRatioToFiveMatchResult;
     }
 }

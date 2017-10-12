@@ -15,13 +15,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * {@link AverageService interfész implementációja.
+ */
+
 @Service
 public class AverageServiceImpl implements AverageService {
     private static final Logger LOGGER = LoggerFactory.getLogger(AverageServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private AverageResult averageResult;
 
     @Autowired
     public AverageServiceImpl(@Qualifier(LotteryQualifier.statelessKieSessionName) StatelessKieSession kieSession,
@@ -33,12 +35,14 @@ public class AverageServiceImpl implements AverageService {
     @Override
     public AverageResult executeRule() {
         AverageServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        this.averageResult = new AverageResult();
-        List<Object> facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.averageResult));
+        WeeklyDrawList weeklyDrawList;
+        AverageResult averageResult;
+        weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        averageResult = new AverageResult();
+        List<Object> facts = new ArrayList<>(Arrays.asList(weeklyDrawList, averageResult));
         this.kieSession.execute(facts);
         AverageServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.averageResult;
+        return averageResult;
     }
 }
