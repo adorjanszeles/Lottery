@@ -15,13 +15,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * {@link AverageTimeBetweenTwoMatchFiveDrawsService interfész implementációja.
+ */
+
 @Service
 public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl implements AverageTimeBetweenTwoMatchFiveDrawsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.class);
     private Lottery lottery;
     private StatelessKieSession kieSession;
-    private WeeklyDrawList weeklyDrawList;
-    private AverageTimeBetweenTwoMatchFiveDrawsResult averageTimeBetweenTwoMatchFiveDrawsResult;
 
     @Autowired
     public AverageTimeBetweenTwoMatchFiveDrawsServiceImpl(
@@ -33,14 +35,16 @@ public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl implements AverageTi
     @Override
     public AverageTimeBetweenTwoMatchFiveDrawsResult executeRule() {
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug("szabály futtatása elkezdődött...");
-        this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
-        System.out.println(this.weeklyDrawList.getDrawListPreparedForDrools().size());
-        this.averageTimeBetweenTwoMatchFiveDrawsResult = new AverageTimeBetweenTwoMatchFiveDrawsResult();
+        WeeklyDrawList weeklyDrawList;
+        AverageTimeBetweenTwoMatchFiveDrawsResult averageTimeBetweenTwoMatchFiveDrawsResult;
+        weeklyDrawList = new WeeklyDrawList();
+        weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        System.out.println(weeklyDrawList.getDrawListPreparedForDrools().size());
+        averageTimeBetweenTwoMatchFiveDrawsResult = new AverageTimeBetweenTwoMatchFiveDrawsResult();
         List<Object> facts = new ArrayList<>(
-                Arrays.asList(this.weeklyDrawList, this.averageTimeBetweenTwoMatchFiveDrawsResult));
+                Arrays.asList(weeklyDrawList, averageTimeBetweenTwoMatchFiveDrawsResult));
         this.kieSession.execute(facts);
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug("szabály futtatása befejeződött...");
-        return this.averageTimeBetweenTwoMatchFiveDrawsResult;
+        return averageTimeBetweenTwoMatchFiveDrawsResult;
     }
 }
