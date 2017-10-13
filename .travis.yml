@@ -14,3 +14,9 @@ notifications:
     on_success: always
     on_failure: always
 script: mvn clean install
+
+# safelist
+branches:
+  only:
+  - master
+  - development
