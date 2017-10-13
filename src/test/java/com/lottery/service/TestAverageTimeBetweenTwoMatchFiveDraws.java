@@ -2,6 +2,7 @@ package com.lottery.service;
 
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.config.LotteryConfig;
+import com.lottery.listener.LottoAgendaEventListener;
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 
 import com.lottery.model.WeeklyDraw;
@@ -31,6 +32,8 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     private AverageTimeBetweenTwoMatchFiveDrawsResult result;
     private List<Object> facts;
     private static final Logger LOGGER = LoggerFactory.getLogger(TestAverageTimeBetweenTwoMatchFiveDraws.class);
+    private String eventName;
+    private LottoAgendaEventListener listener;
 
     @Before
     public void setup() {
@@ -44,9 +47,33 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         this.weeklyDrawList = new WeeklyDrawList();
         this.weeklyDrawList.setDrawListPreparedForDrools(this.getStubbedDrawList());
         this.result = new AverageTimeBetweenTwoMatchFiveDrawsResult();
+        this.eventName = null;
+        this.listener = new LottoAgendaEventListener();
 
         this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
         this.statelessKieSession.execute(this.facts);
+    }
+
+    @Test
+    public void testRuleFired() {
+        this.eventName = this.listener.getRuleName();
+
+        assertEquals("Average Time Between Two Match Five Draws", this.eventName);
+    }
+
+    @Test
+    public void testRuleFiredOnce() {
+        int fire = this.listener.getCountFire();
+
+        assertEquals(1, fire);
+    }
+
+    @Test
+    public void testAverageTimeBetweenTwoMatchFiveDrawsFiredOnly() throws Exception {
+        this.eventName = this.listener.getRuleName();
+
+        assertEquals("Average Time Between Two Match Five Draws", this.eventName);
     }
 
     @Test

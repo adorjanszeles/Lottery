@@ -32,7 +32,6 @@ rule "Find rearest five numbers"
         LOGGER.debug("Result objektum feltöltése a legritkábban előforduló számokkal");
         List<Integer> rearest = $result.getResult();
         for(int i = 0; i < 5; i++) {
-            System.out.println("VALUE: " + nodeList.get(i).getValue() + ", COUNT: " + nodeList.get(i).getCount());
             rearest.add(nodeList.get(i).getValue());
         }
 

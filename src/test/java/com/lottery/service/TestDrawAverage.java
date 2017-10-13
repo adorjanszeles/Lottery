@@ -2,6 +2,7 @@ package com.lottery.service;
 
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.config.LotteryConfig;
+import com.lottery.listener.LottoAgendaEventListener;
 import com.lottery.model.AverageResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
@@ -23,11 +24,68 @@ import static org.junit.Assert.assertTrue;
  */
 public class TestDrawAverage {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestDrawAverage.class);
     private StatelessKieSession statelessKieSession;
     private WeeklyDrawList weeklyDrawList;
     private AverageResult averageResult;
     private List<Object> facts;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestDrawAverage.class);
+    private String eventName;
+    private LottoAgendaEventListener listener;
+
+    @Before
+    public void setup() {
+        LotteryConfig lotteryConfig = new LotteryConfig();
+        try {
+            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
+        } catch (MissingKieServicesException e) {
+            TestDrawAverage.LOGGER.debug("Hiányzó com.lottery.kie service", e);
+        }
+        this.generateWeeklyDrawList();
+        this.averageResult = new AverageResult();
+        this.eventName = null;
+        this.listener = new LottoAgendaEventListener();
+
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.averageResult));
+
+        this.statelessKieSession.addEventListener(this.listener);
+        this.statelessKieSession.execute(this.facts);
+    }
+
+    @Test
+    public void testResultNotZero() throws Exception {
+        this.statelessKieSession.execute(this.facts);
+
+        assertTrue(this.averageResult.getResult() > 0f);
+    }
+
+    @Test
+    public void testRuleFired() throws Exception {
+        this.eventName = listener.getRuleName();
+
+        assertTrue(this.eventName.length() > 0);
+    }
+
+
+    @Test
+    public void testRuleFiredOnce() throws Exception {
+        int fire = this.listener.getCountFire();
+
+        assertEquals(1, fire);
+    }
+
+    @Test
+    public void testAverageNumberRuleFired() throws Exception {
+        this.eventName = listener.getRuleName();
+
+        assertEquals("Find average number", eventName);
+    }
+
+    @Test
+    public void testDrawAverageResult() throws Exception {
+        this.statelessKieSession.execute(this.facts);
+
+        assertEquals(4.6666665f, this.averageResult.getResult(), 0.0001);
+    }
 
     /**
      * Heti lottószám húzás példányok generálása teszteléshez.
@@ -51,33 +109,6 @@ public class TestDrawAverage {
         drawList.add(secondWeeklyDraw);
         drawList.add(thirdWeeklyDraw);
         this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
-    }
-
-    @Before
-    public void setup() {
-        LotteryConfig lotteryConfig = new LotteryConfig();
-        try {
-            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        } catch (MissingKieServicesException e) {
-            TestDrawAverage.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
-        this.generateWeeklyDrawList();
-        this.averageResult = new AverageResult();
-
-        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.averageResult));
-        this.statelessKieSession.execute(this.facts);
-    }
-
-    @Test
-    public void testResultNotZero() throws Exception {
-
-        assertTrue(this.averageResult.getResult() > 0f);
-    }
-
-    @Test
-    public void testDrawAverageResult() throws Exception {
-
-        assertEquals(4.6666665f, this.averageResult.getResult(), 0.0001);
     }
 
 }
