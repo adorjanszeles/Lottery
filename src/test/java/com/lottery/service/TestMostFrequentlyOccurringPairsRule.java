@@ -2,6 +2,7 @@ package com.lottery.service;
 
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.config.LotteryConfig;
+import com.lottery.listener.LottoAgendaEventListener;
 import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
@@ -20,17 +21,18 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
 /**
  * Ez a teszt osztály kizárólag a MostFrequentlyOccurringPairs service-hez tartozó rule-t teszteli
  */
 public class TestMostFrequentlyOccurringPairsRule {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestMostFrequentlyOccurringPairsRule.class);
     private StatelessKieSession statelessKieSession;
     private WeeklyDrawList weeklyDrawList;
     private MostFrequentlyOccurringPairsResult result;
     private List<Object> facts;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestMostFrequentlyOccurringPairsRule.class);
+    private String eventName;
+    private LottoAgendaEventListener listener;
 
     @Before
     public void setup() {
@@ -44,7 +46,39 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.weeklyDrawList = new WeeklyDrawList();
         this.weeklyDrawList.setDrawListPreparedForDrools(getStubbedDrawList());
         this.result = new MostFrequentlyOccurringPairsResult();
+        this.eventName = null;
+        this.listener = new LottoAgendaEventListener();
     }
+
+    @Test
+    public void testRuleFired() {
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
+        this.statelessKieSession.execute(this.facts);
+        this.eventName = this.listener.getRuleName();
+        assertEquals( "Most Frequently Occurring Pairs", this.eventName );
+    }
+
+    @Test
+    public void testRuleFiredOnce() {
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
+        this.statelessKieSession.execute(this.facts);
+        int fire = this.listener.getCountFire();
+
+        assertEquals(1, fire);
+    }
+
+    @Test
+    public void testMostFrequentlyOccurringPairRuleFiredOnly() throws Exception {
+
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
+        this.statelessKieSession.execute(this.facts);
+        this.eventName = this.listener.getRuleName();
+        assertEquals( "Most Frequently Occurring Pairs", this.eventName );
+    }
+
 
     @Test
     public void testResultIsNotEmpty() throws Exception {
@@ -87,7 +121,6 @@ public class TestMostFrequentlyOccurringPairsRule {
         assertEquals(3, resultArray.getRows().get(1).getColumns()[0].intValue());
         assertEquals(4, resultArray.getRows().get(1).getColumns()[1].intValue());
     }
-
 
     /**
      * Hard code-olt húzás listát állít elő, amiben a legtöbbször előforduló számpár az 1,2.
@@ -154,4 +187,6 @@ public class TestMostFrequentlyOccurringPairsRule {
             this.weeklyDrawList.getDrawListPreparedForDrools().get(n).setDrawnNumbers(newDraws.get(n));
         }
     }
+
+
 }

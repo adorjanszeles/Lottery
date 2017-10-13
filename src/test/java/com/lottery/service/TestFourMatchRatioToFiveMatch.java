@@ -2,6 +2,7 @@ package com.lottery.service;
 
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.config.LotteryConfig;
+import com.lottery.listener.LottoAgendaEventListener;
 import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
@@ -25,6 +26,8 @@ public class TestFourMatchRatioToFiveMatch {
     private WeeklyDrawList weeklyDrawList;
     private FourMatchRatioToFiveMatchResult result;
     private List<Object> facts;
+    private String eventName;
+    private LottoAgendaEventListener listener;
 
     /**
      * Négyes lóttó találatok aránya az ötösökhöz szabály teszteléshez
@@ -104,9 +107,25 @@ public class TestFourMatchRatioToFiveMatch {
         }
         this.result = new FourMatchRatioToFiveMatchResult();
         this.generateWeeklyDrawList();
+        this.eventName = null;
+        this.listener = new LottoAgendaEventListener();
 
         this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
         this.statelessKieSession.execute(this.facts);
+    }
+
+    @Test
+    public void testIsRuleFired() {
+        this.eventName = this.listener.getRuleName();
+        assertEquals("get four match ratio to five match", this.eventName);
+    }
+
+    @Test
+    public void testRuleFiredOnce() {
+        int fire = this.listener.getCountFire();
+
+        assertEquals(1, fire);
     }
 
     @Test
