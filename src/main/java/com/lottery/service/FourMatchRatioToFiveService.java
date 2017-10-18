@@ -15,4 +15,10 @@ public interface FourMatchRatioToFiveService {
 
     FourMatchRatioToFiveMatchResult executeRule();
 
+    /**
+     * Dátum alapján filterezett négyes találatok aránya az ötöshöz rule futtatása
+     *
+     * @return result objektum
+     */
+    FourMatchRatioToFiveMatchResult executeRuleFilterByDate(String from, String to);
 }

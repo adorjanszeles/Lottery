@@ -14,4 +14,11 @@ public interface AverageTimeBetweenTwoMatchFiveDrawsService {
      */
 
     AverageTimeBetweenTwoMatchFiveDrawsResult executeRule();
+
+    /**
+     * Két ötös találat közti átlagos idő filterezett kiszámításához írt rule futtatása
+     *
+     * @return result objektum
+     */
+    AverageTimeBetweenTwoMatchFiveDrawsResult executeRuleFilterByDate(String from, String to);
 }
