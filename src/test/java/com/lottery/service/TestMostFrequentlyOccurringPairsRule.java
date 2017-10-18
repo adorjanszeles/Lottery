@@ -35,14 +35,9 @@ public class TestMostFrequentlyOccurringPairsRule {
     private LottoAgendaEventListener listener;
 
     @Before
-    public void setup() {
+    public void setup() throws MissingKieServicesException {
         LotteryConfig lotteryConfig = new LotteryConfig();
-        try {
-            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        } catch (MissingKieServicesException e) {
-            TestMostFrequentlyOccurringPairsRule.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
-
+        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.weeklyDrawList = new WeeklyDrawList();
         this.weeklyDrawList.setDrawListPreparedForDrools(getStubbedDrawList());
         this.result = new MostFrequentlyOccurringPairsResult();

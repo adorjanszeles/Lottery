@@ -98,13 +98,9 @@ public class TestFourMatchRatioToFiveMatch {
      */
 
     @Before
-    public void setup() {
+    public void setup() throws MissingKieServicesException {
         LotteryConfig lotteryConfig = new LotteryConfig();
-        try {
-            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        } catch (MissingKieServicesException e) {
-            TestFourMatchRatioToFiveMatch.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
+        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.result = new FourMatchRatioToFiveMatchResult();
         this.generateWeeklyDrawList();
         this.eventName = null;

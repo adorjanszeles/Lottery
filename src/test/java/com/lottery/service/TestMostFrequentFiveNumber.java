@@ -38,13 +38,9 @@ public class TestMostFrequentFiveNumber {
      */
 
     @Before
-    public void setup() {
+    public void setup() throws MissingKieServicesException {
         LotteryConfig lotteryConfig = new LotteryConfig();
-        try {
-            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        } catch (MissingKieServicesException e) {
-            TestMostFrequentFiveNumber.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
+        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
         this.generateWeeklyDrawList();
         this.result = mostFrequentFiveNumberResult;
