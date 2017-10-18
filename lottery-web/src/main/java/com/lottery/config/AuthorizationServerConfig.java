@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.config.annotation.configurers.ClientD
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
@@ -40,8 +41,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                .authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT")
                .scopes("read", "write", "trust")
                .secret("secret")
-               .accessTokenValiditySeconds(120) // valid for 2 minutes
-               .refreshTokenValiditySeconds(600); // valid for 10 minutes
+               .accessTokenValiditySeconds(300) // valid for 5 minutes
+               .refreshTokenValiditySeconds(1200); // valid for 20 minutes
 
     }
 
@@ -52,6 +53,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                  .userApprovalHandler(this.userApprovalHandler)
                  .authenticationManager(this.authenticationManager);
 
+    }
+
+    @Override
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.realm(REALM+"/client");
     }
 
 }
