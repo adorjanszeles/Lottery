@@ -48,7 +48,7 @@ public class LotteryConfig {
         }
 
         // A drools rule-ok behúzása külső jar-ból történik. jelen esetben: drules-1.0.jar
-        ReleaseId releaseId = kieServices.newReleaseId( "com.lottery", "drules", "1.0" );
+        ReleaseId releaseId = kieServices.newReleaseId( "com.lottery", "lottery-rules", "1.0" );
         KieContainer kContainer = kieServices.newKieContainer(releaseId);
         if (kContainer == null) {
             LotteryConfig.LOGGER.debug("Hiányzó com.lottery.kie konténer");
