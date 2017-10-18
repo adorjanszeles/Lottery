@@ -12,6 +12,7 @@ rule "Average Time Between Two Match Five Draws"
         $drawList : WeeklyDrawList()
         $result : AverageTimeBetweenTwoMatchFiveDrawsResult()
     then
+    System.out.println("SEGG");
         LOGGER.debug("Average Time Between Two Match Five Draws futás: INDUL");
         LOGGER.debug("findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL");
         $result.setResult(findAverageTimeBetweenTwoFiveMatchDraws($drawList, $result));
@@ -29,35 +30,13 @@ rule "Average Time Between Two Match Five Draws"
 function Float findAverageTimeBetweenTwoFiveMatchDraws(WeeklyDrawList drawList, AverageTimeBetweenTwoMatchFiveDrawsResult result){
        List timePassedList = new ArrayList<>();
 
-       Integer counter = null;
+       int counter = 0;
        for(WeeklyDraw draw : drawList.getDrawListPreparedForDrools()){
-            if( draw.getFiveMatch() != null && draw.getFiveMatch() > 0){
-                if(counter == null){
-                    counter = new Integer(0);
-                }else{
+            if( draw.getFiveMatch() != null){
+                System.out.println(draw);
                 counter++;
                 }
-            }else{
-                if(counter == null){
-                    counter = new Integer(0);
-                }
-            timePassedList.add(counter);
-            counter=0;
-            }
        }
-       return calculateAverage(timePassedList);
-}
-
-/*
- * Átlagszámítás a List-ben található Integer értékekből. A List-t a Drools miatt vagyok kénytelen generic nélkül használni.
- */
-function float calculateAverage(List arr){
-
-    float sum = 0;
-    for(int n = 0; n < arr.size();n++){
-    //System.out.println((Integer)arr.get(n));
-        sum += (Integer)arr.get(n);
-    }
-    //System.out.println(sum / arr.size());
-    return sum / arr.size();
+        Float arrSize = new Float( drawList.getDrawListPreparedForDrools().size());
+       return arrSize/counter;
 }
