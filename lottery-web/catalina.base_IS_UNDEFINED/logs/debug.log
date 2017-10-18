@@ -1,0 +1,432 @@
+12:26:59.054 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.147 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.163 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.163 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.163 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.304 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.304 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.304 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.304 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.304 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.366 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.366 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.366 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.366 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.366 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.429 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.429 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.429 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.429 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.429 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.491 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.491 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.491 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.491 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.491 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.538 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.554 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:26:59.554 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:26:59.554 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:26:59.554 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:26:59.600 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.616 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.616 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.663 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.663 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.710 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.725 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.725 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.757 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.772 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.835 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.835 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:26:59.897 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.897 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:26:59.944 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:26:59.944 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:27:00.007 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.007 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:27:00.054 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.054 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:27:00.116 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.116 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:27:00.116 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:27:00.116 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:27:00.116 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:27:00.163 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.179 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:27:00.179 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:27:00.179 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:27:00.179 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:27:00.210 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.210 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:27:00.210 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:27:00.210 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:27:00.225 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:27:00.257 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.257 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:27:00.257 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:27:00.257 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:27:00.257 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:27:00.319 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.319 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.319 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.319 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.319 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.335 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.335 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.382 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.444 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.460 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.522 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.569 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.585 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.616 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.616 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.616 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.616 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.616 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.632 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.632 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.663 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.663 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:27:00.663 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:27:00.663 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:27:00.663 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:27:00.679 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:27:00.679 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:27:00.710 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.710 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:27:00.725 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:27:00.725 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:27:00.725 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:27:00.772 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.772 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:27:00.772 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:27:00.772 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:27:00.772 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:27:00.804 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.819 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:27:00.819 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:27:00.819 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:27:00.819 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:27:00.850 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.850 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:27:00.850 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:27:00.850 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:27:00.850 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:27:00.882 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:27:00.882 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:27:00.882 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:27:00.882 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:27:00.882 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:48:38.967 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.100 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.100 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.103 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.103 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.254 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.258 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.259 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.260 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.260 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.347 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.352 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.352 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.353 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.353 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.418 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.427 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.427 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.428 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.428 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.493 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.498 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.498 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.499 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.500 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.591 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.599 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:48:39.600 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:48:39.600 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:48:39.600 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:48:39.647 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.679 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.679 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.725 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.732 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.763 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.782 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.785 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.845 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.845 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.900 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.903 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:48:39.943 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.943 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:48:39.991 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:39.993 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:48:40.028 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.028 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:48:40.089 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.092 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:48:40.147 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.163 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:48:40.163 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:48:40.163 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:48:40.163 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:48:40.236 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.238 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:48:40.238 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:48:40.239 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:48:40.239 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:48:40.286 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.291 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:48:40.291 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:48:40.293 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:48:40.293 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:48:40.313 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.313 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:48:40.328 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:48:40.328 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:48:40.328 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:48:40.370 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.373 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.373 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.373 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.373 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.378 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.378 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.427 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.435 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.439 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.439 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.439 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.439 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.439 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.515 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.519 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.519 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.519 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.520 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.523 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.523 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.576 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.576 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.576 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.576 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.595 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.598 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.599 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.642 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.644 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.644 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.644 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.644 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.646 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.646 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.683 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.685 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.685 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.686 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.686 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.689 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.689 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:48:40.713 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:48:40.771 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.773 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:48:40.774 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:48:40.774 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:48:40.774 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:48:40.813 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.829 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:48:40.829 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:48:40.829 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:48:40.829 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:48:40.876 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.878 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:48:40.879 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:48:40.880 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:48:40.880 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:48:40.896 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.912 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:48:40.912 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:48:40.912 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:48:40.912 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:48:40.943 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:48:40.943 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:48:40.943 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:48:40.943 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:48:40.943 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:50:38.396 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:38.505 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:38.521 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:38.521 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:38.521 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:38.818 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:38.818 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:38.818 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:38.818 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:38.818 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:38.896 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:38.896 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:38.896 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:38.896 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:38.896 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:38.958 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:38.974 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:38.974 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:38.974 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:38.974 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:39.021 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.036 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:39.036 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:39.036 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:39.036 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:39.099 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.099 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: INDUL
+12:50:39.099 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL
+12:50:39.099 [main] DEBUG com.lottery.config.LotteryConfig - findAverageTimeBetweenTwoFiveMatchDraws futás: VÉGE
+12:50:39.099 [main] DEBUG com.lottery.config.LotteryConfig - Average Time Between Two Match Five Draws futás: VÉGE
+12:50:39.271 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.271 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.271 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.318 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.318 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.428 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.433 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.436 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.541 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.556 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.602 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.613 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a lottószámok átlagával
+12:50:39.676 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.691 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:50:39.759 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.761 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:50:39.795 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.811 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:50:39.842 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.842 [main] DEBUG com.lottery.config.LotteryConfig - 4-es aránya az 5-ös találatokhoz eredmény generálása
+12:50:39.889 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.889 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:50:39.889 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:50:39.889 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:50:39.889 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:50:39.983 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:39.983 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:50:39.983 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:50:39.983 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:50:39.983 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:50:40.029 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.029 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:50:40.029 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:50:40.029 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:50:40.029 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:50:40.076 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.080 [main] DEBUG com.lottery.config.LotteryConfig - lottószámok lista létrehozása
+12:50:40.081 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok összeszámolása
+12:50:40.082 [main] DEBUG com.lottery.config.LotteryConfig - kihúzott számok sorbarendezve.
+12:50:40.082 [main] DEBUG com.lottery.config.LotteryConfig - eredmény generálása
+12:50:40.154 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.157 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.157 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.158 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.158 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.162 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.162 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.219 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.221 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.223 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.223 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.223 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.226 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.226 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.285 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.289 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.289 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.289 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.289 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.292 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.292 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.327 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.329 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.329 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.329 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.330 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.332 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.332 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.375 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.378 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.384 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.385 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.385 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.387 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.387 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.429 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.432 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.433 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.433 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.433 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.437 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.438 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.497 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.498 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: INDUL
+12:50:40.499 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: INDUL
+12:50:40.499 [main] DEBUG com.lottery.config.LotteryConfig - mFOPLogic hívása a drawlist összes elemére: VÉGE
+12:50:40.499 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: INDUL
+12:50:40.501 [main] DEBUG com.lottery.config.LotteryConfig - resultFiller futás: VÉGE
+12:50:40.502 [main] DEBUG com.lottery.config.LotteryConfig - Most Frequently Occurring Pairs futás: VÉGE
+12:50:40.680 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.683 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:50:40.684 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:50:40.684 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:50:40.685 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:50:40.831 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.834 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:50:40.834 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:50:40.835 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:50:40.836 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:50:40.909 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.912 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:50:40.914 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:50:40.914 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:50:40.914 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:50:40.974 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:40.977 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:50:40.978 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:50:40.978 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:50:40.979 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
+12:50:41.029 [main] DEBUG com.lottery.config.LotteryConfig - kieSession sikeresen l�trej�tt
+12:50:41.032 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok generálása 1-től 90-ig
+12:50:41.032 [main] DEBUG com.lottery.config.LotteryConfig - Lottószámok gyakoriságának feltöltése input adatok alapján
+12:50:41.032 [main] DEBUG com.lottery.config.LotteryConfig - Node objektumok sorbarendezése gyakoriság szerint
+12:50:41.033 [main] DEBUG com.lottery.config.LotteryConfig - Result objektum feltöltése a legritkábban előforduló számokkal
