@@ -15,4 +15,11 @@ public interface MostFrequentlyOccuringPairsService {
 
     MostFrequentlyOccurringPairsResult executeRule();
 
+    /**
+     * Dátum alapján filterezett leggyakrabban előforduló számpárok kiszámításához írt rule futtatása
+     *
+     * @return result objektum
+     */
+    MostFrequentlyOccurringPairsResult executeRuleFilterByDate(String from, String to);
+
 }
