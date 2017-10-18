@@ -14,4 +14,11 @@ public interface AverageService {
      */
 
     AverageResult executeRule();
+
+    /**
+     * kihúzott számok átlagának dátum alapján filterezett kiszámításához írt rule futtatása
+     *
+     * @return result objektum
+     */
+    AverageResult executeRuleFilterByDate(String from, String to);
 }
