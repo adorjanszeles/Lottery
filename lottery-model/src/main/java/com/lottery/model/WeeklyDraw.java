@@ -1,5 +1,6 @@
 package com.lottery.model;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 /**
@@ -7,8 +8,9 @@ import java.text.SimpleDateFormat;
  * amit tömben tárolunk
  */
 
-public class WeeklyDraw {
+public class WeeklyDraw implements Serializable {
 
+    private String id;
     private Integer year;
     private Integer week;
     private SimpleDateFormat drawDate;
@@ -119,5 +121,18 @@ public class WeeklyDraw {
 
     public void setDrawnNumbers(Integer[] drawnNumbers) {
         this.drawnNumbers = drawnNumbers;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "WeeklyDraw{" + "id='" + id + '\'' + ", year='" + year + '\'' + ", week=" + week + ", date=" + drawDate + '}';
     }
 }

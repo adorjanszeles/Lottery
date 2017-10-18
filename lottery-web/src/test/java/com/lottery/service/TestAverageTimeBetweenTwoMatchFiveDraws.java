@@ -86,15 +86,14 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     }
 
     @Test
-    public void testResultIsFiftyTwoWithStubbedDraws() throws Exception {
+    public void testResultIsTwoPointFive() throws Exception {
 
         float resultFloat = this.result.getResult();
-        assertEquals(0.5, resultFloat, 0.0001);
+        assertEquals(2.5, resultFloat, 0.0001);
     }
 
     /**
-     * Hard code-olt húzás listát állít elő ötös 3db ötös találattal,
-     * 3db egyéb találattal, beállított dátummal és húzási évvel, átlag 52 eltelt évvel.
+     * Hard code-olt húzás listát állít elő ötös 4db ötös találattal,
      */
     private List<WeeklyDraw> getStubbedDrawList() {
 
@@ -109,54 +108,12 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         WeeklyDraw weeklyDraw8 = new WeeklyDraw();
         WeeklyDraw weeklyDraw9 = new WeeklyDraw();
 
-        weeklyDraw0.setYear(1993);
-        weeklyDraw1.setYear(1994);
-        weeklyDraw2.setYear(1995);
-        weeklyDraw3.setYear(1996);
-        weeklyDraw4.setYear(1997);
-        weeklyDraw5.setYear(1998);
-
-        weeklyDraw0.setWeek(7);
-        weeklyDraw0.setWeek(8);
-        weeklyDraw0.setWeek(9);
-        weeklyDraw0.setWeek(10);
-        weeklyDraw0.setWeek(11);
-        weeklyDraw0.setWeek(12);
 
         weeklyDraw0.setFiveMatch(1);
-        weeklyDraw0.setThreeMatch(56);
-        weeklyDraw0.setTwoMatch(250);
+        weeklyDraw1.setFiveMatch(2);
+        weeklyDraw9.setFiveMatch(1);
+        weeklyDraw6.setFiveMatch(1);
 
-        weeklyDraw1.setThreeMatch(78);
-        weeklyDraw1.setTwoMatch(320);
-
-        weeklyDraw2.setFiveMatch(1);
-        weeklyDraw2.setFourMatch(2);
-        weeklyDraw2.setThreeMatch(46);
-        weeklyDraw2.setTwoMatch(200);
-
-        weeklyDraw3.setFourMatch(1);
-        weeklyDraw3.setThreeMatch(25);
-        weeklyDraw3.setTwoMatch(309);
-
-        weeklyDraw4.setThreeMatch(65);
-        weeklyDraw4.setTwoMatch(456);
-
-        weeklyDraw5.setFiveMatch(1);
-        weeklyDraw5.setThreeMatch(41);
-        weeklyDraw5.setTwoMatch(246);
-
-        weeklyDraw8.setFiveMatch(1);
-        weeklyDraw8.setThreeMatch(41);
-        weeklyDraw8.setTwoMatch(246);
-
-
-        weeklyDraw0.setDrawDate(new SimpleDateFormat("31-08-1993"));
-        weeklyDraw1.setDrawDate(new SimpleDateFormat("12-07-1994"));
-        weeklyDraw2.setDrawDate(new SimpleDateFormat("23-05-1995"));
-        weeklyDraw3.setDrawDate(new SimpleDateFormat("11-08-1986"));
-        weeklyDraw4.setDrawDate(new SimpleDateFormat("04_02_1997"));
-        weeklyDraw5.setDrawDate(new SimpleDateFormat("01_04_1998"));
 
         List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
 
