@@ -32,13 +32,9 @@ public class TestRearestFiveNumberRule {
     private LottoAgendaEventListener listener;
 
     @Before
-    public void setup() {
+    public void setup() throws MissingKieServicesException {
         LotteryConfig lotteryConfig = new LotteryConfig();
-        try {
-            this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        } catch (MissingKieServicesException e) {
-            TestRearestFiveNumberRule.LOGGER.debug("Hiányzó com.lottery.kie service", e);
-        }
+        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.generateWeeklyDrawList();
         this.rearestFiveResult = new RearestFiveResult();
         this.eventName = null;
