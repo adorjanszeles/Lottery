@@ -1,0 +1,12 @@
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://jboss.org/kie/6.0.0/kmodule">
+
+    <kbase name="rules" packages="rules">
+        <ksession name="ksession"/>
+    </kbase>
+
+    <kbase name="statelessRules" packages="rules">
+        <ksession name="statelessKsession" type="stateless"/>
+    </kbase>
+
+</kmodule>

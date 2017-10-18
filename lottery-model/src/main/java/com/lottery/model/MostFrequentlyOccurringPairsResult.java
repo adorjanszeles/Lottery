@@ -2,20 +2,15 @@ package com.lottery.model;
 
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import com.lottery.model.mfop_utils.Row;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Arrays;
 
 /**
  * A Most Frequently Occurring Pairs rule eredményeit gyüjtő osztály.
  */
-@ApiModel("Most Frequent Pairs")
 public class MostFrequentlyOccurringPairsResult {
 
-    @ApiModelProperty(value = "2D array of lottery numbers", required = true)
     private DrawsInTwoDimension lottoArray;
-    @ApiModelProperty(value = "list of pairs of numbers", required = true)
     private DrawsInTwoDimension resultArray;
 
     public MostFrequentlyOccurringPairsResult() {
