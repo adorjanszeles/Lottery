@@ -1,13 +1,11 @@
 package com.lottery.repository;
 
-
 import com.lottery.model.WeeklyDraw;
 import org.drools.core.reteoo.CompositeObjectSinkAdapter;
 
 import java.util.List;
 import java.util.Map;
 
-//@Repository - to try CrudRepository but it wont work
 public interface WeeklyDrawRepository {
 
     void save(WeeklyDraw weeklyDraw);

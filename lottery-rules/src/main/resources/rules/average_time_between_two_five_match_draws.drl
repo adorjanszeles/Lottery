@@ -12,7 +12,6 @@ rule "Average Time Between Two Match Five Draws"
         $drawList : WeeklyDrawList()
         $result : AverageTimeBetweenTwoMatchFiveDrawsResult()
     then
-    System.out.println("SEGG");
         LOGGER.debug("Average Time Between Two Match Five Draws futás: INDUL");
         LOGGER.debug("findAverageTimeBetweenTwoFiveMatchDraws futás: INDUL");
         $result.setResult(findAverageTimeBetweenTwoFiveMatchDraws($drawList, $result));
@@ -28,14 +27,13 @@ rule "Average Time Between Two Match Five Draws"
  * Feltételezi, hogy a húzások időrendi sorrendben érkeznek be.
  */
 function Float findAverageTimeBetweenTwoFiveMatchDraws(WeeklyDrawList drawList, AverageTimeBetweenTwoMatchFiveDrawsResult result){
-       List timePassedList = new ArrayList<>();
 
        int counter = 0;
        for(WeeklyDraw draw : drawList.getDrawListPreparedForDrools()){
-            if( draw.getFiveMatch() != null){
-                System.out.println(draw);
-                counter++;
-                }
+           Integer fiveMatchNumber = draw.getFiveMatch();
+           if(fiveMatchNumber != null && fiveMatchNumber != 0){
+               counter++;
+           }
        }
         Float arrSize = new Float( drawList.getDrawListPreparedForDrools().size());
        return arrSize/counter;

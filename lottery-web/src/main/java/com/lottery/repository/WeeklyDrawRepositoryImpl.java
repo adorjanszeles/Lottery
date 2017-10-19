@@ -7,7 +7,6 @@ import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Map;
 
@@ -22,38 +21,38 @@ public class WeeklyDrawRepositoryImpl implements WeeklyDrawRepository {
     @Autowired
     public WeeklyDrawRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
-    }
-
-    @PostConstruct
-    private void init() {
-        hashOperations = redisTemplate.opsForHash();
+        this.hashOperations = this.redisTemplate.opsForHash();
     }
 
     public void save(final WeeklyDraw weeklyDraw) {
-        hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
+        this.hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
     }
 
     public void update(final WeeklyDraw weeklyDraw) {
-        hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
-    }
-
-    public void saveAll(final Map weeklyDrawList){hashOperations.putAll(KEY, weeklyDrawList); }
-
-    public WeeklyDraw find(final String id) {
-        return (WeeklyDraw) hashOperations.get(KEY, id);
+        this.hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
     }
 
     public Map<Object, Object> findAll() {
-        return hashOperations.entries(KEY);
+        return this.hashOperations.entries(KEY);
     }
 
     public void delete(final String id) {
-        hashOperations.delete(KEY, id);
+        this.hashOperations.delete(KEY, id);
     }
 
-    public Long size(){return  hashOperations.size(KEY);}
+    public void saveAll(final Map weeklyDrawList) {
+        this.hashOperations.putAll(KEY, weeklyDrawList);
+    }
+
+    public Long size() {
+        return this.hashOperations.size(KEY);
+    }
+
+    public WeeklyDraw find(final String id) {
+        return (WeeklyDraw) this.hashOperations.get(KEY, id);
+    }
 
     public List<CompositeObjectSinkAdapter.HashKey> values() {
-        return hashOperations.values(KEY);
+        return this.hashOperations.values(KEY);
     }
 }
