@@ -13,6 +13,7 @@ import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +37,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     private LottoAgendaEventListener listener;
 
     @Before
-    public void setup() throws MissingKieServicesException {
+    public void setup() throws MissingKieServicesException, ParseException {
         LotteryConfig lotteryConfig = new LotteryConfig();
         this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.weeklyDrawList = new WeeklyDrawList();
@@ -96,7 +97,9 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
      * Hard code-olt húzás listát állít elő ötös 3db ötös találattal,
      * 3db egyéb találattal, beállított dátummal és húzási évvel, átlag 52 eltelt évvel.
      */
-    private List<WeeklyDraw> getStubbedDrawList() {
+    private List<WeeklyDraw> getStubbedDrawList() throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         WeeklyDraw weeklyDraw0 = new WeeklyDraw();
         WeeklyDraw weeklyDraw1 = new WeeklyDraw();
@@ -108,20 +111,6 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         WeeklyDraw weeklyDraw7 = new WeeklyDraw();
         WeeklyDraw weeklyDraw8 = new WeeklyDraw();
         WeeklyDraw weeklyDraw9 = new WeeklyDraw();
-
-        weeklyDraw0.setYear(1993);
-        weeklyDraw1.setYear(1994);
-        weeklyDraw2.setYear(1995);
-        weeklyDraw3.setYear(1996);
-        weeklyDraw4.setYear(1997);
-        weeklyDraw5.setYear(1998);
-
-        weeklyDraw0.setWeek(7);
-        weeklyDraw0.setWeek(8);
-        weeklyDraw0.setWeek(9);
-        weeklyDraw0.setWeek(10);
-        weeklyDraw0.setWeek(11);
-        weeklyDraw0.setWeek(12);
 
         weeklyDraw0.setFiveMatch(1);
         weeklyDraw0.setThreeMatch(56);
@@ -151,12 +140,12 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw8.setTwoMatch(246);
 
 
-        weeklyDraw0.setDrawDate(new SimpleDateFormat("31-08-1993"));
-        weeklyDraw1.setDrawDate(new SimpleDateFormat("12-07-1994"));
-        weeklyDraw2.setDrawDate(new SimpleDateFormat("23-05-1995"));
-        weeklyDraw3.setDrawDate(new SimpleDateFormat("11-08-1986"));
-        weeklyDraw4.setDrawDate(new SimpleDateFormat("04_02_1997"));
-        weeklyDraw5.setDrawDate(new SimpleDateFormat("01_04_1998"));
+        weeklyDraw0.setDrawDate(format.parse("31-08-1993"));
+        weeklyDraw1.setDrawDate(format.parse("12-07-1994"));
+        weeklyDraw2.setDrawDate(format.parse("23-05-1995"));
+        weeklyDraw3.setDrawDate(format.parse("11-08-1986"));
+        weeklyDraw4.setDrawDate(format.parse("04-02-1997"));
+        weeklyDraw5.setDrawDate(format.parse("01-04-1998"));
 
         List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
 
