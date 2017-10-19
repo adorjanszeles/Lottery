@@ -133,6 +133,6 @@ public class WeeklyDraw implements Serializable {
 
     @Override
     public String toString() {
-        return "WeeklyDraw{" + "id='" + id + '\'' + ", year='" + year + '\'' + ", week=" + week + ", date=" + drawDate + '}';
+        return "WeeklyDraw{" + "id='" + id + '\'' + ", year='" + year + '\'' + ", week=" + week + '}';
     }
 }

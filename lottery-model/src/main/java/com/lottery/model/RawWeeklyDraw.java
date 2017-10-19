@@ -19,9 +19,6 @@ public class RawWeeklyDraw {
     private String fourth;
     private String fifth;
 
-
-
-
     public String getSecond() {
         return second;
     }
