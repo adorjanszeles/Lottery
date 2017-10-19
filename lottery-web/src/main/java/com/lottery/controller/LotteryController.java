@@ -6,8 +6,11 @@ import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import com.lottery.model.MostFrequentFiveNumberResult;
 import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.RearestFiveResult;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.service.AddingWeeklyDrawService;
 import com.lottery.service.AverageService;
 import com.lottery.service.AverageTimeBetweenTwoMatchFiveDrawsService;
+import com.lottery.service.DateIntervalService;
 import com.lottery.service.FourMatchRatioToFiveService;
 import com.lottery.service.MostFrequentFiveNumberService;
 import com.lottery.service.MostFrequentlyOccuringPairsService;
@@ -18,8 +21,12 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 @RestController
 @Api(value = "/lottery", description = "Lottery Rules")
@@ -32,6 +39,8 @@ public class LotteryController {
     private AverageService averageService;
     private MostFrequentlyOccuringPairsService mostFrequentlyOccuringPairsService;
     private AverageTimeBetweenTwoMatchFiveDrawsService averageTimeBetweenTwoMatchFiveDrawsService;
+    private AddingWeeklyDrawService addingWeeklyDrawService;
+    private DateIntervalService dateIntervalService;
 
     @Autowired
     public LotteryController(MostFrequentFiveNumberService mostFrequentFiveNumberService,
@@ -39,13 +48,17 @@ public class LotteryController {
                              RearestFiveService rearestFiveService,
                              AverageService averageService,
                              MostFrequentlyOccuringPairsService mostFrequentlyOccuringPairsService,
-                             AverageTimeBetweenTwoMatchFiveDrawsService averageTimeBetweenTwoMatchFiveDrawsService) {
+                             AverageTimeBetweenTwoMatchFiveDrawsService averageTimeBetweenTwoMatchFiveDrawsService,
+                             AddingWeeklyDrawService addingWeeklyDrawService,
+                             DateIntervalService dateIntervalService) {
         this.mostFrequentFiveNumberService = mostFrequentFiveNumberService;
         this.fourMatchRatioToFiveService = fourMatchRatioToFiveService;
         this.rearestFiveService = rearestFiveService;
         this.averageService = averageService;
         this.mostFrequentlyOccuringPairsService = mostFrequentlyOccuringPairsService;
         this.averageTimeBetweenTwoMatchFiveDrawsService = averageTimeBetweenTwoMatchFiveDrawsService;
+        this.addingWeeklyDrawService = addingWeeklyDrawService;
+        this.dateIntervalService = dateIntervalService;
     }
 
     @GetMapping("/most-frequent-five-number")
@@ -139,4 +152,19 @@ public class LotteryController {
         return this.averageTimeBetweenTwoMatchFiveDrawsService.executeRuleFilterByDate(from, to);
     }
 
+    @PostMapping("/add-new-weeklydraw")
+    @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
+    public WeeklyDraw addingNewWeeklyDraw(
+            @ApiParam(value = "weeklyDraw object with fields", required = true) @RequestBody WeeklyDraw input) {
+        this.addingWeeklyDrawService.AddNewWeeklyDraw(input);
+        return input;
+    }
+
+    @ApiOperation(value = "GET min/max dates", notes = "getting earliest and latest dates")
+    @GetMapping("/get-date-intervals")
+    public String getDateIntervals() {
+        Date firstDate = this.dateIntervalService.getStart();
+        Date lastDate = this.dateIntervalService.getEnd();
+        return "Lottery weekly draws are available from: " + firstDate + " to: " + lastDate;
+    }
 }

@@ -8,9 +8,11 @@ import org.junit.Test;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
@@ -29,7 +31,7 @@ public class TestLotteryFileReader {
     private List<WeeklyDraw> result;
 
     @Before
-    public void setup() throws IOException {
+    public void setup() throws IOException, ParseException {
         Lottery lottery = new Lottery();
         lottery.setLotteryList();
         this.lotteryFileReader = new LotteryFileReaderImpl(lottery);
@@ -61,17 +63,16 @@ public class TestLotteryFileReader {
      * heti lottószám húzás eredmények létrehozása teszteléshez
      */
 
-    private void generateResult() {
+    private void generateResult() throws ParseException {
         this.result = new ArrayList<WeeklyDraw>();
 
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
 
-        SimpleDateFormat drawOneDate = new SimpleDateFormat("2017-09-23");
-        SimpleDateFormat drawTwoDate = new SimpleDateFormat("2017-09-16");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date drawOneDate = format.parse("2017-09-23");
+        Date drawTwoDate = format.parse("2017-09-16");
 
-        firstWeeklyDraw.setYear(2017);
-        firstWeeklyDraw.setWeek(38);
         firstWeeklyDraw.setDrawDate(drawOneDate);
         firstWeeklyDraw.setFiveMatch(0);
         firstWeeklyDraw.setFiveMatchPrize(0L);
@@ -83,8 +84,6 @@ public class TestLotteryFileReader {
         firstWeeklyDraw.setTwoMatchPrize(1910L);
         firstWeeklyDraw.setDrawnNumbers(new Integer[]{1, 2, 3, 4, 5});
 
-        secondWeeklyDraw.setYear(2017);
-        secondWeeklyDraw.setWeek(37);
         secondWeeklyDraw.setDrawDate(drawTwoDate);
         secondWeeklyDraw.setFiveMatch(0);
         secondWeeklyDraw.setFiveMatchPrize(0L);
@@ -101,8 +100,7 @@ public class TestLotteryFileReader {
     }
 
     private boolean compareWeeklyDraws(WeeklyDraw drawOne, WeeklyDraw drawTwo) {
-        if (drawOne.getYear().equals(drawTwo.getYear()) && (drawOne.getWeek()).equals(drawTwo.getWeek()) &&
-            (drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
+        if ((drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
             (drawOne.getFiveMatch().equals(drawTwo.getFiveMatch())) &&
             (drawOne.getFiveMatchPrize().equals(drawTwo.getFiveMatchPrize())) &&
             (drawOne.getFourMatch().equals(drawTwo.getFourMatch())) &&
