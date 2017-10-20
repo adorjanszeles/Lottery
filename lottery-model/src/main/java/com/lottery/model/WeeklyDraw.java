@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
  * amit tömben tárolunk
  */
 public class WeeklyDraw implements Serializable {
-    
+
     private SimpleDateFormat drawDate;
     private String id;
     private Integer year;
