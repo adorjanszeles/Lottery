@@ -19,6 +19,43 @@ public class RawWeeklyDraw {
     private String fourth;
     private String fifth;
 
+    protected RawWeeklyDraw(){}
+
+    public RawWeeklyDraw(String year,
+                         String week,
+                         String drawDate,
+                         String fiveMatch,
+                         String fiveMatchPrize,
+                         String fourMatch,
+                         String fourMatchPrize,
+                         String threeMatch,
+                         String threeMatchPrize,
+                         String twoMatch,
+                         String twoMatchPrize,
+                         String first,
+                         String second,
+                         String third,
+                         String fourth,
+                         String fifth) {
+        this.year = year;
+        this.week = week;
+        this.drawDate = drawDate;
+        this.fiveMatch = fiveMatch;
+        this.fiveMatchPrize = fiveMatchPrize;
+        this.fourMatch = fourMatch;
+        this.fourMatchPrize = fourMatchPrize;
+        this.threeMatch = threeMatch;
+        this.threeMatchPrize = threeMatchPrize;
+        this.twoMatch = twoMatch;
+        this.twoMatchPrize = twoMatchPrize;
+        this.first = first;
+        this.second = second;
+        this.third = third;
+        this.fourth = fourth;
+        this.fifth = fifth;
+    }
+
+
     public String getSecond() {
         return second;
     }
