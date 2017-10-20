@@ -21,7 +21,6 @@ public class DateIntervalServiceImpl extends LotteryService implements DateInter
     @Override
     public Date getStart() {
         WeeklyDrawList drawList = super.init();
-
         return drawList.getDrawListPreparedForDrools().stream().map(WeeklyDraw::getDrawDate).min(Date::compareTo).get();
     }
 

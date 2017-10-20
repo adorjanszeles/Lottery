@@ -1,5 +1,17 @@
 package com.lottery.model;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -9,15 +21,46 @@ import java.util.Date;
 
 public class WeeklyDraw {
 
+    @NotNull(message = "Empty")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     private Date drawDate;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer fiveMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long fiveMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer fourMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long fourMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer threeMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long threeMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer twoMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long twoMatchPrize;
+
+    @NotNull(message = "Empty")
+    @Size(message = "enter 5 numbers",min = 5, max = 5)
+    @NotEmpty(message = "enter numbers")
     private Integer[] drawnNumbers;
 
     public WeeklyDraw() {
