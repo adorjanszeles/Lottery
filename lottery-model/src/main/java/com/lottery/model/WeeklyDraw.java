@@ -7,13 +7,15 @@ import java.text.SimpleDateFormat;
  * Heti kihúzott lottó számok osztálya húzás dátummal, találatokkal, nyeremények összegével és a kihúzott 5 számmal,
  * amit tömben tárolunk
  */
-
 public class WeeklyDraw implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
+    //TODO Entity gyártás
+    private SimpleDateFormat drawDate;
     private String id;
     private Integer year;
     private Integer week;
-    private SimpleDateFormat drawDate;
     private Integer fiveMatch;
     private Long fiveMatchPrize;
     private Integer fourMatch;

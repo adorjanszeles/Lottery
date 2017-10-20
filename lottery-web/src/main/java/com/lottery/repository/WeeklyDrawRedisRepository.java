@@ -6,7 +6,7 @@ import org.drools.core.reteoo.CompositeObjectSinkAdapter;
 import java.util.List;
 import java.util.Map;
 
-public interface WeeklyDrawRepository {
+public interface WeeklyDrawRedisRepository {
 
     void save(WeeklyDraw weeklyDraw);
 
