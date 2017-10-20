@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Repository
-public class WeeklyDrawRepositoryImpl implements WeeklyDrawRepository {
+public class WeeklyDrawRedisRepositoryImpl implements WeeklyDrawRedisRepository {
 
     private static final String KEY = "WeeklyDraw";
 
@@ -19,7 +19,7 @@ public class WeeklyDrawRepositoryImpl implements WeeklyDrawRepository {
     private HashOperations hashOperations;
 
     @Autowired
-    public WeeklyDrawRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
+    public WeeklyDrawRedisRepositoryImpl(RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
         this.hashOperations = this.redisTemplate.opsForHash();
     }
