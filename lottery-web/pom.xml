@@ -28,6 +28,8 @@
         <swagger.version>2.5.0</swagger.version>
         <jackson.version>2.9.1</jackson.version>
         <logback.version>1.0.13</logback.version>
+        <validation.version>2.0.0.Final</validation.version>
+        <validator.version>6.0.2.Final</validator.version>
     </properties>
 
     <build>
@@ -150,6 +152,17 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${validator.version}</version>
         </dependency>
 
 
