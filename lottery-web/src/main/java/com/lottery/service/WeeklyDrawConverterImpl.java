@@ -3,16 +3,23 @@ package com.lottery.service;
 import com.lottery.common.enums.InputColumn;
 import com.lottery.model.RawWeeklyDraw;
 import com.lottery.model.WeeklyDraw;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
  * A class feladata a CSV-ből feltöltött RawWeeklyDraw instanco-ok WeeklyDraw instance-okká konvertálása.
  */
 public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(WeeklyDrawConverterImpl.class);
 
     private static final int COL_NUM = 16;
     private static String CURRENCY = "Ft";
@@ -48,19 +55,36 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
     /**
      * a datum parsolasa Date objektummá Calendar segítségével
      *
-     * @param date az input fileból érkező string dátum
+     * @param rawYear input év
+     * @param rawWeek input hét
+     * @param rawDate input húzás dátum
      * @return date objektum
      */
-    private SimpleDateFormat generateDateFromString(String date) {
-        if (date.equals("")) {
-            return null;
+    private Date generateDateFromString(String rawYear, String rawWeek, String rawDate){
+        Integer inputYear = Integer.parseInt(rawYear);
+        Integer inputWeek = Integer.parseInt(rawWeek);
+
+        if (rawDate.equals("")) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, inputYear);
+            calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            return calendar.getTime();
         }
-        String[] dateElement = date.split(WeeklyDrawConverterImpl.DATE_SEPARATOR);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String[] dateElement = rawDate.split(WeeklyDrawConverterImpl.DATE_SEPARATOR);
         String year = dateElement[WeeklyDrawConverterImpl.DATE_YEAR_IDX];
         String month = dateElement[WeeklyDrawConverterImpl.DATE_MONTH_IDX];
         String day = dateElement[WeeklyDrawConverterImpl.DATE_DAY_IDX];
-        SimpleDateFormat drawDate = new SimpleDateFormat(year + "-" + month + "-" + day);
-        return drawDate;
+        try {
+            return format.parse(year + "-" + month + "-" + day);
+        } catch (ParseException e) {
+            WeeklyDrawConverterImpl.LOGGER.debug("rossz dátum");
+        }
+        return null;
     }
 
     /**
@@ -149,11 +173,8 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
             rawDrawNumbers[2] = parseStringToInt(rawDraw.getThird());
             rawDrawNumbers[3] = parseStringToInt(rawDraw.getSecond());
             rawDrawNumbers[4] = parseStringToInt(rawDraw.getFirst());
-
-
-            draw.setYear(parseStringToInt(rawLine[0]));
-            draw.setWeek(parseStringToInt(rawLine[1]));
-            draw.setDrawDate(generateDateFromString(rawLine[2]));
+            
+            draw.setDrawDate(generateDateFromString(rawLine[0],rawLine[1],rawLine[2]));
             draw.setFiveMatch(parseStringToInt(rawLine[3]));
             draw.setFiveMatchPrize(parseStringToLong(rawLine[4]));
             draw.setFourMatch(parseStringToInt(rawLine[5]));
