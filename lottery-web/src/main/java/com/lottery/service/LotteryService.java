@@ -31,11 +31,12 @@ public abstract class LotteryService {
      * @return Weeklydraw objektum, ha a datum kozott van, ha nem null-t ad vissza
      */
     protected WeeklyDraw filterByDate(WeeklyDraw weeklyDraw, String from, String to) {
+
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date1 = format.parse(from);
             Date date2 = format.parse(to);
-            Date date = format.parse(weeklyDraw.getDrawDate().toPattern());
+            Date date = weeklyDraw.getDrawDate();
             if (date.before(date2) && date.after(date1)) {
                 return weeklyDraw;
             }

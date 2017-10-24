@@ -8,11 +8,13 @@ import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +27,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Ez a teszt osztály kizárólag a AverageTimeBetweenTwoMatchFiveDraws service-hez tartozó rule-t teszteli
  */
+
 public class TestAverageTimeBetweenTwoMatchFiveDraws {
 
     private StatelessKieSession statelessKieSession;
@@ -36,7 +39,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     private LottoAgendaEventListener listener;
 
     @Before
-    public void setup() throws MissingKieServicesException {
+    public void setup() throws MissingKieServicesException, ParseException {
         LotteryConfig lotteryConfig = new LotteryConfig();
         this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.weeklyDrawList = new WeeklyDrawList();
@@ -95,7 +98,9 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
     /**
      * Hard code-olt húzás listát állít elő ötös 4db ötös találattal,
      */
-    private List<WeeklyDraw> getStubbedDrawList() {
+    private List<WeeklyDraw> getStubbedDrawList() throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
         WeeklyDraw weeklyDraw0 = new WeeklyDraw();
         WeeklyDraw weeklyDraw1 = new WeeklyDraw();
@@ -114,6 +119,12 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw9.setFiveMatch(1);
         weeklyDraw6.setFiveMatch(1);
 
+        weeklyDraw0.setDrawDate(format.parse("31-08-1993"));
+        weeklyDraw1.setDrawDate(format.parse("12-07-1994"));
+        weeklyDraw2.setDrawDate(format.parse("23-05-1995"));
+        weeklyDraw3.setDrawDate(format.parse("11-08-1986"));
+        weeklyDraw4.setDrawDate(format.parse("04-02-1997"));
+        weeklyDraw5.setDrawDate(format.parse("01-04-1998"));
 
         List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
 

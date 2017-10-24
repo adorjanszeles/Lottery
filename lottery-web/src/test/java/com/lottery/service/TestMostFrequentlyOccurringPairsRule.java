@@ -8,6 +8,7 @@ import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;

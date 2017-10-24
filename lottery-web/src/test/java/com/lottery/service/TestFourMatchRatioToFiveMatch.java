@@ -7,6 +7,7 @@ import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -18,7 +19,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 public class TestFourMatchRatioToFiveMatch {
 
     private StatelessKieSession statelessKieSession;
