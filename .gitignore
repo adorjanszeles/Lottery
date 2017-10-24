@@ -1,3 +1,5 @@
 *.iml
 .idea/
 target/
+lottery-web/catalina.base_IS_UNDEFINED/
+lottery-web/src/main/resources/database.properties
