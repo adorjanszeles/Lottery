@@ -1,52 +1,86 @@
 package com.lottery.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Heti kihúzott lottó számok osztálya húzás dátummal, találatokkal, nyeremények összegével és a kihúzott 5 számmal,
  * amit tömben tárolunk
  */
+@Entity
 public class WeeklyDraw implements Serializable {
 
-    private SimpleDateFormat drawDate;
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long dbId;
+
+    @Transient
     private String id;
-    private Integer year;
-    private Integer week;
+
+    @NotNull(message = "Empty")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
+    private Date drawDate;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
+
     private Integer fiveMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long fiveMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer fourMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long fourMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer threeMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long threeMatchPrize;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Integer twoMatch;
+
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     private Long twoMatchPrize;
+
+    @NotNull(message = "Empty")
+    @Size(message = "enter 5 numbers", min = 5, max = 5)
+    @NotEmpty(message = "enter numbers")
+    @Transient
     private Integer[] drawnNumbers;
 
     public WeeklyDraw() {
     }
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getWeek() {
-        return week;
-    }
-
-    public void setWeek(Integer week) {
-        this.week = week;
-    }
-
-    public SimpleDateFormat getDrawDate() {
+    public Date getDrawDate() {
         return drawDate;
     }
 
-    public void setDrawDate(SimpleDateFormat drawDate) {
+    public void setDrawDate(Date drawDate) {
         this.drawDate = drawDate;
     }
 
@@ -132,6 +166,6 @@ public class WeeklyDraw implements Serializable {
 
     @Override
     public String toString() {
-        return "WeeklyDraw{" + "id='" + id + '\'' + ", year='" + year + '\'' + ", week=" + week + '}';
+        return "WeeklyDraw{" + "id='" + this.id + '\'' + ", date='" + this.drawDate + '}';
     }
 }
