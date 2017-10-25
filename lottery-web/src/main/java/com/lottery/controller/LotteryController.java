@@ -169,7 +169,7 @@ public class LotteryController {
     @PostMapping("/add-new-weeklydraw")
     @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
     public WeeklyDraw addingNewWeeklyDraw(
-            @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDraw input) {
+            @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDraw input){
         this.addingWeeklyDrawService.AddNewWeeklyDraw(input);
         return input;
     }
