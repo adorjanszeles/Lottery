@@ -1,5 +1,6 @@
 package com.lottery.model;
 
+import com.lottery.model.validator.DrawnNumbers;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
@@ -60,6 +61,7 @@ public class WeeklyDraw implements Serializable {
     @NotNull(message = "Empty")
     @Size(message = "enter 5 numbers", min = 5, max = 5)
     @NotEmpty(message = "enter numbers")
+    @DrawnNumbers
     private Integer[] drawnNumbers;
 
     public WeeklyDraw() {
