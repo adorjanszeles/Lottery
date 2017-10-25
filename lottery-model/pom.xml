@@ -14,18 +14,19 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <validation.version>2.0.0.Final</validation.version>
         <validator.version>6.0.2.Final</validator.version>
+        <hibernate-core.version>5.2.9.Final</hibernate-core.version>
+        <spring.version>4.3.11.RELEASE</spring.version>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.9.Final</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.3.11.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
@@ -40,12 +41,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
     <parent>

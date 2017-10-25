@@ -13,28 +13,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class CsvToRawWeeklyDraw {
+    //TODO converter WeeklyDraw draws list
+    private WeeklyDrawJPARepository wrepo;
 
     @Autowired
-    WeeklyDrawJPARepository wrepo;
-
-    private  <T> List<T> loadObjectList(Class<T> type, String fileName) throws IOException {
-        CsvSchema bootstrapSchema = CsvSchema.emptySchema().withColumnSeparator(';').withHeader();
-        CsvMapper mapper = new CsvMapper();
-        File file = new ClassPathResource(fileName).getFile();
-        try (MappingIterator<T> readValues = mapper.readerFor(type)
-                                                                .with(bootstrapSchema)
-                                                                .readValues(file)){
-            return readValues.readAll();
-        } catch (Exception e) {
-            System.out.println("Error occurred while loading object list from file " + fileName + ": " + e);
-            throw new Error("");
-        }
+    public CsvToRawWeeklyDraw(WeeklyDrawJPARepository weeklyDrawJPARepository) {
+        this.wrepo = weeklyDrawJPARepository;
     }
 
     public List populateRawWeeklyDraws(String filename) {
@@ -52,11 +39,22 @@ public class CsvToRawWeeklyDraw {
 
     public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) throws FileNotFoundException {
 
-
         WeeklyDrawConverter converter = new WeeklyDrawConverterImpl();
         List<WeeklyDraw> weeklyDraws = converter.convertRawsToWeeklyDraws(rawWeeklyDraws);
 
-        wrepo.saveAll(weeklyDraws);
+        this.wrepo.save(weeklyDraws);
+    }
+
+    private <T> List<T> loadObjectList(Class<T> type, String fileName) throws IOException {
+        CsvSchema bootstrapSchema = CsvSchema.emptySchema().withColumnSeparator(';').withHeader();
+        CsvMapper mapper = new CsvMapper();
+        File file = new ClassPathResource(fileName).getFile();
+        try (MappingIterator<T> readValues = mapper.readerFor(type).with(bootstrapSchema).readValues(file)) {
+            return readValues.readAll();
+        } catch (Exception e) {
+            System.out.println("Error occurred while loading object list from file " + fileName + ": " + e);
+            throw new Error("");
+        }
     }
 
 }
