@@ -4,11 +4,9 @@ import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.config.LotteryConfig;
 import com.lottery.listener.LottoAgendaEventListener;
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
-
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -23,18 +21,16 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-
 /**
  * Ez a teszt osztály kizárólag a AverageTimeBetweenTwoMatchFiveDraws service-hez tartozó rule-t teszteli
  */
-
 public class TestAverageTimeBetweenTwoMatchFiveDraws {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestAverageTimeBetweenTwoMatchFiveDraws.class);
     private StatelessKieSession statelessKieSession;
     private WeeklyDrawList weeklyDrawList;
     private AverageTimeBetweenTwoMatchFiveDrawsResult result;
     private List<Object> facts;
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestAverageTimeBetweenTwoMatchFiveDraws.class);
     private String eventName;
     private LottoAgendaEventListener listener;
 
@@ -112,7 +108,6 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         WeeklyDraw weeklyDraw7 = new WeeklyDraw();
         WeeklyDraw weeklyDraw8 = new WeeklyDraw();
         WeeklyDraw weeklyDraw9 = new WeeklyDraw();
-
 
         weeklyDraw0.setFiveMatch(1);
         weeklyDraw1.setFiveMatch(2);

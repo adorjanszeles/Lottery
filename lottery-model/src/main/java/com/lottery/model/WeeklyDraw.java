@@ -2,10 +2,12 @@ package com.lottery.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -20,49 +22,58 @@ import java.util.Date;
  * amit tömben tárolunk
  */
 @Entity
+@Table(name = "WEEKLY_DRAW")
 public class WeeklyDraw implements Serializable {
-
+    //TODO fields for refactor
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long dbId;
 
     @Transient
     private String id;
 
+    @Transient
     @NotNull(message = "Empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past
     private Date drawDate;
 
+    @Column(name = "five_match")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
-
     private Integer fiveMatch;
 
+    @Column(name = "five_match_prize")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Long fiveMatchPrize;
 
+    @Column(name = "four_match")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Integer fourMatch;
 
+    @Column(name = "four_match_prize")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Long fourMatchPrize;
 
+    @Column(name = "three_match")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Integer threeMatch;
 
+    @Column(name = "three_match_prize")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Long threeMatchPrize;
 
+    @Column(name = "two_match")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Integer twoMatch;
 
+    @Column(name = "two_match_prize")
     @NotNull(message = "Empty")
     @PositiveOrZero(message = "enter positive numbers")
     private Long twoMatchPrize;

@@ -7,7 +7,6 @@ import com.lottery.model.MostFrequentFiveNumberResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -22,8 +21,6 @@ import static org.junit.Assert.assertEquals;
 /**
  * A leggyakoribb öt kihúzott szám keresésére írt szabály tesztelése
  */
-
-
 public class TestMostFrequentFiveNumber {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestMostFrequentFiveNumber.class);

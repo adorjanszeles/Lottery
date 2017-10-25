@@ -22,7 +22,7 @@
         <slf4j.version>1.7.5</slf4j.version>
         <slf4j-simple.version>1.7.21</slf4j-simple.version>
         <junit.version>4.12</junit.version>
-        <mocito-all.version>1.10.19</mocito-all.version>
+        <mockito-all.version>1.10.19</mockito-all.version>
         <spring.version>4.3.11.RELEASE</spring.version>
         <jackson.version>2.7.5</jackson.version>
         <swagger.version>2.5.0</swagger.version>
@@ -33,6 +33,9 @@
         <spring-data-redis.version>1.8.7.RELEASE</spring-data-redis.version>
         <jedis.version>2.9.0</jedis.version>
         <oracle.jdbc.version>12.1.0-1.0</oracle.jdbc.version>
+        <jackson-dataformat-csv.version>2.7.9</jackson-dataformat-csv.version>
+        <spring-data-jpa.version>1.10.5.RELEASE</spring-data-jpa.version>
+        <hibernate-core.version>5.2.9.Final</hibernate-core.version>
     </properties>
 
     <build>
@@ -104,7 +107,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>${mocito-all.version}</version>
+            <version>${mockito-all.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -169,13 +172,14 @@
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-csv</artifactId>
-            <version>2.7.9</version>
+            <version>${jackson-dataformat-csv.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>2.0.0.RELEASE</version>
+            <version>${spring-data-jpa.version}</version>
         </dependency>
+
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
@@ -194,17 +198,12 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.2.9.Final</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.10.Final</version>
+            <version>${hibernate-core.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>4.3.11.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
 
