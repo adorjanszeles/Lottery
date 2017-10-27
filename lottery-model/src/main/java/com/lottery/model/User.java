@@ -1,39 +1,33 @@
 package com.lottery.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
+/**
+ * User objektum
+ */
 @Entity
 @Table(name = "LOTTERY_USERS")
 public class User {
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String username;
-
-    @Column(nullable = false)
-    private String role;
-    //TODO conventional fields/columns
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String username;
+    private String password;
+    private String role;
 
-    protected User() {
+    public User() {
     }
 
-    public User(String password, String username, String role) {
-        this.password = password;
-        this.username = username;
-        this.role = role;
-    }
-
+    @Column(name = "password")
+    @NotNull(message = "missing password")
+//    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -42,6 +36,8 @@ public class User {
         this.password = password;
     }
 
+    @Column(name = "username")
+    @NotNull(message = "missing username")
     public String getUsername() {
         return username;
     }
@@ -50,6 +46,20 @@ public class User {
         this.username = username;
     }
 
+    @Id()
+    @GeneratedValue()
+    @Column(name = "id")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Column(name = "role")
+    @NotNull(message = "missing role")
+    @ApiModelProperty(value = "allowed values:", allowableValues = "user,admin")
     public String getRole() {
         return role;
     }
@@ -59,5 +69,3 @@ public class User {
     }
 
 }
-
-
