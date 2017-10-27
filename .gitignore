@@ -3,3 +3,7 @@
 target/
 lottery-web/catalina.base_IS_UNDEFINED/
 lottery-web/src/main/resources/database.properties
+lottery-liquibase/src/main/resource/liquibase/liquibase.properties
+lottery-liquibase/src/main/java/
+lottery-liquibase/src/main/resources/liquibase/
+lottery-liquibase/src/test/
