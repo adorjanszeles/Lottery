@@ -16,6 +16,7 @@
         <validator.version>6.0.2.Final</validator.version>
         <hibernate-core.version>5.2.9.Final</hibernate-core.version>
         <spring.version>4.3.11.RELEASE</spring.version>
+        <jackson-annotations.version>2.9.0</jackson-annotations.version>
     </properties>
     <dependencies>
         <dependency>
@@ -42,6 +43,21 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson-annotations.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.9</version>
         </dependency>
     </dependencies>
     <parent>
