@@ -30,14 +30,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         UserDetailsServiceImpl.LOGGER.debug("SimpleUserServiceImpl user betoltése elkezdődött");
         User user = userRepository.findByUsername(username);
         if (user == null) {
+            UserDetailsServiceImpl.LOGGER.error("Username not found: " + username);
             throw new UsernameNotFoundException("username not found:" + username);
         }
 
         UserDetailsServiceImpl.LOGGER.debug(
                 "SimpleUserServiceImpl user betöltésének vége. username: " + user.getUsername());
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
-                                                                      AuthorityUtils.createAuthorityList(
-                                                                              "ROLE_" + user.getRole()));
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                AuthorityUtils.createAuthorityList("ROLE_" + user.getRole()));
 
     }
 
