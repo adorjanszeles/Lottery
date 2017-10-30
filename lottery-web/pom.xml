@@ -191,11 +191,21 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${validator.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.oracle</groupId>-->
+            <!--<artifactId>ojdbc7</artifactId>-->
+            <!--<version>${oracle.jdbc.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- oracle jdbc driver just for travisCI -->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc7</artifactId>
             <version>${oracle.jdbc.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ojdbc7-12.1.0-1.0.jar</systemPath>
         </dependency>
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>

@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsServiceImpl userService;
 
     @Autowired
-    public SecurityConfig(UserJPARepository userJPARepository, UserDetailsServiceImpl userService) {
+    public SecurityConfig(UserDetailsServiceImpl userService) {
         this.userService = userService;
     }
 
