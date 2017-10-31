@@ -194,12 +194,11 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         weeklyDraw.setThreeMatchPrize(parseStringToLong(cleanedLine[InputColumn.THREE_MATCH_PRIZE.getColNum()]));
         weeklyDraw.setTwoMatch(parseStringToInt(cleanedLine[InputColumn.TWO_MATCH.getColNum()]));
         weeklyDraw.setTwoMatchPrize(parseStringToLong(cleanedLine[InputColumn.TWO_MATCH_PRIZE.getColNum()]));
-        weeklyDraw.setDrawnNumbers(new Integer[]{Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(
-                                                         cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()])});
+        weeklyDraw.setFirst(Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]));
+        weeklyDraw.setSecond(Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]));
+        weeklyDraw.setThird(Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]));
+        weeklyDraw.setFourth(Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]));
+        weeklyDraw.setFifth(Integer.parseInt(cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()]));
 
         return weeklyDraw;
     }

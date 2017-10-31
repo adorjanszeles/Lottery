@@ -25,11 +25,11 @@ public class WeeklyDrawRedisRepositoryImpl implements WeeklyDrawRedisRepository 
     }
 
     public void save(final WeeklyDraw weeklyDraw) {
-        this.hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
+        this.hashOperations.put(KEY, weeklyDraw.getRedisId(), weeklyDraw);
     }
 
     public void update(final WeeklyDraw weeklyDraw) {
-        this.hashOperations.put(KEY, weeklyDraw.getId(), weeklyDraw);
+        this.hashOperations.put(KEY, weeklyDraw.getRedisId(), weeklyDraw);
     }
 
     public Map<Object, Object> findAll() {

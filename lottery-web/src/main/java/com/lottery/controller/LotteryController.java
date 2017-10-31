@@ -3,16 +3,18 @@ package com.lottery.controller;
 import com.lottery.model.AverageResult;
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 import com.lottery.model.FourMatchRatioToFiveMatchResult;
+import com.lottery.model.Lottery;
 import com.lottery.model.MostFrequentFiveNumberResult;
 import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.RearestFiveResult;
-import com.lottery.model.User;
 import com.lottery.model.WeeklyDraw;
+import com.lottery.model.WeeklyDrawList;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.repository.WeeklyDrawJPARepository;
 import com.lottery.service.AddingWeeklyDrawService;
 import com.lottery.service.AverageService;
 import com.lottery.service.AverageTimeBetweenTwoMatchFiveDrawsService;
+import com.lottery.service.PersistFromCsv;
 import com.lottery.service.DateIntervalService;
 import com.lottery.service.FourMatchRatioToFiveService;
 import com.lottery.service.MostFrequentFiveNumberService;
@@ -198,6 +200,17 @@ public class LotteryController {
         Date firstDate = this.dateIntervalService.getStart();
         Date lastDate = this.dateIntervalService.getEnd();
         return "Lottery weekly draws are available from: " + firstDate + " to: " + lastDate;
+    }
+
+    @ApiOperation(value = "GET table from csv", notes = "Make weekly draw table from csv! Restart server after this!")
+    @GetMapping("/table_from_csv")
+    public String tableFromCsv() {
+        PersistFromCsv persistFromCsv = new PersistFromCsv(weeklyDrawJPARepository);
+        persistFromCsv.readAndPersist();
+        Lottery lottery = new Lottery();
+        lottery.setLotteryList();
+        lottery.getLotteryList().addAll(weeklyDrawJPARepository.findAll());
+        return "OK";
     }
 }
 
