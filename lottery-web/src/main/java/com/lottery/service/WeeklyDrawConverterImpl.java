@@ -171,8 +171,8 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
             rawDrawNumbers[0] = parseStringToInt(rawDraw.getFirst());
             rawDrawNumbers[1] = parseStringToInt(rawDraw.getSecond());
             rawDrawNumbers[2] = parseStringToInt(rawDraw.getThird());
-            rawDrawNumbers[3] = parseStringToInt(rawDraw.getSecond());
-            rawDrawNumbers[4] = parseStringToInt(rawDraw.getFirst());
+            rawDrawNumbers[3] = parseStringToInt(rawDraw.getFourth());
+            rawDrawNumbers[4] = parseStringToInt(rawDraw.getFifth());
             
             draw.setDrawDate(generateDateFromString(rawLine[0],rawLine[1],rawLine[2]));
             draw.setFiveMatch(parseStringToInt(rawLine[3]));
@@ -183,7 +183,11 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
             draw.setThreeMatchPrize(parseStringToLong(rawLine[8]));
             draw.setTwoMatch(parseStringToInt(rawLine[9]));
             draw.setTwoMatchPrize(parseStringToLong(rawLine[10]));
-            draw.setDrawnNumbers(rawDrawNumbers);
+            draw.setFirst(rawDrawNumbers[0]);
+            draw.setSecond(rawDrawNumbers[1]);
+            draw.setThird(rawDrawNumbers[2]);
+            draw.setFourth(rawDrawNumbers[3]);
+            draw.setFifth(rawDrawNumbers[4]);
 
             weeklyDrawList.add(draw);
         }
