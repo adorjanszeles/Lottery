@@ -13,7 +13,7 @@
         <module>lottery-model</module>
         <module>lottery-rules</module>
         <module>lottery-web</module>
-        <module>lottery-liquibase</module>
+        <!--<module>lottery-liquibase</module>-->
     </modules>
 
 </project>
