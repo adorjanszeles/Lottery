@@ -5,6 +5,7 @@ import com.lottery.model.Lottery;
 import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,16 +33,16 @@ public class MostFrequentlyOccuringPairsServiceImpl extends LotteryService
     }
 
     @Override
-    public MostFrequentlyOccurringPairsResult executeRule() {
+    public DrawsInTwoDimension executeRule() {
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug("Leggyakoribb számpárok szabály futtatása elkezdődött...");
         WeeklyDrawList weeklyDrawList = super.init();
         MostFrequentlyOccurringPairsResult mostFrequentlyOccurringPairsResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug("Leggyakoribb számpárok szabály futtatása befejeződött...");
-        return mostFrequentlyOccurringPairsResult;
+        return mostFrequentlyOccurringPairsResult.getResultArray();
     }
 
     @Override
-    public MostFrequentlyOccurringPairsResult executeRuleFilterByDate(String from, String to) {
+    public DrawsInTwoDimension executeRuleFilterByDate(String from, String to) {
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb számpárokat számító service futtatása elkezdődött...");
         WeeklyDrawList weeklyDrawList = super.init();
@@ -53,7 +54,7 @@ public class MostFrequentlyOccuringPairsServiceImpl extends LotteryService
         MostFrequentlyOccurringPairsResult mostFrequentlyOccurringPairsResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb számpárokat számító service futtatása befejeződött...");
-        return mostFrequentlyOccurringPairsResult;
+        return mostFrequentlyOccurringPairsResult.getResultArray();
     }
 
     private MostFrequentlyOccurringPairsResult execute(WeeklyDrawList weeklyDrawList) {
