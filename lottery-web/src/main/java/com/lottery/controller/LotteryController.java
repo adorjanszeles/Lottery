@@ -26,6 +26,7 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +37,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.Date;
 
+/**
+ * Lottery REST végpontokat tartalmazó Controller osztály
+ */
 @RestController
 @Api(value = "/lottery", description = "Lottery Rules")
 @RequestMapping(value = "/lottery")
@@ -77,12 +81,14 @@ public class LotteryController {
         this.userJPARepository = userJPARepository;
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/most-frequent-five-number")
     @ApiOperation(value = "GET most frequent five num", notes = "gets the five most frequently drawn numbers")
     public MostFrequentFiveNumberResult getMostFrequentFiveNumber() {
         return this.mostFrequentFiveNumberService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/most-frequent-five-number/{from}/{to}")
     @ApiOperation(value = "GET most frequent five num filtered by date",
                   notes = "gets the five most frequently drawn numbers between given date")
@@ -92,6 +98,7 @@ public class LotteryController {
         return this.mostFrequentFiveNumberService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET four match ratio to five",
                   notes = "gets the ratio of four matches compare to five matches")
     @GetMapping("/four-match-ratio-to-five-match")
@@ -99,6 +106,7 @@ public class LotteryController {
         return this.fourMatchRatioToFiveService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/four-match-ratio-to-five-match/{from}/{to}")
     @ApiOperation(value = "GET four match ratio to five filtered by date",
                   notes = "gets the ratio of four matches compare to five matches between given date")
@@ -108,12 +116,14 @@ public class LotteryController {
         return this.fourMatchRatioToFiveService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET rearest five nums", notes = "gets the five rarest drawn numbers")
     @GetMapping("/rearest-five-number")
     public RearestFiveResult getRearestFiveNumber() {
         return this.rearestFiveService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/rearest-five-number/{from}/{to}")
     @ApiOperation(value = "GET rearest five nums filtered by date",
                   notes = "gets the five rarest drawn numbers between given date")
@@ -123,12 +133,14 @@ public class LotteryController {
         return this.rearestFiveService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET average num", notes = "GET average num")
     @GetMapping("/average")
     public AverageResult getAverage() {
         return this.averageService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/average/{from}/{to}")
     @ApiOperation(value = "GET average num filtered by date", notes = "gets average num between given date")
     public AverageResult getAverageFiltered(
@@ -137,12 +149,14 @@ public class LotteryController {
         return this.averageService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET most frequent pairs", notes = "gets number pairs that are most frequently drawn")
     @GetMapping("/most-frequently-occuring-pairs")
     public MostFrequentlyOccurringPairsResult getMostFrequentlyOccuringFiveNumber() {
         return this.mostFrequentlyOccuringPairsService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/most-frequently-occuring-pairs/{from}/{to}")
     @ApiOperation(value = "GET most frequent pairs filtered by date",
                   notes = "gets number pairs that are most frequently drawn between given date")
@@ -152,6 +166,7 @@ public class LotteryController {
         return this.mostFrequentlyOccuringPairsService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET average time between 5 matches",
                   notes = "gets the average time passed between two five matches")
     @GetMapping("/average-time-between-two-match-five-draws")
@@ -159,6 +174,7 @@ public class LotteryController {
         return this.averageTimeBetweenTwoMatchFiveDrawsService.executeRule();
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/average-time-between-two-match-five-draws/{from}/{to}")
     @ApiOperation(value = "GET average time between 5 matches filtered by date",
                   notes = "gets the average time passed between two five matches between given date")
@@ -168,6 +184,7 @@ public class LotteryController {
         return this.averageTimeBetweenTwoMatchFiveDrawsService.executeRuleFilterByDate(from, to);
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @PostMapping("/add-new-weeklydraw")
     @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
     public WeeklyDraw addingNewWeeklyDraw(
@@ -176,6 +193,7 @@ public class LotteryController {
         return input;
     }
 
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET min/max dates", notes = "getting earliest and latest dates")
     @GetMapping("/get-date-intervals")
     public String getDateIntervals() {
