@@ -184,6 +184,7 @@ public class RawWeeklyDraw {
         this.twoMatchPrize = twoMatchPrize;
     }
 
+
     @Override
     public String toString() {
         return "RawWeeklyDraw{" + '\'' + ", year='" + year + '\'' + ", week=" + week + ", date=" + drawDate + '}';

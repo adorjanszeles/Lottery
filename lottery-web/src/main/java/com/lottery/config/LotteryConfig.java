@@ -3,20 +3,20 @@ package com.lottery.config;
 import com.lottery.common.enums.KieSessionName;
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.model.Lottery;
-import com.lottery.service.LotteryFileReader;
-import com.lottery.service.LotteryFileReaderImpl;
+import com.lottery.model.WeeklyDraw;
+import com.lottery.repository.WeeklyDrawJPARepository;
+import com.lottery.service.PersistFromCsv;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -28,13 +28,14 @@ public class LotteryConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(LotteryConfig.class);
     private static final String FILE_PATH = "otos.csv";
 
+    @Autowired
+    private WeeklyDrawJPARepository wrepo;
+
     @Bean
     public Lottery generateLottery() throws IOException {
         Lottery lottery = new Lottery();
         lottery.setLotteryList();
-        File file = new ClassPathResource(LotteryConfig.FILE_PATH).getFile();
-        LotteryFileReader lotteryFileReader = new LotteryFileReaderImpl(lottery);
-        lotteryFileReader.readFromFile(file);
+        lottery.getLotteryList().addAll(wrepo.findAll());
         return lottery;
     }
 

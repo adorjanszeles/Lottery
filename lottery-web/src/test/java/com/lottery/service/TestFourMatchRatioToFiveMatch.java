@@ -7,7 +7,6 @@ import com.lottery.model.FourMatchRatioToFiveMatchResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -32,7 +31,6 @@ public class TestFourMatchRatioToFiveMatch {
     /**
      * Négyes lóttó találatok aránya az ötösökhöz szabály teszteléshez
      */
-
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();
