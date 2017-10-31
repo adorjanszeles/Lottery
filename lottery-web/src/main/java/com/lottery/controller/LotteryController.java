@@ -9,6 +9,7 @@ import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.RearestFiveResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.repository.WeeklyDrawJPARepository;
 import com.lottery.service.AddingWeeklyDrawService;
@@ -152,7 +153,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET most frequent pairs", notes = "gets number pairs that are most frequently drawn")
     @GetMapping("/most-frequently-occuring-pairs")
-    public MostFrequentlyOccurringPairsResult getMostFrequentlyOccuringFiveNumber() {
+    public DrawsInTwoDimension getMostFrequentlyOccuringFiveNumber() {
         return this.mostFrequentlyOccuringPairsService.executeRule();
     }
 
@@ -160,7 +161,7 @@ public class LotteryController {
     @GetMapping("/most-frequently-occuring-pairs/{from}/{to}")
     @ApiOperation(value = "GET most frequent pairs filtered by date",
                   notes = "gets number pairs that are most frequently drawn between given date")
-    public MostFrequentlyOccurringPairsResult getMostFrequentlyOccuringFiveNumberFiltered(
+    public DrawsInTwoDimension getMostFrequentlyOccuringFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
         return this.mostFrequentlyOccuringPairsService.executeRuleFilterByDate(from, to);
