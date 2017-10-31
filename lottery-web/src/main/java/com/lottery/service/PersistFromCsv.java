@@ -15,12 +15,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CsvToRawWeeklyDraw {
-    //TODO converter WeeklyDraw draws list
+public class PersistFromCsv {
+
     private WeeklyDrawJPARepository wrepo;
 
     @Autowired
-    public CsvToRawWeeklyDraw(WeeklyDrawJPARepository weeklyDrawJPARepository) {
+    public PersistFromCsv(WeeklyDrawJPARepository weeklyDrawJPARepository) {
         this.wrepo = weeklyDrawJPARepository;
     }
 
@@ -28,21 +28,34 @@ public class CsvToRawWeeklyDraw {
 
         List<RawWeeklyDraw> objectList = new ArrayList<>();
         try {
-            objectList = loadObjectList(RawWeeklyDraw.class, "otos.csv");
+            objectList = loadObjectList(RawWeeklyDraw.class, filename);
 
+        } catch (FileNotFoundException e) {
+            System.out.println("nem beolvasható a fájl");
+            e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("nem beolvasható a fájl" + e);
+            System.out.println("probléma beolvasáskor vagy nem létezik a fájl");
+            e.printStackTrace();
         }
 
         return objectList;
     }
 
-    public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) throws FileNotFoundException {
+    public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) {
 
         WeeklyDrawConverter converter = new WeeklyDrawConverterImpl();
-        List<WeeklyDraw> weeklyDraws = converter.convertRawsToWeeklyDraws(rawWeeklyDraws);
+        try {
+            List<WeeklyDraw> weeklyDraws = converter.convertRawsToWeeklyDraws(rawWeeklyDraws);
+            this.wrepo.save(weeklyDraws);
+        } catch (FileNotFoundException e) {
+            System.out.println("nem beolvasható a fájl");
+            e.printStackTrace();
+        }
+    }
 
-        this.wrepo.save(weeklyDraws);
+    public String readAndPersist() {
+        persistAllToDB(this.populateRawWeeklyDraws("otoswithheader.csv"));
+        return "OK";
     }
 
     private <T> List<T> loadObjectList(Class<T> type, String fileName) throws IOException {
