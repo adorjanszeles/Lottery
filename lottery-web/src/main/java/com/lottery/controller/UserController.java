@@ -1,18 +1,17 @@
 package com.lottery.controller;
 
 import com.lottery.model.User;
+import com.lottery.model.UserDTO;
 import com.lottery.repository.UserJPARepository;
+import com.lottery.service.UserDestinationMapper;
+import com.lottery.service.UserDestinationMapperImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -27,10 +26,10 @@ import java.util.List;
 public class UserController {
 
     private UserJPARepository userRepository;
-    private BCryptPasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
-    public UserController(UserJPARepository userRepository, BCryptPasswordEncoder encoder) {
+    public UserController(UserJPARepository userRepository, PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.encoder = encoder;
     }
@@ -38,9 +37,11 @@ public class UserController {
 //    @PreAuthorize("hasRole('admin')")
     @PostMapping("/add-user")
     @ApiOperation(value = "POST new user to database", notes = "registering a new user")
-    public User addUser(@ApiParam(value = "for roles use only 'admin' or 'user'", required = true) @Valid @RequestBody User user) {
-        String hashedPassword = encoder.encode(user.getPassword());
-        user.setPassword(hashedPassword);
+    public User addUser(@ApiParam(value = "for roles use only 'admin' or 'user'", required = true) @Valid @RequestBody UserDTO userDTO) {
+        String hashedPassword = encoder.encode(userDTO.getPassword());
+        userDTO.setPassword(hashedPassword);
+        UserDestinationMapper userDestinationMapper = new UserDestinationMapperImpl();
+        User user = userDestinationMapper.sourceToDestination(userDTO);
         return this.userRepository.save(user);
     }
 
