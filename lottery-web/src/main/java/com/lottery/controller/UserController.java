@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,15 +28,15 @@ import java.util.List;
 public class UserController {
 
     private UserJPARepository userRepository;
-    private BCryptPasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
-    public UserController(UserJPARepository userRepository, BCryptPasswordEncoder encoder) {
+    public UserController(UserJPARepository userRepository, PasswordEncoder encoder) {
         this.userRepository = userRepository;
         this.encoder = encoder;
     }
 
-//    @PreAuthorize("hasRole('admin')")
+    @PreAuthorize("hasRole('admin')")
     @PostMapping("/add-user")
     @ApiOperation(value = "POST new user to database", notes = "registering a new user")
     public User addUser(@ApiParam(value = "for roles use only 'admin' or 'user'", required = true) @Valid @RequestBody User user) {
