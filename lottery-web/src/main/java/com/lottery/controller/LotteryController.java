@@ -4,10 +4,8 @@ import com.lottery.model.*;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.repository.WeeklyDrawJPARepository;
+import io.swagger.annotations.*;
 import com.lottery.service.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +62,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/most-frequent-five-number")
     @ApiOperation(value = "GET most frequent five num", notes = "gets the five most frequently drawn numbers")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public MostFrequentFiveNumberResult getMostFrequentFiveNumber() {
         return this.mostFrequentFiveNumberService.executeRule();
     }
@@ -72,6 +71,7 @@ public class LotteryController {
     @GetMapping("/most-frequent-five-number/{from}/{to}")
     @ApiOperation(value = "GET most frequent five num filtered by date",
                   notes = "gets the five most frequently drawn numbers between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public MostFrequentFiveNumberResult getMostFrequentFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -82,6 +82,7 @@ public class LotteryController {
     @ApiOperation(value = "GET four match ratio to five",
                   notes = "gets the ratio of four matches compare to five matches")
     @GetMapping("/four-match-ratio-to-five-match")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public FourMatchRatioToFiveMatchResult getFourMatchRatioToFiveMatch() {
         return this.fourMatchRatioToFiveService.executeRule();
     }
@@ -90,6 +91,7 @@ public class LotteryController {
     @GetMapping("/four-match-ratio-to-five-match/{from}/{to}")
     @ApiOperation(value = "GET four match ratio to five filtered by date",
                   notes = "gets the ratio of four matches compare to five matches between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public FourMatchRatioToFiveMatchResult getFourMatchRatioToFiveMatchFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -99,6 +101,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET rearest five nums", notes = "gets the five rarest drawn numbers")
     @GetMapping("/rearest-five-number")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public RearestFiveResult getRearestFiveNumber() {
         return this.rearestFiveService.executeRule();
     }
@@ -107,6 +110,7 @@ public class LotteryController {
     @GetMapping("/rearest-five-number/{from}/{to}")
     @ApiOperation(value = "GET rearest five nums filtered by date",
                   notes = "gets the five rarest drawn numbers between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public RearestFiveResult getRearestFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -115,6 +119,7 @@ public class LotteryController {
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET average num", notes = "GET average num")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     @GetMapping("/average")
     public AverageResult getAverage() {
         return this.averageService.executeRule();
@@ -123,6 +128,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/average/{from}/{to}")
     @ApiOperation(value = "GET average num filtered by date", notes = "gets average num between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public AverageResult getAverageFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -132,6 +138,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET most frequent pairs", notes = "gets number pairs that are most frequently drawn")
     @GetMapping("/most-frequently-occuring-pairs")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public DrawsInTwoDimension getMostFrequentlyOccuringFiveNumber() {
         return this.mostFrequentlyOccuringPairsService.executeRule();
     }
@@ -140,6 +147,7 @@ public class LotteryController {
     @GetMapping("/most-frequently-occuring-pairs/{from}/{to}")
     @ApiOperation(value = "GET most frequent pairs filtered by date",
                   notes = "gets number pairs that are most frequently drawn between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public DrawsInTwoDimension getMostFrequentlyOccuringFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -150,6 +158,7 @@ public class LotteryController {
     @ApiOperation(value = "GET average time between 5 matches",
                   notes = "gets the average time passed between two five matches")
     @GetMapping("/average-time-between-two-match-five-draws")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDraws() {
         return this.averageTimeBetweenTwoMatchFiveDrawsService.executeRule();
     }
@@ -158,6 +167,7 @@ public class LotteryController {
     @GetMapping("/average-time-between-two-match-five-draws/{from}/{to}")
     @ApiOperation(value = "GET average time between 5 matches filtered by date",
                   notes = "gets the average time passed between two five matches between given date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDrawsFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
@@ -167,6 +177,7 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @PostMapping("/add-new-weeklydraw")
     @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public WeeklyDrawDTO addingNewWeeklyDraw(
             @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDrawDTO input) {
         this.addingWeeklyDrawService.addNewWeeklyDraw(input);
@@ -176,14 +187,17 @@ public class LotteryController {
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET min/max dates", notes = "getting earliest and latest dates")
     @GetMapping("/get-date-intervals")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public String getDateIntervals() {
         Date firstDate = this.dateIntervalService.getStart();
         Date lastDate = this.dateIntervalService.getEnd();
         return "Lottery weekly draws are available from: " + firstDate + " to: " + lastDate;
     }
 
+    @PreAuthorize("hasRole('admin')")
     @ApiOperation(value = "GET table from csv", notes = "Make weekly draw table from csv! Restart server after this!")
     @GetMapping("/table_from_csv")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public String tableFromCsv() {
         PersistFromCsv persistFromCsv = new PersistFromCsv(weeklyDrawJPARepository);
         persistFromCsv.readAndPersist();
