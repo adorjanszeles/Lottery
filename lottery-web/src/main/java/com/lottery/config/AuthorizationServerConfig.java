@@ -1,5 +1,7 @@
 package com.lottery.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -12,12 +14,15 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
+/**
+ * Spring Security authorizációs szerver konfig osztálya
+ */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
+    protected static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationServerConfig.class);
     private static String REALM = "my_oauth_realm";
-
     private TokenStore tokenStore;
     private UserApprovalHandler userApprovalHandler;
     private AuthenticationManager authenticationManager;
@@ -33,8 +38,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     }
 
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.realm(REALM + "/client");
+    }
 
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        AuthorizationServerConfig.LOGGER.debug("Access, Refresh tokenek konfigurálása elkezdődött");
         clients.inMemory()
                .withClient("lottery-client")
                .authorizedGrantTypes("password", "refresh_token")
@@ -45,7 +55,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                .secret("secret")
                .accessTokenValiditySeconds(300) // valid for 5 minutes
                .refreshTokenValiditySeconds(1200); // valid for 20 minutes
-
+        AuthorizationServerConfig.LOGGER.debug("Access, Refresh tokenek konfigurálása befejeződött");
     }
 
     @Override
@@ -53,12 +63,6 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         endpoints.tokenStore(this.tokenStore)
                  .userApprovalHandler(this.userApprovalHandler)
                  .authenticationManager(this.authenticationManager);
-
-    }
-
-    @Override
-    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
-        oauthServer.realm(REALM+"/client");
     }
 
 }
