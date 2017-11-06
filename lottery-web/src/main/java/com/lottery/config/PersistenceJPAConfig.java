@@ -28,12 +28,18 @@ public class PersistenceJPAConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        System.out.println("1");
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+        System.out.println("2");
         entityManagerFactory.setJpaVendorAdapter(getJpaVendorAdapter());
+        System.out.println("3");
         entityManagerFactory.setDataSource(dataSource());
+        System.out.println("4");
         entityManagerFactory.setPersistenceUnitName("myJpaPersistenceUnit");
+        System.out.println("5");
         entityManagerFactory.setPackagesToScan("com.lottery");
         entityManagerFactory.setJpaProperties(jpaProperties());
+        System.out.println("6");
         return entityManagerFactory;
     }
 

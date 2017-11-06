@@ -3,7 +3,6 @@ package com.lottery.model;
 import com.lottery.service.LotteryFileReader;
 import com.lottery.service.LotteryFileReaderImpl;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -82,7 +81,7 @@ public class TestLotteryFileReader {
         firstWeeklyDraw.setThreeMatchPrize(24835L);
         firstWeeklyDraw.setTwoMatch(60124);
         firstWeeklyDraw.setTwoMatchPrize(1910L);
-        firstWeeklyDraw.setDrawnNumbers(new Integer[]{1, 2, 3, 4, 5});
+        firstWeeklyDraw.fillDrawnNumbers(new Integer[]{1, 2, 3, 4, 5});
 
         secondWeeklyDraw.setDrawDate(drawTwoDate);
         secondWeeklyDraw.setFiveMatch(0);
@@ -93,7 +92,7 @@ public class TestLotteryFileReader {
         secondWeeklyDraw.setThreeMatchPrize(26755L);
         secondWeeklyDraw.setTwoMatch(63976);
         secondWeeklyDraw.setTwoMatchPrize(1875L);
-        secondWeeklyDraw.setDrawnNumbers(new Integer[]{6, 7, 8, 9, 10});
+        secondWeeklyDraw.fillDrawnNumbers(new Integer[]{6, 7, 8, 9, 10});
 
         this.result.add(firstWeeklyDraw);
         this.result.add(secondWeeklyDraw);
@@ -109,7 +108,7 @@ public class TestLotteryFileReader {
             (drawOne.getThreeMatchPrize().equals(drawTwo.getThreeMatchPrize())) &&
             (drawOne.getTwoMatch().equals(drawTwo.getTwoMatch())) &&
             (drawOne.getTwoMatchPrize().equals(drawTwo.getTwoMatchPrize())) &&
-            (Arrays.equals(drawOne.getDrawnNumbers(), drawTwo.getDrawnNumbers()))) {
+                (Arrays.equals(drawOne.generateDrawnNumbers(), drawTwo.generateDrawnNumbers()))) {
             return true;
         }
         return false;

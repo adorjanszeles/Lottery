@@ -1,14 +1,6 @@
 package com.lottery.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModelProperty;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 
 /**
  * User objektum
@@ -26,7 +18,6 @@ public class User {
     }
 
     @Column(name = "password")
-    @NotNull(message = "missing password")
 //    @JsonIgnore
     public String getPassword() {
         return password;
@@ -37,7 +28,6 @@ public class User {
     }
 
     @Column(name = "username")
-    @NotNull(message = "missing username")
     public String getUsername() {
         return username;
     }
@@ -58,8 +48,6 @@ public class User {
     }
 
     @Column(name = "role")
-    @NotNull(message = "missing role")
-    @ApiModelProperty(value = "allowed values:", allowableValues = "user,admin")
     public String getRole() {
         return role;
     }

@@ -1,37 +1,16 @@
 package com.lottery.controller;
 
-import com.lottery.model.AverageResult;
-import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
-import com.lottery.model.FourMatchRatioToFiveMatchResult;
-import com.lottery.model.Lottery;
-import com.lottery.model.MostFrequentFiveNumberResult;
-import com.lottery.model.MostFrequentlyOccurringPairsResult;
-import com.lottery.model.RearestFiveResult;
-import com.lottery.model.WeeklyDraw;
-import com.lottery.model.WeeklyDrawList;
+import com.lottery.model.*;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.repository.WeeklyDrawJPARepository;
-import com.lottery.service.AddingWeeklyDrawService;
-import com.lottery.service.AverageService;
-import com.lottery.service.AverageTimeBetweenTwoMatchFiveDrawsService;
-import com.lottery.service.PersistFromCsv;
-import com.lottery.service.DateIntervalService;
-import com.lottery.service.FourMatchRatioToFiveService;
-import com.lottery.service.MostFrequentFiveNumberService;
-import com.lottery.service.MostFrequentlyOccuringPairsService;
-import com.lottery.service.RearestFiveService;
 import io.swagger.annotations.*;
+import com.lottery.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
@@ -199,9 +178,9 @@ public class LotteryController {
     @PostMapping("/add-new-weeklydraw")
     @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
-    public WeeklyDraw addingNewWeeklyDraw(
-            @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDraw input){
-        this.addingWeeklyDrawService.AddNewWeeklyDraw(input);
+    public WeeklyDrawDTO addingNewWeeklyDraw(
+            @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDrawDTO input) {
+        this.addingWeeklyDrawService.addNewWeeklyDraw(input);
         return input;
     }
 
