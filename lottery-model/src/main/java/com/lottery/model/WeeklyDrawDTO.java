@@ -1,19 +1,17 @@
 package com.lottery.model;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.*;
 import java.util.Date;
 
-/**
- * Heti kihúzott lottó számok osztálya húzás dátummal, találatokkal, nyeremények összegével és a kihúzott 5 számmal,
- * amit tömben tárolunk
- */
-@Entity
-@Table(name = "WEEKLY_DRAW")
-public class WeeklyDraw implements Serializable {
 
-    private Long id;
-    private String redisId;
+/**
+ * Data transfer Object for WeeklyDraw objects
+ */
+public class WeeklyDrawDTO {
+
+
     private Date drawDate;
     private Integer fiveMatch;
     private Long fiveMatchPrize;
@@ -29,12 +27,12 @@ public class WeeklyDraw implements Serializable {
     private Integer fourth;
     private Integer fifth;
 
-    public WeeklyDraw() {
-
+    public WeeklyDrawDTO() {
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "DRAWDATE")
+    @NotNull(message = "Empty")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     public Date getDrawDate() {
         return drawDate;
     }
@@ -43,7 +41,8 @@ public class WeeklyDraw implements Serializable {
         this.drawDate = drawDate;
     }
 
-    @Column(name = "FIVE_MATCH")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Integer getFiveMatch() {
         return fiveMatch;
     }
@@ -52,7 +51,8 @@ public class WeeklyDraw implements Serializable {
         this.fiveMatch = fiveMatch;
     }
 
-    @Column(name = "FIVE_MATCH_PRIZE")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Long getFiveMatchPrize() {
         return fiveMatchPrize;
     }
@@ -61,7 +61,8 @@ public class WeeklyDraw implements Serializable {
         this.fiveMatchPrize = fiveMatchPrize;
     }
 
-    @Column(name = "FOUR_MATCH")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Integer getFourMatch() {
         return fourMatch;
     }
@@ -70,7 +71,8 @@ public class WeeklyDraw implements Serializable {
         this.fourMatch = fourMatch;
     }
 
-    @Column(name = "FOUR_MATCH_PRIZE")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Long getFourMatchPrize() {
         return fourMatchPrize;
     }
@@ -79,7 +81,8 @@ public class WeeklyDraw implements Serializable {
         this.fourMatchPrize = fourMatchPrize;
     }
 
-    @Column(name = "THREE_MATCH")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Integer getThreeMatch() {
         return threeMatch;
     }
@@ -88,7 +91,8 @@ public class WeeklyDraw implements Serializable {
         this.threeMatch = threeMatch;
     }
 
-    @Column(name = "THREE_MATCH_PRIZE")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Long getThreeMatchPrize() {
         return threeMatchPrize;
     }
@@ -97,7 +101,8 @@ public class WeeklyDraw implements Serializable {
         this.threeMatchPrize = threeMatchPrize;
     }
 
-    @Column(name = "TWO_MATCH")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Integer getTwoMatch() {
         return twoMatch;
     }
@@ -106,7 +111,8 @@ public class WeeklyDraw implements Serializable {
         this.twoMatch = twoMatch;
     }
 
-    @Column(name = "TWO_MATCH_PRIZE")
+    @NotNull(message = "Empty")
+    @PositiveOrZero(message = "enter positive numbers")
     public Long getTwoMatchPrize() {
         return twoMatchPrize;
     }
@@ -115,17 +121,9 @@ public class WeeklyDraw implements Serializable {
         this.twoMatchPrize = twoMatchPrize;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @Column(name = "FIRST")
+    @NotNull(message = "Empty")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFirst() {
         return first;
     }
@@ -134,7 +132,9 @@ public class WeeklyDraw implements Serializable {
         this.first = first;
     }
 
-    @Column(name = "SECOND")
+    @NotNull(message = "Empty")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getSecond() {
         return second;
     }
@@ -143,27 +143,31 @@ public class WeeklyDraw implements Serializable {
         this.second = second;
     }
 
-    @Column(name = "THIRD")
+    @NotNull(message = "Empty")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getThird() {
         return third;
     }
 
     public void setThird(Integer third) {
         this.third = third;
-
     }
 
-    @Column(name = "FOURTH")
+    @NotNull(message = "Empty")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFourth() {
         return fourth;
     }
 
     public void setFourth(Integer fourth) {
         this.fourth = fourth;
-
     }
 
-    @Column(name = "FIFTH")
+    @NotNull(message = "Empty")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFifth() {
         return fifth;
     }
@@ -172,42 +176,23 @@ public class WeeklyDraw implements Serializable {
         this.fifth = fifth;
     }
 
-    @Column(name = "REDIS_ID")
-    public String getRedisId() {
-        return redisId;
-    }
-
-    public void setRedisId(String redisId) {
-        this.redisId = redisId;
-    }
-
-    public Integer[] generateDrawnNumbers() {
-        Integer[] drawnNumbers = new Integer[5];
-        drawnNumbers[0] = this.first;
-        drawnNumbers[1] = this.second;
-        drawnNumbers[2] = this.third;
-        drawnNumbers[3] = this.fourth;
-        drawnNumbers[4] = this.fifth;
-
-        return drawnNumbers;
-    }
-
-    public void fillDrawnNumbers(Integer[] numbersList) {
-
-        this.first = numbersList[0];
-        this.second = numbersList[1];
-        this.third = numbersList[2];
-        this.fourth = numbersList[3];
-        this.fifth = numbersList[4];
-
-    }
-
     @Override
     public String toString() {
-        return "WeeklyDraw{" + ", redisId='" + redisId + '\'' + ", drawDate=" + drawDate + ", fiveMatch=" +
-                fiveMatch + ", fiveMatchPrize=" + fiveMatchPrize + ", fourMatch=" + fourMatch + ", fourMatchPrize=" +
-                fourMatchPrize + ", threeMatch=" + threeMatch + ", threeMatchPrize=" + threeMatchPrize + ", twoMatch=" +
-                twoMatch + ", twoMatchPrize=" + twoMatchPrize + ", first=" + first + ", second=" + second + ", third=" +
-                third + ", fourth=" + fourth + ", fifth=" + fifth + '}';
+        return "WeeklyDrawDTO{" +
+                "drawDate=" + drawDate +
+                ", fiveMatch=" + fiveMatch +
+                ", fiveMatchPrize=" + fiveMatchPrize +
+                ", fourMatch=" + fourMatch +
+                ", fourMatchPrize=" + fourMatchPrize +
+                ", threeMatch=" + threeMatch +
+                ", threeMatchPrize=" + threeMatchPrize +
+                ", twoMatch=" + twoMatch +
+                ", twoMatchPrize=" + twoMatchPrize +
+                ", first=" + first +
+                ", second=" + second +
+                ", third=" + third +
+                ", fourth=" + fourth +
+                ", fifth=" + fifth +
+                '}';
     }
 }
