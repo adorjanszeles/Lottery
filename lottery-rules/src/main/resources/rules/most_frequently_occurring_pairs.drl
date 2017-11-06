@@ -5,7 +5,8 @@ import com.lottery.model.WeeklyDrawList;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.mfop_utils.Row;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
-import org.slf4j.Logger;
+import org.slf4j.Logger
+import java.util.Arrays;
 global Logger LOGGER;
 
 rule "Most Frequently Occurring Pairs"
@@ -33,7 +34,7 @@ rule "Most Frequently Occurring Pairs"
  */
 function void mFOPLogic(WeeklyDraw draw, MostFrequentlyOccurringPairsResult result ){
 
-    Integer[] drawNumbers = draw.getDrawnNumbers();
+    Integer[] drawNumbers = draw.generateDrawnNumbers();
 
     for(int n = 0; n < drawNumbers.length; n++){
         for(int i = n+1; i < drawNumbers.length; i++){

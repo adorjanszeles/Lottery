@@ -1,6 +1,6 @@
 package com.lottery.service;
 
-import com.lottery.model.WeeklyDraw;
+import com.lottery.model.WeeklyDrawDTO;
 
 /**
  * interfész új weeklyDraw objektumok létrehozásához
@@ -10,5 +10,5 @@ public interface AddingWeeklyDrawService {
     /**
      * Adds a new WeeklyDraw object to the LotteryList
      */
-    void AddNewWeeklyDraw(WeeklyDraw weeklyDraw);
+    void addNewWeeklyDraw(WeeklyDrawDTO weeklyDraw);
 }
