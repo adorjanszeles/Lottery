@@ -7,7 +7,6 @@ import com.lottery.model.RearestFiveResult;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.StatelessKieSession;
 import org.slf4j.Logger;
@@ -94,9 +93,9 @@ public class TestRearestFiveNumberRule {
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
         WeeklyDraw thirdWeeklyDraw = new WeeklyDraw();
 
-        firstWeeklyDraw.setDrawnNumbers(firstDraw);
-        secondWeeklyDraw.setDrawnNumbers(secondDraw);
-        thirdWeeklyDraw.setDrawnNumbers(thirdDraw);
+        firstWeeklyDraw.fillDrawnNumbers(firstDraw);
+        secondWeeklyDraw.fillDrawnNumbers(secondDraw);
+        thirdWeeklyDraw.fillDrawnNumbers(thirdDraw);
 
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);

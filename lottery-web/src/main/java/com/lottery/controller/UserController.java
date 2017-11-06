@@ -4,7 +4,6 @@ import com.lottery.model.User;
 import com.lottery.model.UserDTO;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.service.UserDestinationMapper;
-import com.lottery.service.UserDestinationMapperImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -27,11 +26,13 @@ public class UserController {
 
     private UserJPARepository userRepository;
     private PasswordEncoder encoder;
+    private UserDestinationMapper userDestinationMapper;
 
     @Autowired
-    public UserController(UserJPARepository userRepository, PasswordEncoder encoder) {
+    public UserController(UserJPARepository userRepository, PasswordEncoder encoder, UserDestinationMapper userDestinationMapper) {
         this.userRepository = userRepository;
         this.encoder = encoder;
+        this.userDestinationMapper = userDestinationMapper;
     }
 
 //    @PreAuthorize("hasRole('admin')")
@@ -40,8 +41,7 @@ public class UserController {
     public User addUser(@ApiParam(value = "for roles use only 'admin' or 'user'", required = true) @Valid @RequestBody UserDTO userDTO) {
         String hashedPassword = encoder.encode(userDTO.getPassword());
         userDTO.setPassword(hashedPassword);
-        UserDestinationMapper userDestinationMapper = new UserDestinationMapperImpl();
-        User user = userDestinationMapper.sourceToDestination(userDTO);
+        User user = this.userDestinationMapper.sourceToDestination(userDTO);
         return this.userRepository.save(user);
     }
 

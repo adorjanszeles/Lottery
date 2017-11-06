@@ -181,7 +181,7 @@ public class WeeklyDraw implements Serializable {
         this.redisId = redisId;
     }
 
-    public Integer[] getDrawnNumbers() {
+    public Integer[] generateDrawnNumbers() {
         Integer[] drawnNumbers = new Integer[5];
         drawnNumbers[0] = this.first;
         drawnNumbers[1] = this.second;
@@ -192,7 +192,7 @@ public class WeeklyDraw implements Serializable {
         return drawnNumbers;
     }
 
-    public void setDrawnNumbers(Integer[] numbersList) {
+    public void fillDrawnNumbers(Integer[] numbersList) {
 
         this.first = numbersList[0];
         this.second = numbersList[1];
