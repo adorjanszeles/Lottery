@@ -90,8 +90,8 @@ public class TestMostFrequentFiveNumber {
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
 
-        firstWeeklyDraw.setDrawnNumbers(firstDraw);
-        secondWeeklyDraw.setDrawnNumbers(secondDraw);
+        firstWeeklyDraw.fillDrawnNumbers(firstDraw);
+        secondWeeklyDraw.fillDrawnNumbers(secondDraw);
 
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);
