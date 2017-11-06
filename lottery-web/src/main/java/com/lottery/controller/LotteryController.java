@@ -169,7 +169,7 @@ public class LotteryController {
     @ApiOperation(value = "POST new draw", notes = "adding new weekly draw results")
     public WeeklyDrawDTO addingNewWeeklyDraw(
             @ApiParam(value = "weeklyDraw object with fields", required = true) @Valid @RequestBody WeeklyDrawDTO input) {
-        this.addingWeeklyDrawService.AddNewWeeklyDraw(input);
+        this.addingWeeklyDrawService.addNewWeeklyDraw(input);
         return input;
     }
 

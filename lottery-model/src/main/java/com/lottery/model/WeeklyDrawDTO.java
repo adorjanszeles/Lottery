@@ -2,11 +2,13 @@ package com.lottery.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.*;
 import java.util.Date;
 
+
+/**
+ * Data transfer Object for WeeklyDraw objects
+ */
 public class WeeklyDrawDTO {
 
 
@@ -120,7 +122,8 @@ public class WeeklyDrawDTO {
     }
 
     @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFirst() {
         return first;
     }
@@ -130,7 +133,8 @@ public class WeeklyDrawDTO {
     }
 
     @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getSecond() {
         return second;
     }
@@ -140,7 +144,8 @@ public class WeeklyDrawDTO {
     }
 
     @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getThird() {
         return third;
     }
@@ -150,7 +155,8 @@ public class WeeklyDrawDTO {
     }
 
     @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFourth() {
         return fourth;
     }
@@ -160,7 +166,8 @@ public class WeeklyDrawDTO {
     }
 
     @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
+    @Min(value = 1)
+    @Max(value = 90)
     public Integer getFifth() {
         return fifth;
     }

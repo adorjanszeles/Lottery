@@ -10,5 +10,5 @@ public interface AddingWeeklyDrawService {
     /**
      * Adds a new WeeklyDraw object to the LotteryList
      */
-    void AddNewWeeklyDraw(WeeklyDrawDTO weeklyDraw);
+    void addNewWeeklyDraw(WeeklyDrawDTO weeklyDraw);
 }
