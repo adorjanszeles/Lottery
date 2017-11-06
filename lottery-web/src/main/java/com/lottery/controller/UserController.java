@@ -3,6 +3,7 @@ package com.lottery.controller;
 import com.lottery.model.User;
 import com.lottery.repository.UserJPARepository;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,6 @@ public class UserController {
         this.encoder = encoder;
     }
 
-    @PreAuthorize("hasRole('admin')")
     @PostMapping("/add-user")
     @ApiOperation(value = "POST new user to database", notes = "registering a new user")
     public User addUser(@ApiParam(value = "for roles use only 'admin' or 'user'", required = true) @Valid @RequestBody User user) {
@@ -48,6 +48,7 @@ public class UserController {
     @PreAuthorize("hasRole('admin')")
     @GetMapping("/users")
     @ApiOperation(value = "GET all users from database", notes = "get all users from database")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public List<User> getUsers() {
         return this.userRepository.findAll();
     }
