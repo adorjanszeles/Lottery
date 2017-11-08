@@ -1,6 +1,13 @@
 package com.lottery.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,6 +15,7 @@ import java.util.Date;
  * Heti kihúzott lottó számok osztálya húzás dátummal, találatokkal, nyeremények összegével és a kihúzott 5 számmal,
  * amit tömben tárolunk
  */
+
 @Entity
 @Table(name = "WEEKLY_DRAW")
 public class WeeklyDraw implements Serializable {
@@ -204,10 +212,10 @@ public class WeeklyDraw implements Serializable {
 
     @Override
     public String toString() {
-        return "WeeklyDraw{" + ", redisId='" + redisId + '\'' + ", drawDate=" + drawDate + ", fiveMatch=" +
-                fiveMatch + ", fiveMatchPrize=" + fiveMatchPrize + ", fourMatch=" + fourMatch + ", fourMatchPrize=" +
-                fourMatchPrize + ", threeMatch=" + threeMatch + ", threeMatchPrize=" + threeMatchPrize + ", twoMatch=" +
-                twoMatch + ", twoMatchPrize=" + twoMatchPrize + ", first=" + first + ", second=" + second + ", third=" +
-                third + ", fourth=" + fourth + ", fifth=" + fifth + '}';
+        return "WeeklyDraw{" + ", redisId='" + redisId + '\'' + ", drawDate=" + drawDate + ", fiveMatch=" + fiveMatch +
+               ", fiveMatchPrize=" + fiveMatchPrize + ", fourMatch=" + fourMatch + ", fourMatchPrize=" +
+               fourMatchPrize + ", threeMatch=" + threeMatch + ", threeMatchPrize=" + threeMatchPrize + ", twoMatch=" +
+               twoMatch + ", twoMatchPrize=" + twoMatchPrize + ", first=" + first + ", second=" + second + ", third=" +
+               third + ", fourth=" + fourth + ", fifth=" + fifth + '}';
     }
 }

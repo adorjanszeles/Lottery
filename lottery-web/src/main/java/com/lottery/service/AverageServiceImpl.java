@@ -5,15 +5,17 @@ import com.lottery.model.AverageResult;
 import com.lottery.model.Lottery;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
+import com.lottery.repository.WeeklyDrawJPARepository;
 import org.kie.api.runtime.StatelessKieSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * {@link AverageService interfész implementációja. {@link LotteryService osztály extendálása.
@@ -22,12 +24,15 @@ import java.util.stream.Collectors;
 @Service
 public class AverageServiceImpl extends LotteryService implements AverageService {
     private StatelessKieSession kieSession;
+    private WeeklyDrawJPARepository weeklyDrawJPARepository;
 
     @Autowired
     public AverageServiceImpl(@Qualifier(LotteryQualifier.statelessKieSessionName) StatelessKieSession kieSession,
-                              Lottery lottery) {
+                              Lottery lottery,
+                              WeeklyDrawJPARepository weeklyDrawJPARepository) {
         super(lottery);
         this.kieSession = kieSession;
+        this.weeklyDrawJPARepository = weeklyDrawJPARepository;
     }
 
     @Override
@@ -40,13 +45,15 @@ public class AverageServiceImpl extends LotteryService implements AverageService
     }
 
     @Override
-    public AverageResult executeRuleFilterByDate(String from, String to) {
+    public AverageResult executeRuleFilterByDate(String from, String to) throws ParseException {
         AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett átlagot számító service futtatása elkezdődött...");
         WeeklyDrawList weeklyDrawList = super.init();
-        List<WeeklyDraw> filteredList = weeklyDrawList.getDrawListPreparedForDrools()
-                                                      .stream()
-                                                      .filter(draw -> super.filterByDate(draw, from, to) != null)
-                                                      .collect(Collectors.toList());
+        Date fromDate = super.parseDate(from);
+        Date toDate = super.parseDate(to);
+        AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
+        List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
+                                                                                                               toDate);
+        AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je befejeződött...");
         weeklyDrawList.setDrawListPreparedForDrools(filteredList);
         AverageResult averageResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett átlagot számító service futtatása befejeződött...");
