@@ -1,8 +1,8 @@
 package com.lottery.service;
 
 import com.lottery.model.Lottery;
-import com.lottery.model.WeeklyDraw;
-import com.lottery.model.WeeklyDrawList;
+import com.lottery.repository.WeeklyDrawJPARepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,21 +13,27 @@ import java.util.Date;
 
 @Service
 public class DateIntervalServiceImpl extends LotteryService implements DateIntervalService {
+    private WeeklyDrawJPARepository weeklyDrawJPARepository;
 
-    public DateIntervalServiceImpl(Lottery lottery) {
+    @Autowired
+    public DateIntervalServiceImpl(Lottery lottery, WeeklyDrawJPARepository weeklyDrawJPARepository) {
         super(lottery);
+        this.weeklyDrawJPARepository = weeklyDrawJPARepository;
     }
 
     @Override
     public Date getStart() {
-        WeeklyDrawList drawList = super.init();
-        return drawList.getDrawListPreparedForDrools().stream().map(WeeklyDraw::getDrawDate).min(Date::compareTo).orElse(null);
+        DateIntervalServiceImpl.LOGGER.debug("Legkorábbi dátum query-je elkezdődött...");
+        Date min = weeklyDrawJPARepository.minDate();
+        DateIntervalServiceImpl.LOGGER.debug("Legkorábbi dátum query-je befejeződött...");
+        return min;
     }
 
     @Override
     public Date getEnd() {
-        WeeklyDrawList drawList = super.init();
-
-        return drawList.getDrawListPreparedForDrools().stream().map(WeeklyDraw::getDrawDate).max(Date::compareTo).orElse(null);
+        DateIntervalServiceImpl.LOGGER.debug("Legújabb dátum query-je elkezdődött...");
+        Date max = weeklyDrawJPARepository.maxDate();
+        DateIntervalServiceImpl.LOGGER.debug("Legújabb dátum query-je befejeződött...");
+        return max;
     }
 }

@@ -23,5 +23,5 @@ public interface MostFrequentFiveNumberService {
      *
      * @return result objektum
      */
-    MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to);
+    MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

@@ -45,4 +45,10 @@ public class ApiFieldError {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "ApiFieldError{" + "field='" + field + '\'' + ", code='" + code + '\'' + ", rejectedValue=" +
+               rejectedValue + ", message='" + message + '\'' + '}';
+    }
 }
