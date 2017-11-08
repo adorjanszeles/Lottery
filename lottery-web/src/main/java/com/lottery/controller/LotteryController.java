@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -74,7 +75,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public MostFrequentFiveNumberResult getMostFrequentFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.mostFrequentFiveNumberService.executeRuleFilterByDate(from, to);
     }
 
@@ -94,7 +96,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public FourMatchRatioToFiveMatchResult getFourMatchRatioToFiveMatchFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.fourMatchRatioToFiveService.executeRuleFilterByDate(from, to);
     }
 
@@ -113,7 +116,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public RearestFiveResult getRearestFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.rearestFiveService.executeRuleFilterByDate(from, to);
     }
 
@@ -131,7 +135,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public AverageResult getAverageFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.averageService.executeRuleFilterByDate(from, to);
     }
 
@@ -150,7 +155,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public DrawsInTwoDimension getMostFrequentlyOccuringFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.mostFrequentlyOccuringPairsService.executeRuleFilterByDate(from, to);
     }
 
@@ -170,7 +176,8 @@ public class LotteryController {
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDrawsFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
-            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to) {
+            @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
+            throws ParseException {
         return this.averageTimeBetweenTwoMatchFiveDrawsService.executeRuleFilterByDate(from, to);
     }
 

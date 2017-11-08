@@ -22,7 +22,9 @@ public class AddingWeeklyDrawServiceImpl implements AddingWeeklyDrawService {
     private WeeklyDrawDestinationMapper weeklyDrawDestinationMapper;
 
     @Autowired
-    public AddingWeeklyDrawServiceImpl(Lottery lottery, WeeklyDrawJPARepository weeklyDrawJPARepository, WeeklyDrawDestinationMapper weeklyDrawDestinationMapper) {
+    public AddingWeeklyDrawServiceImpl(Lottery lottery,
+                                       WeeklyDrawJPARepository weeklyDrawJPARepository,
+                                       WeeklyDrawDestinationMapper weeklyDrawDestinationMapper) {
         this.lottery = lottery;
         this.weeklyDrawJPARepository = weeklyDrawJPARepository;
         this.weeklyDrawDestinationMapper = weeklyDrawDestinationMapper;
@@ -31,7 +33,8 @@ public class AddingWeeklyDrawServiceImpl implements AddingWeeklyDrawService {
     @Override
     public void addNewWeeklyDraw(WeeklyDrawDTO sourceWeeklyDraw) {
         WeeklyDraw weeklyDraw = this.weeklyDrawDestinationMapper.sourceToDestination(sourceWeeklyDraw);
-//        AddingWeeklyDrawServiceImpl.LOGGER.debug("addNewWeeklyDraw function: WeeklyDraw made from WeeklyDrawDTO object was successful.");
+        AddingWeeklyDrawServiceImpl.LOGGER.debug(
+                "addNewWeeklyDraw function: WeeklyDraw made from WeeklyDrawDTO object was successful.");
         this.lottery.getLotteryList().add(weeklyDraw);
         weeklyDrawJPARepository.save(weeklyDraw);
     }

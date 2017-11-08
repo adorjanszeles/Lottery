@@ -3,6 +3,8 @@ package com.lottery.service;
 import com.lottery.model.MostFrequentlyOccurringPairsResult;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 
+import java.text.ParseException;
+
 /**
  * interfész a leggyakrabban előforduló számpárok kiszámítására írt service-hez
  */
@@ -21,6 +23,6 @@ public interface MostFrequentlyOccuringPairsService {
      *
      * @return result objektum resultArray-field-je
      */
-    DrawsInTwoDimension executeRuleFilterByDate(String from, String to);
+    DrawsInTwoDimension executeRuleFilterByDate(String from, String to) throws ParseException;
 
 }

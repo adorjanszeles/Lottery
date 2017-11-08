@@ -1,5 +1,7 @@
 package com.lottery.common.exceptions;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -11,9 +13,20 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
+/**
+ * Kivételek kezelése
+ */
 @ControllerAdvice
-public class ApiValidationExceptionHandler {
+public class LotteryExceptionHandler {
 
+    protected static final Logger LOGGER = LoggerFactory.getLogger(LotteryExceptionHandler.class);
+
+    /**
+     * Validációhoz szükséges kivétel kezelés
+     *
+     * @param ex MethodArgumentNotValidException, ha a user rossz input adatot adott meg
+     * @return ResponseEntity object, ami tartalmazza az input adatok miatt keletkezett hibákat
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         BindingResult bindingResult = ex.getBindingResult();
@@ -32,8 +45,21 @@ public class ApiValidationExceptionHandler {
                                                                     globalError.getCode()))
                                                             .collect(toList());
 
+        LotteryExceptionHandler.LOGGER.debug("Validáció során hiba keletkezett: " + apiFieldErrors.toString());
         ApiErrorsView apiErrorsView = new ApiErrorsView(apiFieldErrors, apiGlobalErrors);
 
         return new ResponseEntity<>(apiErrorsView, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+
+    /**
+     * Globális exception kezelés
+     *
+     * @param ex Exception
+     */
+    @ExceptionHandler(Exception.class)
+    protected ResponseEntity<Object> handleException(Exception ex) {
+        LotteryExceptionHandler.LOGGER.debug("Kivétel keletkezett.", ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
