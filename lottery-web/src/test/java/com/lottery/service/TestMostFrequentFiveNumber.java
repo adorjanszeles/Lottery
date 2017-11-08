@@ -21,7 +21,6 @@ import static org.junit.Assert.assertEquals;
 /**
  * A leggyakoribb öt kihúzott szám keresésére írt szabály tesztelése
  */
-
 public class TestMostFrequentFiveNumber {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestMostFrequentFiveNumber.class);
@@ -91,8 +90,8 @@ public class TestMostFrequentFiveNumber {
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
 
-        firstWeeklyDraw.setDrawnNumbers(firstDraw);
-        secondWeeklyDraw.setDrawnNumbers(secondDraw);
+        firstWeeklyDraw.fillDrawnNumbers(firstDraw);
+        secondWeeklyDraw.fillDrawnNumbers(secondDraw);
 
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);

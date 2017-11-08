@@ -2,6 +2,8 @@ package com.lottery.service;
 
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 
+import java.text.ParseException;
+
 /**
  * interfész ötös találatok közti átlagos idő kiszámítására írt service-hez
  */
@@ -20,5 +22,5 @@ public interface AverageTimeBetweenTwoMatchFiveDrawsService {
      *
      * @return result objektum
      */
-    AverageTimeBetweenTwoMatchFiveDrawsResult executeRuleFilterByDate(String from, String to);
+    AverageTimeBetweenTwoMatchFiveDrawsResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

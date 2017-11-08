@@ -17,7 +17,7 @@ rule "Find average number"
 
         for(int i = 0; i < $drawList.getDrawListPreparedForDrools().size(); i++){
             for(int j = 0; j < 5; j++) {
-                all += $drawList.getDrawListPreparedForDrools().get(i).getDrawnNumbers()[j];
+                all += $drawList.getDrawListPreparedForDrools().get(i).generateDrawnNumbers()[j];
             }
             count += 5;
         }

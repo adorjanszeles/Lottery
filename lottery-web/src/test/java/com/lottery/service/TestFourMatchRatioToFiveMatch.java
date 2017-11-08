@@ -18,7 +18,6 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
 public class TestFourMatchRatioToFiveMatch {
 
     private StatelessKieSession statelessKieSession;
@@ -32,7 +31,6 @@ public class TestFourMatchRatioToFiveMatch {
     /**
      * Négyes lóttó találatok aránya az ötösökhöz szabály teszteléshez
      */
-
     private void generateWeeklyDrawList() {
         this.weeklyDrawList = new WeeklyDrawList();
         List<WeeklyDraw> drawList = new ArrayList<>();

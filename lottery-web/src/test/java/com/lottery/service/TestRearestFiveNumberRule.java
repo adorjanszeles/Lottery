@@ -93,9 +93,9 @@ public class TestRearestFiveNumberRule {
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
         WeeklyDraw thirdWeeklyDraw = new WeeklyDraw();
 
-        firstWeeklyDraw.setDrawnNumbers(firstDraw);
-        secondWeeklyDraw.setDrawnNumbers(secondDraw);
-        thirdWeeklyDraw.setDrawnNumbers(thirdDraw);
+        firstWeeklyDraw.fillDrawnNumbers(firstDraw);
+        secondWeeklyDraw.fillDrawnNumbers(secondDraw);
+        thirdWeeklyDraw.fillDrawnNumbers(thirdDraw);
 
         drawList.add(firstWeeklyDraw);
         drawList.add(secondWeeklyDraw);

@@ -136,16 +136,16 @@ public class TestMostFrequentlyOccurringPairsRule {
         WeeklyDraw weeklyDraw8 = new WeeklyDraw();
         WeeklyDraw weeklyDraw9 = new WeeklyDraw();
 
-        weeklyDraw0.setDrawnNumbers(new Integer[]{1, 2, 3, 4, 5});
-        weeklyDraw1.setDrawnNumbers(new Integer[]{1, 2, 34, 45, 54});
-        weeklyDraw2.setDrawnNumbers(new Integer[]{1, 2, 45, 67, 90});
-        weeklyDraw3.setDrawnNumbers(new Integer[]{1, 2, 56, 78, 5});
-        weeklyDraw4.setDrawnNumbers(new Integer[]{1, 2, 23, 45, 90});
-        weeklyDraw5.setDrawnNumbers(new Integer[]{1, 2, 78, 43, 51});
-        weeklyDraw6.setDrawnNumbers(new Integer[]{1, 2, 33, 48, 9});
-        weeklyDraw7.setDrawnNumbers(new Integer[]{1, 2, 31, 44, 59});
-        weeklyDraw8.setDrawnNumbers(new Integer[]{1, 2, 67, 87, 59});
-        weeklyDraw9.setDrawnNumbers(new Integer[]{1, 2, 90, 4, 5});
+        weeklyDraw0.fillDrawnNumbers(new Integer[]{1, 2, 3, 4, 5});
+        weeklyDraw1.fillDrawnNumbers(new Integer[]{1, 2, 34, 45, 54});
+        weeklyDraw2.fillDrawnNumbers(new Integer[]{1, 2, 45, 67, 90});
+        weeklyDraw3.fillDrawnNumbers(new Integer[]{1, 2, 56, 78, 5});
+        weeklyDraw4.fillDrawnNumbers(new Integer[]{1, 2, 23, 45, 90});
+        weeklyDraw5.fillDrawnNumbers(new Integer[]{1, 2, 78, 43, 51});
+        weeklyDraw6.fillDrawnNumbers(new Integer[]{1, 2, 33, 48, 9});
+        weeklyDraw7.fillDrawnNumbers(new Integer[]{1, 2, 31, 44, 59});
+        weeklyDraw8.fillDrawnNumbers(new Integer[]{1, 2, 67, 87, 59});
+        weeklyDraw9.fillDrawnNumbers(new Integer[]{1, 2, 90, 4, 5});
 
         weeklyDrawList.add(weeklyDraw0);
         weeklyDrawList.add(weeklyDraw1);
@@ -179,7 +179,7 @@ public class TestMostFrequentlyOccurringPairsRule {
         newDraws.add(new Integer[]{1, 2, 23, 64, 5});
 
         for (int n = 0; n < 10; n++) {
-            this.weeklyDrawList.getDrawListPreparedForDrools().get(n).setDrawnNumbers(newDraws.get(n));
+            this.weeklyDrawList.getDrawListPreparedForDrools().get(n).fillDrawnNumbers(newDraws.get(n));
         }
     }
 

@@ -2,6 +2,8 @@ package com.lottery.service;
 
 import com.lottery.model.AverageResult;
 
+import java.text.ParseException;
+
 /**
  * interfész átlagot számító szabály futtatásához
  */
@@ -20,5 +22,5 @@ public interface AverageService {
      *
      * @return result objektum
      */
-    AverageResult executeRuleFilterByDate(String from, String to);
+    AverageResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

@@ -3,11 +3,16 @@ package com.lottery.service;
 import com.lottery.common.enums.InputColumn;
 import com.lottery.model.Lottery;
 import com.lottery.model.WeeklyDraw;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -15,6 +20,8 @@ import java.util.Scanner;
  */
 
 public class LotteryFileReaderImpl implements LotteryFileReader {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(LotteryFileReaderImpl.class);
 
     private static final int COL_NUM = 16;
     private static final int DATE_YEAR_IDX = 0;
@@ -88,19 +95,35 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
     /**
      * a datum parsolasa Date objektummá Calendar segítségével
      *
-     * @param date az input fileból érkező string dátum
+     * @param cleanedLine az input fileból érkező string tömb, egy adott sor
      * @return date objektum
      */
-    private SimpleDateFormat generateDateFromString(String date) {
+    private Date generateDateFromString(String[] cleanedLine){
+        String date = cleanedLine[InputColumn.DATE.getColNum()];
+        Integer inputYear = Integer.parseInt(cleanedLine[InputColumn.YEAR.getColNum()]);
+        Integer inputWeek = Integer.parseInt(cleanedLine[InputColumn.WEEK.getColNum()]);
+
         if (date.equals("")) {
-            return null;
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.YEAR, inputYear);
+            calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
+            calendar.set(Calendar.HOUR_OF_DAY, 0);
+            calendar.set(Calendar.MINUTE, 0);
+            calendar.set(Calendar.SECOND, 0);
+            return calendar.getTime();
         }
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String[] dateElement = date.split(LotteryFileReaderImpl.DATE_SEPARATOR);
         String year = dateElement[LotteryFileReaderImpl.DATE_YEAR_IDX];
         String month = dateElement[LotteryFileReaderImpl.DATE_MONTH_IDX];
         String day = dateElement[LotteryFileReaderImpl.DATE_DAY_IDX];
-        SimpleDateFormat drawDate = new SimpleDateFormat(year + "-" + month + "-" + day);
-        return drawDate;
+        try {
+            return format.parse(year + "-" + month + "-" + day);
+        } catch (ParseException e) {
+            LotteryFileReaderImpl.LOGGER.debug("rossz dátum");
+        }
+        return null;
     }
 
     /**
@@ -162,9 +185,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      */
     private WeeklyDraw createWeeklyDraws(String[] cleanedLine) {
         WeeklyDraw weeklyDraw = new WeeklyDraw();
-        weeklyDraw.setYear(parseStringToInt(cleanedLine[InputColumn.YEAR.getColNum()]));
-        weeklyDraw.setWeek(parseStringToInt(cleanedLine[InputColumn.WEEK.getColNum()]));
-        weeklyDraw.setDrawDate(generateDateFromString(cleanedLine[InputColumn.DATE.getColNum()]));
+        weeklyDraw.setDrawDate(generateDateFromString(cleanedLine));
         weeklyDraw.setFiveMatch(parseStringToInt(cleanedLine[InputColumn.FIVE_MATCH.getColNum()]));
         weeklyDraw.setFiveMatchPrize(parseStringToLong(cleanedLine[InputColumn.FIVE_MATCH_PRIZE.getColNum()]));
         weeklyDraw.setFourMatch(parseStringToInt(cleanedLine[InputColumn.FOUR_MATCH.getColNum()]));
@@ -173,12 +194,11 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         weeklyDraw.setThreeMatchPrize(parseStringToLong(cleanedLine[InputColumn.THREE_MATCH_PRIZE.getColNum()]));
         weeklyDraw.setTwoMatch(parseStringToInt(cleanedLine[InputColumn.TWO_MATCH.getColNum()]));
         weeklyDraw.setTwoMatchPrize(parseStringToLong(cleanedLine[InputColumn.TWO_MATCH_PRIZE.getColNum()]));
-        weeklyDraw.setDrawnNumbers(new Integer[]{Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]),
-                                                 Integer.parseInt(
-                                                         cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()])});
+        weeklyDraw.setFirst(Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]));
+        weeklyDraw.setSecond(Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]));
+        weeklyDraw.setThird(Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]));
+        weeklyDraw.setFourth(Integer.parseInt(cleanedLine[InputColumn.FOURTH_DRAW_NUM.getColNum()]));
+        weeklyDraw.setFifth(Integer.parseInt(cleanedLine[InputColumn.FIFTH_DRAW_NUM.getColNum()]));
 
         return weeklyDraw;
     }

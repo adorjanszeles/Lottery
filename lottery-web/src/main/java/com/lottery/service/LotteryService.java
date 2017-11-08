@@ -1,7 +1,6 @@
 package com.lottery.service;
 
 import com.lottery.model.Lottery;
-import com.lottery.model.WeeklyDraw;
 import com.lottery.model.WeeklyDrawList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,28 +22,17 @@ public abstract class LotteryService {
     }
 
     /**
-     * Weeklydraw objektum szűrése dátumok közötti intervallumra
+     * Input dátumok dátummá parsolása
      *
-     * @param weeklyDraw objektum
-     * @param from       datum kezdeze
-     * @param to         datum vege
-     * @return Weeklydraw objektum, ha a datum kozott van, ha nem null-t ad vissza
+     * @param dateInput datum kezdeze
+     * @return Date objektum
      */
-    protected WeeklyDraw filterByDate(WeeklyDraw weeklyDraw, String from, String to) {
-        try {
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            Date date1 = format.parse(from);
-            Date date2 = format.parse(to);
-            Date date = format.parse(weeklyDraw.getDrawDate().toPattern());
-            if (date.before(date2) && date.after(date1)) {
-                return weeklyDraw;
-            }
-        } catch (ParseException e) {
-            LotteryService.LOGGER.debug("Datum parszolasi hiba");
-        } catch (NullPointerException e) {
-            LotteryService.LOGGER.debug("Nincs datum.");
-        }
-        return null;
+    protected Date parseDate(String dateInput) throws ParseException {
+        LotteryService.LOGGER.debug("Input dátummá parszolása elkezdődöt...");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = format.parse(dateInput);
+        LotteryService.LOGGER.debug("Input dátummá parszolása befejeződött...");
+        return date;
     }
 
     /**
@@ -53,8 +41,10 @@ public abstract class LotteryService {
      * @return WeeklydrawList, amiben az összes sorsolás eredeménye van
      */
     protected WeeklyDrawList init() {
+        LotteryService.LOGGER.debug("weeklyDraw lista létrehozása elkezdődött...");
         WeeklyDrawList weeklyDrawList = new WeeklyDrawList();
         weeklyDrawList.setDrawListPreparedForDrools(this.lottery.getLotteryList());
+        LotteryService.LOGGER.debug("weeklyDraw lista létrehozása befejeződött...");
         return weeklyDrawList;
     }
 
