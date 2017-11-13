@@ -27,7 +27,6 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.web.client.RestTemplate;
-
 import java.io.IOException;
 
 /**
@@ -68,15 +67,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         ResourceServerConfig.LOGGER.debug("httpSecurity inicializálva");
 
     }
-
-//    @Bean
-//    public JwtAccessTokenConverter accessTokenConverter() {
-//        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(new ClassPathResource("mykeys.jks"),
-//                                                                       "mypass".toCharArray());
-//        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("mykeys"));
-//        return converter;
-//    }
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
