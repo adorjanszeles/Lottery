@@ -1,7 +1,7 @@
-package com.lottery.service;
+package com.lottery.authserver.service;
 
+import com.lottery.authserver.repository.UserJPARepository;
 import com.lottery.model.User;
-import com.lottery.repository.UserJPARepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

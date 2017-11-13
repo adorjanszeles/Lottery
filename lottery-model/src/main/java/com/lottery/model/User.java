@@ -27,7 +27,7 @@ public class User {
         this.password = password;
     }
 
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
     public String getUsername() {
         return username;
     }

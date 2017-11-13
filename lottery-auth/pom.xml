@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lottery</groupId>
+    <artifactId>lottery-auth</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+
+    <parent>
+        <groupId>com.lottery</groupId>
+        <artifactId>lottery</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <slf4j.version>1.7.5</slf4j.version>
+        <slf4j-simple.version>1.7.21</slf4j-simple.version>
+        <spring.version>4.3.11.RELEASE</spring.version>
+        <jackson.version>2.7.5</jackson.version>
+        <swagger.version>2.5.0</swagger.version>
+        <jackson.version>2.9.1</jackson.version>
+        <logback.version>1.0.13</logback.version>
+        <validation.version>2.0.0.Final</validation.version>
+        <validator.version>6.0.3.Final</validator.version>
+        <spring-data-redis.version>1.8.7.RELEASE</spring-data-redis.version>
+        <jedis.version>2.9.0</jedis.version>
+        <oracle.jdbc.version>12.1.0-1.0</oracle.jdbc.version>
+        <jackson-dataformat-csv.version>2.7.9</jackson-dataformat-csv.version>
+        <spring-data-jpa.version>1.10.5.RELEASE</spring-data-jpa.version>
+        <hibernate-core.version>5.2.9.Final</hibernate-core.version>
+        <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
+        <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+    </properties>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.lottery</groupId>
+            <artifactId>lottery-model</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.mapstruct</groupId>
+                    <artifactId>mapstruct</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+            <version>${jackson-dataformat-csv.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data-jpa.version}</version>
+        </dependency>
+
+        <!--<dependency>-->
+        <!--<groupId>com.oracle</groupId>-->
+        <!--<artifactId>ojdbc7</artifactId>-->
+        <!--<version>${oracle.jdbc.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- oracle jdbc driver just for travisCI -->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc7</artifactId>
+            <version>${oracle.jdbc.version}</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/ojdbc7-12.1.0-1.0.jar</systemPath>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-jdk8</artifactId>
+            <version>${org.mapstruct.version}</version>
+        </dependency>
+
+        <!--SPRING SECURITY DEPENDECIES-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.1.1.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.0.8.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+    </dependencies>
+
+
+</project>
