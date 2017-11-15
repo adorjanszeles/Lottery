@@ -53,7 +53,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                .authorities("Role_user")
                .scopes("read")
                .secret("secret")
-               .accessTokenValiditySeconds(300) // valid for 5 minutes
+               .accessTokenValiditySeconds(600000) // valid for 5 minutes
                .refreshTokenValiditySeconds(1200); // valid for 20 minutes
         AuthorizationServerConfig.LOGGER.debug("Access, Refresh tokenek konfigurálása befejeződött");
     }

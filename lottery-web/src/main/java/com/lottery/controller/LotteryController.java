@@ -1,16 +1,38 @@
 package com.lottery.controller;
 
-import com.lottery.model.*;
+import com.lottery.model.AverageResult;
+import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
+import com.lottery.model.FourMatchRatioToFiveMatchResult;
+import com.lottery.model.Lottery;
+import com.lottery.model.MostFrequentFiveNumberResult;
+import com.lottery.model.RearestFiveResult;
+import com.lottery.model.WeeklyDrawDTO;
 import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 import com.lottery.repository.UserJPARepository;
 import com.lottery.repository.WeeklyDrawJPARepository;
-import io.swagger.annotations.*;
-import com.lottery.service.*;
+import com.lottery.service.AddingWeeklyDrawService;
+import com.lottery.service.AverageService;
+import com.lottery.service.AverageTimeBetweenTwoMatchFiveDrawsService;
+import com.lottery.service.DateIntervalService;
+import com.lottery.service.FourMatchRatioToFiveService;
+import com.lottery.service.MostFrequentFiveNumberService;
+import com.lottery.service.MostFrequentlyOccuringPairsService;
+import com.lottery.service.PersistFromCsv;
+import com.lottery.service.RearestFiveService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.text.ParseException;
@@ -121,6 +143,7 @@ public class LotteryController {
         return this.rearestFiveService.executeRuleFilterByDate(from, to);
     }
 
+    // @CrossOrigin(origins = "http://localhost:4200") //TODO remove
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET average num", notes = "GET average num")
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
@@ -129,6 +152,7 @@ public class LotteryController {
         return this.averageService.executeRule();
     }
 
+    // @CrossOrigin(origins = "http://localhost:4200") //TODO remove
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @GetMapping("/average/{from}/{to}")
     @ApiOperation(value = "GET average num filtered by date", notes = "gets average num between given date")
