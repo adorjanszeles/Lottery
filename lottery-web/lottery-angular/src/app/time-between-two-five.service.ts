@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ResultNum} from "./result-num";
+import {ResultNum} from './resultNum';
 import {Token} from './token';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';

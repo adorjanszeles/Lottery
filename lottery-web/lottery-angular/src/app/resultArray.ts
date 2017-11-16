@@ -1,3 +1,3 @@
 export class ResultArray {
-    arr: number[][];
+    arr: number[];
 }

@@ -33,7 +33,7 @@ export class ServiceHubService {
 
     getResultByDate(from: string, to: string, title: string): any {
         switch (title) {
-            case 'Average':
+            case 'Average Number':
                 return this.averageService.getResultByDate(from, to);
             case 'Most Frequent Five Number':
                 return this.mostFreqFiveService.getResultByDate(from, to);
@@ -52,7 +52,7 @@ export class ServiceHubService {
 
     getResult(title: string): any {
         switch (title) {
-            case 'Average':
+            case 'Average Number':
                 return this.averageService.getResult();
             case 'Most Frequent Five Number':
                 return this.mostFreqFiveService.getResult();

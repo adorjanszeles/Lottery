@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ResultArray} from "./result-array";
+import {ResultArray} from './resultArray';
 import {Token} from './token';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -24,7 +24,7 @@ export class RearestFiveService {
     getResult(): ResultArray {
         this.result = new ResultArray();
         this.http
-            .get<number>(this.lotteryUrl, httpOptions).subscribe(data => this.result.num = data['result'][0]);
+            .get<number>(this.lotteryUrl, httpOptions).subscribe(data => this.result.arr = data['result']);
         return this.result;
     }
 
@@ -32,7 +32,7 @@ export class RearestFiveService {
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultArray();
         this.http
-            .get<number>(url, httpOptions).subscribe(data => this.resultByDate.num = data['result'][0]);
+            .get<number>(url, httpOptions).subscribe(data => this.resultByDate.arr = data['result']);
         return this.resultByDate;
     }
 }

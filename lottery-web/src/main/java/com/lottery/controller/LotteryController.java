@@ -38,6 +38,8 @@ import javax.validation.Valid;
 import java.text.ParseException;
 import java.util.Date;
 
+import static org.springframework.data.repository.init.ResourceReader.Type.JSON;
+
 /**
  * Lottery REST végpontokat tartalmazó Controller osztály
  */
@@ -217,7 +219,7 @@ public class LotteryController {
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
     @ApiOperation(value = "GET min/max dates", notes = "getting earliest and latest dates")
-    @GetMapping("/get-date-intervals")
+    @GetMapping(value = "/get-date-intervals")
     @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
     public String getDateIntervals() {
         Date firstDate = this.dateIntervalService.getStart();

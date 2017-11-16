@@ -16,16 +16,11 @@ export class OnlyfortestComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getResult();
-        this.getResultByFilter('2012-01-01', '2017-01-01');
+        this.getResult('Average');
+        this.getResult('Average', '2012-01-01', '2017-01-01');
     }
 
-    getResult(): void {
-        this.result = this.serviceHubService.getService('Average');
-    }
-
-    getResultByFilter(from: string, to: string): void {
-        this.resultByFilter = this.serviceHubService
-            .getService('Average', from, to,);
+    getResult(title: string, from = '', to = ''): void {
+        this.result = this.serviceHubService.getService('Average', from, to);
     }
 }

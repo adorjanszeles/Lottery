@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ResultString} from "./result-string";
+import {ResultString} from './resultString';
 import {Token} from './token';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -7,9 +7,9 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 const token = new Token();
 const httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': token.token
-    })
+        'Content-Type': 'text/plain',
+        'Authorization': token.token,
+    } )
 };
 
 @Injectable()
@@ -23,7 +23,12 @@ export class DrawDateIntervalsService {
     getResult(): ResultString {
         this.result = new ResultString();
         this.http
-            .get<number>(this.lotteryUrl, httpOptions).subscribe(data => this.result.interval = data);
+            .get(this.lotteryUrl, { headers: new HttpHeaders({
+                'Content-Type': 'text/plain',
+                'Authorization': token.token,
+            } ), responseType: 'text'}).subscribe(response => {
+            this.result.interval = response});
+        console.log('string: ' + this.result.interval);
         return this.result;
     }
 }
