@@ -98,7 +98,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     public String getPublicKey() {
         ResourceServerConfig.LOGGER.debug("Public Key lekérése az Auth szervertől");
-        System.out.println("Public key lekérése \n\n\n");
 
         RestTemplate restTemplate = new RestTemplate();
         String authServerUrl = this.env.getProperty("authserver.token_key");
