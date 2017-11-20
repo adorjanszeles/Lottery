@@ -11,7 +11,7 @@ import {FourMatchFiveRatioService} from './four-match-five-ratio.service';
 import {TimeBetweenTwoFiveService} from './time-between-two-five.service';
 import {DrawDateIntervalsService} from './draw-date-intervals.service';
 import {OnlyfortestComponent} from './onlyfortest/onlyfortest.component';
-import {SwapiTestService} from './swapi-test.service';
+import {GetTokenService} from "./get-token.service";
 
 import {HttpClientModule} from '@angular/common/http';
 import {StringResultComponent} from './string-result/string-result.component';
@@ -24,22 +24,22 @@ import {FormsModule} from '@angular/forms';
 import {MessageService} from './message.service';
 
 @NgModule({
-  declarations: [
-      AppComponent,
-      OnlyfortestComponent,
-      AppComponent,
-      OneNumResultComponent,
-      RuleComponent,
-      MessagesComponent,
-      FiveNumResultComponent,
-      TwoDArrayResultComponent,
-      StringResultComponent
-  ],
-  imports: [
-      BrowserModule,
-      HttpClientModule,
-      FormsModule
-  ],
+    declarations: [
+        AppComponent,
+        OnlyfortestComponent,
+        AppComponent,
+        OneNumResultComponent,
+        RuleComponent,
+        MessagesComponent,
+        FiveNumResultComponent,
+        TwoDArrayResultComponent,
+        StringResultComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule
+    ],
     providers: [AverageService,
         ServiceHubService,
         MostFreqFiveService,
@@ -48,9 +48,10 @@ import {MessageService} from './message.service';
         FourMatchFiveRatioService,
         TimeBetweenTwoFiveService,
         DrawDateIntervalsService,
-        SwapiTestService,
-        MessageService
+        MessageService,
+        GetTokenService
     ],
-  bootstrap: [AppComponent]
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

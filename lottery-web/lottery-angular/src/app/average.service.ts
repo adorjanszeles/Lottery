@@ -1,16 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ResultNum} from "./resultNum";
-import {Token} from './token';
+import {GetTokenService} from "./get-token.service";
 
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
-const token = new Token();
-const httpOptions = {
-    headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': token.token
-    })
-};
 
 @Injectable()
 export class AverageService {
@@ -18,21 +11,22 @@ export class AverageService {
     private resultByDate;
     private lotteryUrl = 'http://localhost:8080/lottery/lottery/average';
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }
 
     getResult(): ResultNum {
         this.result = new ResultNum();
         this.http
-            .get<number>(this.lotteryUrl, httpOptions).subscribe(data => this.result.num = data['result']);
+            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.num = data['result']);
         return this.result;
     }
 
     getResultByDate(from: string, to: string): ResultNum {
+
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultNum();
         this.http
-            .get<number>(url, httpOptions).subscribe(data => this.resultByDate.num = data['result']);
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.num = data['result']);
         return this.resultByDate;
     }
 }

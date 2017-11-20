@@ -6,7 +6,6 @@ import {MostFreqPairsService} from './most-freq-pairs.service';
 import {FourMatchFiveRatioService} from './four-match-five-ratio.service';
 import {DrawDateIntervalsService} from './draw-date-intervals.service';
 import {TimeBetweenTwoFiveService} from './time-between-two-five.service';
-import {SwapiTestService} from './swapi-test.service';
 
 
 @Injectable()
@@ -18,8 +17,7 @@ export class ServiceHubService {
                 private mostFreqPairsService: MostFreqPairsService,
                 private fourMatchFiveRatioService: FourMatchFiveRatioService,
                 private timeBetweenTwoFiveService: TimeBetweenTwoFiveService,
-                private drawDateIntervalsService: DrawDateIntervalsService,
-                private swapiTestService: SwapiTestService) {
+                private drawDateIntervalsService: DrawDateIntervalsService,) {
     }
 
     getService(title: string, from = '', to = ''): any {
@@ -45,8 +43,6 @@ export class ServiceHubService {
                 return this.timeBetweenTwoFiveService.getResultByDate(from, to);
             case 'Four Match Ratio to Five':
                 return this.fourMatchFiveRatioService.getResultByDate(from, to);
-            case 'Swapi Test':
-                return this.swapiTestService.getDeathStar(from, to);
         }
     }
 
@@ -66,8 +62,6 @@ export class ServiceHubService {
                 return this.fourMatchFiveRatioService.getResult();
             case 'Draw Date Intervals':
                 return this.drawDateIntervalsService.getResult();
-            case 'Swapi Test':
-                return this.swapiTestService.getLuke();
         }
     }
 
