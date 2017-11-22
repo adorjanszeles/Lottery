@@ -8,7 +8,7 @@ import com.lottery.model.WeeklyDrawDTO;
 public interface AddingWeeklyDrawService {
 
     /**
-     * Adds a new WeeklyDraw object to the LotteryList
+     * Új weeklyDraw objektumokat ad a lottery listához
      * @param weeklyDraw weeklyDraw DTO
      */
     void addNewWeeklyDraw(WeeklyDrawDTO weeklyDraw);

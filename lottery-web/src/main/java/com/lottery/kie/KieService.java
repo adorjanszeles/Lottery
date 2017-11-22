@@ -4,6 +4,9 @@ import com.lottery.common.enums.KieSessionName;
 import com.lottery.common.exceptions.MissingKieServicesException;
 import org.kie.api.runtime.KieSession;
 
+/**
+ * Kie Service létrehozása
+ */
 public interface KieService {
 
     /**
