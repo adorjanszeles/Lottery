@@ -1,6 +1,5 @@
 package com.lottery.service;
 
-
 import com.lottery.model.RawWeeklyDraw;
 import com.lottery.model.WeeklyDraw;
 

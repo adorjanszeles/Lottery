@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link FourMatchRatioToFiveService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link FourMatchRatioToFiveService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 @Service
 public class FourMatchRatioToFiveServiceImpl extends LotteryService implements FourMatchRatioToFiveService {
@@ -51,12 +51,10 @@ public class FourMatchRatioToFiveServiceImpl extends LotteryService implements F
         WeeklyDrawList weeklyDrawList = super.init();
         Date fromDate = super.parseDate(from);
         Date toDate = super.parseDate(to);
-        FourMatchRatioToFiveServiceImpl.LOGGER.debug(
-                "Datum alapjan filterezett húzások query-je elkezdődött...");
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);
-        FourMatchRatioToFiveServiceImpl.LOGGER.debug(
-                "Datum alapjan filterezett húzások query-je befejeződött...");
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je befejeződött...");
         weeklyDrawList.setDrawListPreparedForDrools(filteredList);
         FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug(

@@ -11,6 +11,7 @@ public interface KieService {
      *
      * @param kieSessionName enum session név {@link KieSessionName}.
      * @return kieSession
+     * @throws MissingKieServicesException hiányzó kie session kivétel
      */
 
     KieSession generateNewKieSession(KieSessionName kieSessionName) throws MissingKieServicesException;

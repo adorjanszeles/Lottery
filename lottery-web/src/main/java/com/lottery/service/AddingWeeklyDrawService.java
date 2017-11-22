@@ -9,6 +9,7 @@ public interface AddingWeeklyDrawService {
 
     /**
      * Adds a new WeeklyDraw object to the LotteryList
+     * @param weeklyDraw weeklyDraw DTO
      */
     void addNewWeeklyDraw(WeeklyDrawDTO weeklyDraw);
 }

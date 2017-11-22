@@ -34,6 +34,8 @@ public class TestMostFrequentFiveNumber {
 
     /**
      * kie session és teszteléshez használt listák létrehozása a tesztek lefutása előtt
+     *
+     * @throws MissingKieServicesException hiányzó kie session kivétel
      */
 
     @Before

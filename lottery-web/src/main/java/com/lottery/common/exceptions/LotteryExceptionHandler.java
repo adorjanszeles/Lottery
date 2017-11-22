@@ -55,6 +55,7 @@ public class LotteryExceptionHandler {
      * Globális exception kezelés
      *
      * @param ex Exception
+     * @return responseEntity
      */
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<Object> handleException(Exception ex) {
