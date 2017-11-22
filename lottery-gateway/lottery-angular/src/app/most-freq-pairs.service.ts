@@ -8,7 +8,7 @@ import {GetTokenService} from "./get-token.service";
 export class MostFreqPairsService {
     private result;
     private resultByDate;
-    private lotteryUrl = 'http://localhost:8080/lottery/lottery/most-frequently-occuring-pairs';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/most-frequently-occuring-pairs';
 
     constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }

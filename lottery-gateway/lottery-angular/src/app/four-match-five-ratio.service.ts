@@ -1,15 +1,14 @@
 import {Injectable} from '@angular/core';
-import {ResultNum} from "./resultNum";
+import {ResultNum} from './resultNum';
 import {GetTokenService} from "./get-token.service";
 
 import {HttpClient} from '@angular/common/http';
 
-
 @Injectable()
-export class AverageService {
+export class FourMatchFiveRatioService {
     private result;
     private resultByDate;
-    private lotteryUrl = 'http://localhost:8080/lottery/lottery/average';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/four-match-ratio-to-five-match';
 
     constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }
@@ -22,7 +21,6 @@ export class AverageService {
     }
 
     getResultByDate(from: string, to: string): ResultNum {
-
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultNum();
         this.http
