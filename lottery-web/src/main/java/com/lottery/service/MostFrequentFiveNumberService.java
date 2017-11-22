@@ -21,7 +21,10 @@ public interface MostFrequentFiveNumberService {
     /**
      * Leggyakrabban előforduló számok dátum alapján filterezett kiszámításához írt rule futtatása
      *
+     * @param from dátum intervallum kezdete
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
     MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

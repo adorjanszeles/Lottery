@@ -20,7 +20,10 @@ public interface RearestFiveService {
     /**
      * Dátum alapján filterezett legritkábban kihúzott számok kiszámításához írt rule futtatása
      *
+     * @param from dátum intervallum kezdete
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
     RearestFiveResult executeRuleFilterByDate(String from, String to) throws ParseException;
 

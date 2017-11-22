@@ -41,6 +41,7 @@
         <!--ANGULAR PROPERTIES-->
         <angular.project.location>lottery-angular</angular.project.location>
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
+        <interceptor.version>1.2</interceptor.version>
     </properties>
 
     <build>
@@ -172,6 +173,12 @@
             <groupId>org.drools</groupId>
             <artifactId>drools-compiler</artifactId>
             <version>${kie-ci.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.interceptor</groupId>
+            <artifactId>javax.interceptor-api</artifactId>
+            <version>${interceptor.version}</version>
         </dependency>
 
         <dependency>
