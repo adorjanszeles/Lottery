@@ -6,6 +6,8 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import com.lottery.model.RawWeeklyDraw;
 import com.lottery.model.WeeklyDraw;
 import com.lottery.repository.WeeklyDrawJPARepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 
@@ -17,6 +19,7 @@ import java.util.List;
 
 public class PersistFromCsv {
 
+    protected static final Logger LOGGER = LoggerFactory.getLogger(PersistFromCsv.class);
     private WeeklyDrawJPARepository wrepo;
 
     @Autowired
@@ -31,11 +34,9 @@ public class PersistFromCsv {
             objectList = loadObjectList(RawWeeklyDraw.class, filename);
 
         } catch (FileNotFoundException e) {
-            System.out.println("nem beolvasható a fájl");
-            e.printStackTrace();
+            PersistFromCsv.LOGGER.debug("nem beolvasható a fájl " + e);
         } catch (IOException e) {
-            System.out.println("probléma beolvasáskor vagy nem létezik a fájl");
-            e.printStackTrace();
+            PersistFromCsv.LOGGER.debug("probléma beolvasáskor vagy nem létezik a fájl" + e);
         }
 
         return objectList;
@@ -48,8 +49,7 @@ public class PersistFromCsv {
             List<WeeklyDraw> weeklyDraws = converter.convertRawsToWeeklyDraws(rawWeeklyDraws);
             this.wrepo.save(weeklyDraws);
         } catch (FileNotFoundException e) {
-            System.out.println("nem beolvasható a fájl");
-            e.printStackTrace();
+            PersistFromCsv.LOGGER.debug("nem beolvasható a fájl" + e);
         }
     }
 
@@ -65,7 +65,7 @@ public class PersistFromCsv {
         try (MappingIterator<T> readValues = mapper.readerFor(type).with(bootstrapSchema).readValues(file)) {
             return readValues.readAll();
         } catch (Exception e) {
-            System.out.println("Error occurred while loading object list from file " + fileName + ": " + e);
+            PersistFromCsv.LOGGER.debug("Error occurred while loading object list from file " + fileName + ": " + e);
             throw new Error("");
         }
     }

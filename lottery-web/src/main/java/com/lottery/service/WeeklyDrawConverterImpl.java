@@ -64,7 +64,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
         Integer inputYear = Integer.parseInt(rawYear);
         Integer inputWeek = Integer.parseInt(rawWeek);
 
-        if (rawDate.equals("")) {
+        if (("").equals(rawDate)) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, inputYear);
             calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
@@ -94,7 +94,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
      * @return Integer
      */
     private Integer parseStringToInt(String element) {
-        if (element.equals("")) {
+        if (("").equals(element)) {
             return null;
         }
         return Integer.parseInt(element);
@@ -107,7 +107,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
      * @return Long
      */
     private Long parseStringToLong(String element) {
-        if (element.equals("")) {
+        if (("").equals(element)) {
             return null;
         }
         return Long.parseLong(element);
@@ -125,7 +125,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
         int to = InputColumn.TWO_MATCH_PRIZE.getColNum();
         int counter = 0;
         for (int i = from; i <= to; i++) {
-            if (cleanedLine[i].equals("0")) {
+            if (("0").equals(cleanedLine[i])) {
                 counter++;
             }
         }

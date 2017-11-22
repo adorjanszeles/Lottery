@@ -103,7 +103,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         Integer inputYear = Integer.parseInt(cleanedLine[InputColumn.YEAR.getColNum()]);
         Integer inputWeek = Integer.parseInt(cleanedLine[InputColumn.WEEK.getColNum()]);
 
-        if (date.equals("")) {
+        if (("").equals(date)) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, inputYear);
             calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
@@ -133,7 +133,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @return Integer
      */
     private Integer parseStringToInt(String element) {
-        if (element.equals("")) {
+        if (("").equals(element)) {
             return null;
         }
         return Integer.parseInt(element);
@@ -146,7 +146,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @return Long
      */
     private Long parseStringToLong(String element) {
-        if (element.equals("")) {
+        if (("").equals(element)) {
             return null;
         }
         return Long.parseLong(element);
@@ -165,7 +165,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         int to = InputColumn.TWO_MATCH_PRIZE.getColNum();
         int counter = 0;
         for (int i = from; i <= to; i++) {
-            if (cleanedLine[i].equals("0")) {
+            if (("0").equals(cleanedLine[i])) {
                 counter++;
             }
         }
