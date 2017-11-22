@@ -19,6 +19,10 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * A négyes találatok aránya az ötösökhöz szabály tesztelése
+ */
+
 public class TestFourMatchRatioToFiveMatch {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestFourMatchRatioToFiveMatch.class);

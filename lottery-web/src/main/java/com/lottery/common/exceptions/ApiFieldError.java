@@ -1,5 +1,8 @@
 package com.lottery.common.exceptions;
 
+/**
+ * Validációs input field kivételek osztálya
+ */
 public class ApiFieldError {
 
     private String field;
