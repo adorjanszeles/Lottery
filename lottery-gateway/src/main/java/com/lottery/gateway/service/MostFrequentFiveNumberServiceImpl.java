@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link MostFrequentFiveNumberService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class MostFrequentFiveNumberServiceImpl extends AbstractGetService<MostFrequentFiveNumberResult>

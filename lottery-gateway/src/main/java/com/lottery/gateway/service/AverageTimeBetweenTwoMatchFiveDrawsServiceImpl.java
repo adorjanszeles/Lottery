@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link AverageTimeBetweenTwoMatchFiveDrawsService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl

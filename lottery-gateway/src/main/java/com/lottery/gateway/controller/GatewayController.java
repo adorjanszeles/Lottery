@@ -33,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Lottery REST végpontokat tartalmazó Controller osztály
+ * Lottery REST-hez gateway végpontokat tartalmazó Controller osztály
  */
 @RestController
 @Api(value = "/gateway", description = "Lottery Rules Gateway")
