@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link MostFrequentlyOccuringPairsService interfész implementációja. {@link LotteryService abstract osztály
+ * {@link MostFrequentlyOccuringPairsService} interfész implementációja. {@link LotteryService} abstract osztály
  * extendálása.
  */
 @Service

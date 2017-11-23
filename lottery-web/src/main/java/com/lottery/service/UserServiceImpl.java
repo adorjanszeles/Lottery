@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Userhez tarttozó interfész implementációja
+ * {@link UserService} Userhez tarttozó interfész implementációja
  */
 @Service
 public class UserServiceImpl implements UserService {

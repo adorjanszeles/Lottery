@@ -22,14 +22,72 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
     private static final Logger LOGGER = LoggerFactory.getLogger(WeeklyDrawConverterImpl.class);
 
     private static final int COL_NUM = 16;
+    private static final int DATE_YEAR_IDX = 0;
+    private static final int DATE_MONTH_IDX = 1;
+    private static final int DATE_DAY_IDX = 2;
     private static String CURRENCY = "Ft";
     private static String BREAK_LINE = "\n";
     private static String LINE_DELIMITER;
     private static String LINE_SEPARATOR = ";";
     private static String DATE_SEPARATOR = "\\.";
-    private static final int DATE_YEAR_IDX = 0;
-    private static final int DATE_MONTH_IDX = 1;
-    private static final int DATE_DAY_IDX = 2;
+
+    /**
+     * RawWeeklyDraw instance-ok átalakítása WeeklyDraw instanc-okká.
+     *
+     * @param rawWeeklyDraws RawWeeklyDraw lista
+     */
+    public List<WeeklyDraw> convertRawsToWeeklyDraws(List<RawWeeklyDraw> rawWeeklyDraws) throws FileNotFoundException {
+
+        List<WeeklyDraw> weeklyDrawList = new ArrayList<>();
+
+        for (RawWeeklyDraw rawDraw : rawWeeklyDraws) {
+
+            WeeklyDraw draw = new WeeklyDraw();
+
+            String[] rawLine = new String[11];
+
+            rawLine[0] = rawDraw.getYear();
+            rawLine[1] = rawDraw.getWeek();
+            rawLine[2] = rawDraw.getDrawDate();
+            rawLine[3] = rawDraw.getFiveMatch();
+            rawLine[4] = rawDraw.getFiveMatchPrize();
+            rawLine[5] = rawDraw.getFourMatch();
+            rawLine[6] = rawDraw.getFourMatchPrize();
+            rawLine[7] = rawDraw.getThreeMatch();
+            rawLine[8] = rawDraw.getThreeMatchPrize();
+            rawLine[9] = rawDraw.getTwoMatch();
+            rawLine[10] = rawDraw.getTwoMatchPrize();
+
+            cleanLine(rawLine);
+            checkForZeros(rawLine);
+
+            Integer[] rawDrawNumbers = new Integer[5];
+            rawDrawNumbers[0] = parseStringToInt(rawDraw.getFirst());
+            rawDrawNumbers[1] = parseStringToInt(rawDraw.getSecond());
+            rawDrawNumbers[2] = parseStringToInt(rawDraw.getThird());
+            rawDrawNumbers[3] = parseStringToInt(rawDraw.getFourth());
+            rawDrawNumbers[4] = parseStringToInt(rawDraw.getFifth());
+
+            draw.setDrawDate(generateDateFromString(rawLine[0], rawLine[1], rawLine[2]));
+            draw.setFiveMatch(parseStringToInt(rawLine[3]));
+            draw.setFiveMatchPrize(parseStringToLong(rawLine[4]));
+            draw.setFourMatch(parseStringToInt(rawLine[5]));
+            draw.setFourMatchPrize(parseStringToLong(rawLine[6]));
+            draw.setThreeMatch(parseStringToInt(rawLine[7]));
+            draw.setThreeMatchPrize(parseStringToLong(rawLine[8]));
+            draw.setTwoMatch(parseStringToInt(rawLine[9]));
+            draw.setTwoMatchPrize(parseStringToLong(rawLine[10]));
+            draw.setFirst(rawDrawNumbers[0]);
+            draw.setSecond(rawDrawNumbers[1]);
+            draw.setThird(rawDrawNumbers[2]);
+            draw.setFourth(rawDrawNumbers[3]);
+            draw.setFifth(rawDrawNumbers[4]);
+
+            weeklyDrawList.add(draw);
+        }
+
+        return weeklyDrawList;
+    }
 
     /**
      * az input fileból beolvasott sorokból kivesszük a Ft toldalékot, szóközöket és az új sor karaktert
@@ -60,7 +118,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
      * @param rawDate input húzás dátum
      * @return date objektum
      */
-    private Date generateDateFromString(String rawYear, String rawWeek, String rawDate){
+    private Date generateDateFromString(String rawYear, String rawWeek, String rawDate) {
         Integer inputYear = Integer.parseInt(rawYear);
         Integer inputWeek = Integer.parseInt(rawWeek);
 
@@ -114,8 +172,9 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
     }
 
     /**
-     * az input file-ban '98 előtti találatokról nincs adat, a csv-ben 0-val jelölik ezt.
-     * ez a metódus ellenőrzi, hogy az adott fieldek mindegyike 0 értékkel rendelkezik-e és ha igen, akkor 0 helyett üres stringgel jelöljük a továbbiakban, ha nincs adatunk
+     * az input file-ban '98 előtti találatokról nincs adat, a csv-ben 0-val jelölik ezt. ez a metódus ellenőrzi, hogy
+     * az adott fieldek mindegyike 0 értékkel rendelkezik-e és ha igen, akkor 0 helyett üres stringgel jelöljük a
+     * továbbiakban, ha nincs adatunk
      *
      * @param cleanedLine sor az input fileból
      * @return String tömb, amiben a megtisztított adatok vannak, a hiányzó húzások pedig null-ra állítva
@@ -135,64 +194,6 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
             }
         }
         return cleanedLine;
-    }
-
-    /**
-     * RawWeeklyDraw instance-ok átalakítása WeeklyDraw instanc-okká.
-     *
-     * @param rawWeeklyDraws RawWeeklyDraw lista
-     */
-    public List<WeeklyDraw> convertRawsToWeeklyDraws(List<RawWeeklyDraw> rawWeeklyDraws) throws FileNotFoundException {
-
-        List<WeeklyDraw> weeklyDrawList = new ArrayList<>();
-
-        for(RawWeeklyDraw rawDraw : rawWeeklyDraws){
-
-            WeeklyDraw draw = new WeeklyDraw();
-
-            String[] rawLine = new String[11];
-
-            rawLine[0] = rawDraw.getYear();
-            rawLine[1] = rawDraw.getWeek();
-            rawLine[2] = rawDraw.getDrawDate();
-            rawLine[3] = rawDraw.getFiveMatch();
-            rawLine[4] = rawDraw.getFiveMatchPrize();
-            rawLine[5] = rawDraw.getFourMatch();
-            rawLine[6] = rawDraw.getFourMatchPrize();
-            rawLine[7] = rawDraw.getThreeMatch();
-            rawLine[8] = rawDraw.getThreeMatchPrize();
-            rawLine[9] = rawDraw.getTwoMatch();
-            rawLine[10] = rawDraw.getTwoMatchPrize();
-
-            cleanLine(rawLine);
-            checkForZeros(rawLine);
-
-            Integer[] rawDrawNumbers = new Integer[5];
-            rawDrawNumbers[0] = parseStringToInt(rawDraw.getFirst());
-            rawDrawNumbers[1] = parseStringToInt(rawDraw.getSecond());
-            rawDrawNumbers[2] = parseStringToInt(rawDraw.getThird());
-            rawDrawNumbers[3] = parseStringToInt(rawDraw.getFourth());
-            rawDrawNumbers[4] = parseStringToInt(rawDraw.getFifth());
-            
-            draw.setDrawDate(generateDateFromString(rawLine[0],rawLine[1],rawLine[2]));
-            draw.setFiveMatch(parseStringToInt(rawLine[3]));
-            draw.setFiveMatchPrize(parseStringToLong(rawLine[4]));
-            draw.setFourMatch(parseStringToInt(rawLine[5]));
-            draw.setFourMatchPrize(parseStringToLong(rawLine[6]));
-            draw.setThreeMatch(parseStringToInt(rawLine[7]));
-            draw.setThreeMatchPrize(parseStringToLong(rawLine[8]));
-            draw.setTwoMatch(parseStringToInt(rawLine[9]));
-            draw.setTwoMatchPrize(parseStringToLong(rawLine[10]));
-            draw.setFirst(rawDrawNumbers[0]);
-            draw.setSecond(rawDrawNumbers[1]);
-            draw.setThird(rawDrawNumbers[2]);
-            draw.setFourth(rawDrawNumbers[3]);
-            draw.setFifth(rawDrawNumbers[4]);
-
-            weeklyDrawList.add(draw);
-        }
-
-        return weeklyDrawList;
     }
 
 }

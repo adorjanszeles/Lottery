@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * A Redis adatbázisunk vezérlését végző osztály.
+ */
 @Repository
 public class WeeklyDrawRedisRepositoryImpl implements WeeklyDrawRedisRepository {
 
