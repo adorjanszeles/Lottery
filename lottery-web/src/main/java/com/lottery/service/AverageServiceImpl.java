@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link AverageService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link AverageService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 
 @Service

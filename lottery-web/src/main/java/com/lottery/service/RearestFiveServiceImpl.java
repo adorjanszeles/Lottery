@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link RearestFiveService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link RearestFiveService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 @Service
 public class RearestFiveServiceImpl extends LotteryService implements RearestFiveService {

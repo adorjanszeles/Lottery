@@ -9,6 +9,12 @@ import java.util.List;
  */
 public interface UserService {
 
+    /**
+     * Userek mentése
+     *
+     * @param userDTO user objektum
+     * @return String
+     */
     String saveUser(UserDTO userDTO);
 
     List<UserDTO> getUsers();
