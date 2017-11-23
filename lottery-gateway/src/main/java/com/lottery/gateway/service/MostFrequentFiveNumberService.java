@@ -8,10 +8,10 @@ import com.lottery.model.MostFrequentFiveNumberResult;
 public interface MostFrequentFiveNumberService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url          Lottery-web resource szerver elérési útvonala
      * @param access_token jwt access token
      * @return MostFrequentFiveNumberResult objektum
      */
-    MostFrequentFiveNumberResult apiCall(String url, String access_token);
+    MostFrequentFiveNumberResult getMostFrequentFiveNumbers(String url, String access_token);
 
 }

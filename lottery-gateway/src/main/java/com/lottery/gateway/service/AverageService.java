@@ -8,9 +8,9 @@ import com.lottery.model.AverageResult;
 public interface AverageService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url         Lottery-web resource szerver elérési útvonala
      * @param accessToken jwt access token
      * @return AverageResult objektum
      */
-    AverageResult apiCall(String url, String accessToken);
+    AverageResult getAverageResult(String url, String accessToken);
 }

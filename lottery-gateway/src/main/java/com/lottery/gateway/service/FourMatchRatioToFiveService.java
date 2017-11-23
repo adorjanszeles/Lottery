@@ -8,10 +8,10 @@ import com.lottery.model.FourMatchRatioToFiveMatchResult;
 public interface FourMatchRatioToFiveService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url         Lottery-web resource szerver elérési útvonala
      * @param accessToken jwt access token
      * @return FourMatchRatioToFiveMatchResult objektum
      */
-    FourMatchRatioToFiveMatchResult apiCall(String url, String accessToken);
+    FourMatchRatioToFiveMatchResult getFourMatchRatioToFive(String url, String accessToken);
 
 }

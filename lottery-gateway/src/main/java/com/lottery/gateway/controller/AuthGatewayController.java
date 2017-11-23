@@ -42,7 +42,7 @@ public class AuthGatewayController {
     public Object getAccessToken(@RequestHeader("Authorization") String access_token,
                                  @RequestBody MultiValueMap requestBody) {
         String url = this.env.getProperty("lottery-auth.get-token");
-        return this.authService.apiCall(url, access_token, requestBody);
+        return this.authService.getAccessToken(url, access_token, requestBody);
     }
 
 }

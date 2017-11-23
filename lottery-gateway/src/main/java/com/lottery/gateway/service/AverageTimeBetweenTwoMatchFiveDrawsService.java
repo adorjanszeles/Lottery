@@ -8,10 +8,10 @@ import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 public interface AverageTimeBetweenTwoMatchFiveDrawsService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url         Lottery-web resource szerver elérési útvonala
      * @param accessToken jwt access token
      * @return AverageTimeBetweenTwoMatchFiveDrawsResult objektum
      */
-    AverageTimeBetweenTwoMatchFiveDrawsResult apiCall(String url, String accessToken);
+    AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDraws(String url, String accessToken);
 
 }

@@ -88,7 +88,7 @@ public class GatewayController {
     @GetMapping("/average")
     public AverageResult getAverage(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.average");
-        return this.averageService.apiCall(url, access_token);
+        return this.averageService.getAverageResult(url, access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -105,7 +105,7 @@ public class GatewayController {
             @RequestHeader("Authorization") String access_token) {
 
         String url = this.env.getProperty("lottery-web.average") + String.format("/%s/%s", from, to);
-        return this.averageService.apiCall(url, access_token);
+        return this.averageService.getAverageResult(url, access_token);
     }
 
     // ####################### MOST FREQUENT FIVE ##############################
@@ -120,7 +120,7 @@ public class GatewayController {
     @GetMapping("/most-frequent-five-number")
     public MostFrequentFiveNumberResult getMostFrequentFive(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.most-frequent-five-number");
-        return this.mostFrequentFiveNumberService.apiCall(url, access_token);
+        return this.mostFrequentFiveNumberService.getMostFrequentFiveNumbers(url, access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -138,7 +138,7 @@ public class GatewayController {
             @RequestHeader("Authorization") String access_token) {
 
         String url = this.env.getProperty("lottery-web.most-frequent-five-number") + String.format("/%s/%s", from, to);
-        return this.mostFrequentFiveNumberService.apiCall(url, access_token);
+        return this.mostFrequentFiveNumberService.getMostFrequentFiveNumbers(url, access_token);
     }
 
     // ####################### FOUR MATCH RATIO TO FIVE ##############################
@@ -155,7 +155,7 @@ public class GatewayController {
     public FourMatchRatioToFiveMatchResult getFourMatchRatioToFive(
             @RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.four-match-ratio-to-five-match");
-        return this.fourMatchRatioToFiveService.apiCall(url, access_token);
+        return this.fourMatchRatioToFiveService.getFourMatchRatioToFive(url, access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -174,7 +174,7 @@ public class GatewayController {
 
         String url =
                 this.env.getProperty("lottery-web.four-match-ratio-to-five-match") + String.format("/%s/%s", from, to);
-        return this.fourMatchRatioToFiveService.apiCall(url, access_token);
+        return this.fourMatchRatioToFiveService.getFourMatchRatioToFive(url, access_token);
     }
 
     // ####################### RAREST FIVE NUMBER ##############################
@@ -189,7 +189,7 @@ public class GatewayController {
     @GetMapping("/rearest-five-number")
     public RearestFiveResult getRearestFiveNumber(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.rearest-five-number");
-        return this.rarestFiveService.apiCall(url, access_token);
+        return this.rarestFiveService.getRearestFiveNumber(url, access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -207,7 +207,7 @@ public class GatewayController {
             @RequestHeader("Authorization") String access_token) {
 
         String url = this.env.getProperty("lottery-web.rearest-five-number") + String.format("/%s/%s", from, to);
-        return this.rarestFiveService.apiCall(url, access_token);
+        return this.rarestFiveService.getRearestFiveNumber(url, access_token);
     }
 
     // ####################### MOST FREQUENT PAIRS ##############################
@@ -222,7 +222,7 @@ public class GatewayController {
     @GetMapping("/most-frequently-occuring-pairs")
     public DrawsInTwoDimension getMostFrequentPairs(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.most-frequently-occuring-pairs");
-        return this.mostFrequentPairsService.apiCall(url, access_token);
+        return this.mostFrequentPairsService.getMostFrequentPairs(url, access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -241,7 +241,7 @@ public class GatewayController {
 
         String url =
                 this.env.getProperty("lottery-web.most-frequently-occuring-pairs") + String.format("/%s/%s", from, to);
-        return this.mostFrequentPairsService.apiCall(url, access_token);
+        return this.mostFrequentPairsService.getMostFrequentPairs(url, access_token);
     }
 
     // ####################### AVERAGE TIME BETWEEN FIVE MATCHES ##############################
@@ -258,7 +258,8 @@ public class GatewayController {
     public AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDraws(
             @RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.average-time-between-two-match-five-draws");
-        return this.averageTimeBetweenTwoMatchFiveDrawsService.apiCall(url, access_token);
+        return this.averageTimeBetweenTwoMatchFiveDrawsService.getAverageTimeBetweenTwoMatchFiveDraws(url,
+                                                                                                      access_token);
     }
 
     @PreAuthorize("hasRole('user') or hasRole('admin')")
@@ -277,7 +278,8 @@ public class GatewayController {
 
         String url = this.env.getProperty("lottery-web.average-time-between-two-match-five-draws") +
                      String.format("/%s/%s", from, to);
-        return this.averageTimeBetweenTwoMatchFiveDrawsService.apiCall(url, access_token);
+        return this.averageTimeBetweenTwoMatchFiveDrawsService.getAverageTimeBetweenTwoMatchFiveDraws(url,
+                                                                                                      access_token);
     }
 
     // ####################### GET DATE INTERVALS ##############################
@@ -292,7 +294,7 @@ public class GatewayController {
     @GetMapping("/get-date-intervals")
     public String getDateIntervals(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.get-date-intervals");
-        return this.dateIntervalsService.apiCall(url, access_token);
+        return this.dateIntervalsService.getDateIntervals(url, access_token);
     }
 
     // ####################### ADD NEW WEEKLYDRAW ##############################
@@ -309,7 +311,7 @@ public class GatewayController {
                                           @ApiParam(value = "weeklyDraw object with fields", required = true)
                                           @RequestBody WeeklyDrawDTO input) {
         String url = this.env.getProperty("lottery-web.add-new-weeklydraw");
-        return this.addingWeeklyDrawService.apiCall(url, access_token, input);
+        return this.addingWeeklyDrawService.addNewWeeklyDraw(url, access_token, input);
     }
 
 }

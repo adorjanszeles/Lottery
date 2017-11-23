@@ -8,10 +8,10 @@ import com.lottery.model.mfop_utils.DrawsInTwoDimension;
 public interface MostFrequentPairsService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url         Lottery-web resource szerver elérési útvonala
      * @param accessToken jwt access token
      * @return 2 dimenziós tömb objektum
      */
-    DrawsInTwoDimension apiCall(String url, String accessToken);
+    DrawsInTwoDimension getMostFrequentPairs(String url, String accessToken);
 
 }

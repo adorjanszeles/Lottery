@@ -12,6 +12,6 @@ public interface RarestFiveService {
      * @param accessToken jwt access token
      * @return RearestFiveResult objektum
      */
-    RearestFiveResult apiCall(String url, String accessToken);
+    RearestFiveResult getRearestFiveNumber(String url, String accessToken);
 
 }

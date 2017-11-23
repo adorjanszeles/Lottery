@@ -6,10 +6,10 @@ package com.lottery.gateway.service;
 public interface DateIntervalsService {
 
     /**
-     * @param url Lottery-web resource szerver elérési útvonala
+     * @param url         Lottery-web resource szerver elérési útvonala
      * @param accessToken jwt access token
      * @return String karakterek sorozata
      */
-    String apiCall(String url, String accessToken);
+    String getDateIntervals(String url, String accessToken);
 
 }

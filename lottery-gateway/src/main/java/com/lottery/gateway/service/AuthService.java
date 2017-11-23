@@ -13,6 +13,6 @@ public interface AuthService {
      * @param object      request objektum a resource szerver felől
      * @return Json objektum
      */
-    Object apiCall(String url, String accessToken, MultiValueMap object);
+    Object getAccessToken(String url, String accessToken, MultiValueMap object);
 
 }

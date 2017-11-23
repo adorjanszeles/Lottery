@@ -21,7 +21,7 @@ public class AddingWeeklyDrawServiceImpl implements AddingWeeklyDrawService {
     private static Logger LOGGER = LoggerFactory.getLogger(AddingWeeklyDrawServiceImpl.class);
 
     @Override
-    public WeeklyDrawDTO apiCall(String url, String accessToken, WeeklyDrawDTO weeklyDrawDTO) {
+    public WeeklyDrawDTO addNewWeeklyDraw(String url, String accessToken, WeeklyDrawDTO weeklyDrawDTO) {
         AddingWeeklyDrawServiceImpl.LOGGER.debug("Adding new weekly draw Gateway hivas indul");
 
         RestTemplate restTemplate = new RestTemplate();

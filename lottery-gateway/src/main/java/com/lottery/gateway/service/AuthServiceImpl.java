@@ -22,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
     private static Logger LOGGER = LoggerFactory.getLogger(AuthServiceImpl.class);
 
     @Override
-    public Object apiCall(String url, String clientSecret, MultiValueMap requestBody) {
+    public Object getAccessToken(String url, String clientSecret, MultiValueMap requestBody) {
         AuthServiceImpl.LOGGER.debug("Auth access token Gateway hivas indul");
 
         RestTemplate restTemplate = new RestTemplate();

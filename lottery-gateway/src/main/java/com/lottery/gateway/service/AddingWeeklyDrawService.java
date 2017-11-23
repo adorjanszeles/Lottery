@@ -13,5 +13,5 @@ public interface AddingWeeklyDrawService {
      * @param weeklyDrawDTO weeklyDrawDTO objektum
      * @return WeeklyDrawDTO objektum
      */
-    WeeklyDrawDTO apiCall(String url, String accessToken, WeeklyDrawDTO weeklyDrawDTO);
+    WeeklyDrawDTO addNewWeeklyDraw(String url, String accessToken, WeeklyDrawDTO weeklyDrawDTO);
 }
