@@ -26,7 +26,7 @@ public class RedisConfig {
     /**
      * A JedisConnectionFactory bean előállításáért, illetve a beállításokért felelős függvény.
      *
-     * @return
+     * @return JedisConnectionFactory instance
      */
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
