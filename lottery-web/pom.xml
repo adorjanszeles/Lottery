@@ -38,6 +38,7 @@
         <hibernate-core.version>5.2.9.Final</hibernate-core.version>
         <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
+        <interceptor.version>1.2</interceptor.version>
     </properties>
 
     <build>
