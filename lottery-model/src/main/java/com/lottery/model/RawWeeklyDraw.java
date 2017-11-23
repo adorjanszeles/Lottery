@@ -1,5 +1,8 @@
 package com.lottery.model;
 
+/**
+ * A CSV-ből beolvasott kezeletlen instance-okat leíró osztály
+ */
 public class RawWeeklyDraw {
 
     private String year;
@@ -54,7 +57,6 @@ public class RawWeeklyDraw {
         this.fourth = fourth;
         this.fifth = fifth;
     }
-
 
     public String getSecond() {
         return second;
@@ -183,7 +185,6 @@ public class RawWeeklyDraw {
     public void setTwoMatchPrize(String twoMatchPrize) {
         this.twoMatchPrize = twoMatchPrize;
     }
-
 
     @Override
     public String toString() {
