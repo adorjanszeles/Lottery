@@ -30,6 +30,7 @@ import java.io.IOException;
 
 /**
  * GATEWAY Resource szerver konfigurációs osztály
+ *
  */
 @Configuration
 @EnableWebSecurity
