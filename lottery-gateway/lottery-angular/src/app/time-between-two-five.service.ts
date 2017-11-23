@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {ResultNum} from './resultNum';
 import {GetTokenService} from "./get-token.service";
 
+
 import {HttpClient} from '@angular/common/http';
 
 @Injectable()
-export class FourMatchFiveRatioService {
+export class TimeBetweenTwoFiveService {
     private result;
     private resultByDate;
-    private lotteryUrl = 'http://localhost:8080/lottery//lottery/four-match-ratio-to-five-match';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/average-time-between-two-match-five-draws';
 
     constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }

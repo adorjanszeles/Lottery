@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class MostFreqFiveService {
     private result;
     private resultByDate;
-    private lotteryUrl = 'http://localhost:8080/lottery/lottery/most-frequent-five-number';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/most-frequent-five-number';
 
     constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }
