@@ -102,10 +102,10 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
     }
 
     /**
-     * JwtAccessTokenConvertert használó memóriában futó tokenStore. Ezt le lehet cserélni akár jdbc vagz redis
-     * tokenStore bean-re is.
+     * TokenStore implementáció ami a tokenekben érkező adatokat olvassa ki. A store csak a nevében jelenik meg,
+     * valójában nem perzisztál adatot. Az implementációt le lehet cserélni akár jdbc vagy redis tokenStore bean-re.
      *
-     * @return TokenStore bean
+     * @return JwtTokenStore bean
      */
     @Bean
     public TokenStore tokenStore() {
@@ -114,7 +114,7 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
 
     /**
      * Access és Refresh token értékeket generáló bean amely random UUID értékek alapján dolgozik. A tokenek
-     * perzisztálásának feladatát a tokenStore implementációja látja el.
+     * perzisztálásának feladatát a tokenStore implementációja látja el, amennyiben erre képes tokenStore-t használunk.
      *
      * @return defaultTokenServices bean
      */
@@ -128,7 +128,9 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
     }
 
     /**
-     * Ennek a beannek a segítségével tudjuk titkosítani illetve dekódolni a titkosított jelszavakat.
+     * Ennek a beannek a segítségével tudjuk titkosítani illetve dekódolni a titkosított jelszavakat. Jelenleg a BCrypt
+     * hashing functiont használjuk amelynek paraméterként megadhatjuk, hogy milyen erősségű biztonságot szeretnénk
+     * elérni. A Default érték 10. Ennek növelése exponenciálisan növeli a hashelés idejét.
      *
      * @return PasswordEncoder bean
      */
