@@ -9,7 +9,7 @@ import {HttpClient} from '@angular/common/http';
 export class RearestFiveService {
     private result;
     private resultByDate;
-    private lotteryUrl = 'http://localhost:8080/lottery/lottery/rearest-five-number';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/rearest-five-number';
 
     constructor(private http: HttpClient, private getTokenService: GetTokenService) {
     }

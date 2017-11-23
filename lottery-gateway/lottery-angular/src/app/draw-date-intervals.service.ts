@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class DrawDateIntervalsService {
     private result;
-    private lotteryUrl = 'http://localhost:8080/lottery/lottery/get-date-intervals';
+    private lotteryUrl = 'http://localhost:1234/gateway/gateway/get-date-intervals';
 
     constructor(private http: HttpClient) {
     }
