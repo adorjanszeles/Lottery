@@ -34,8 +34,8 @@ public class PersistFromCsv {
     /**
      * A csv-ből beolvasott sorokból RawWeeklyDraw instance-okat gyártó függvény.
      *
-     * @param filename
-     * @return
+     * @param filename a beolvasandó fájl neve
+     * @return List of RawWeeklyDraws
      */
     public List populateRawWeeklyDraws(String filename) {
 
@@ -56,7 +56,7 @@ public class PersistFromCsv {
 
     /**
      * A RawWeeklyDraw instanc-okból az adatbázisba mentődő WeeklyDraw instance-okat gyártó függvény.
-     * @param rawWeeklyDraws
+     * @param rawWeeklyDraws lista 
      */
     public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) {
 
