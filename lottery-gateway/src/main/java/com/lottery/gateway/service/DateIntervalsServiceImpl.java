@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link DateIntervalsService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class DateIntervalsServiceImpl extends AbstractGetService<String> implements DateIntervalsService {

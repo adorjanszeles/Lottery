@@ -17,6 +17,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * Az adatbázissal való kommunikációt és a package-ben található Entity-ket menedzselő bean-eket előállító osztály.
+ */
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "com.lottery", entityManagerFactoryRef = "entityManagerFactory")
@@ -25,6 +28,11 @@ public class PersistenceJPAConfig {
     @Autowired
     private Environment env;
 
+    /**
+     * Az EntityManagerFactory bean előállításáért és konfigurálásáért felelős függvény
+     *
+     * @return LocalContainerEntityManagerFactoryBean
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
@@ -37,12 +45,22 @@ public class PersistenceJPAConfig {
         return entityManagerFactory;
     }
 
+    /**
+     * A JPAVendort szolgáltató bean-t előállító függvény
+     *
+     * @return JpaVendorAdapter instance
+     */
     @Bean
     public JpaVendorAdapter getJpaVendorAdapter() {
         JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
         return adapter;
     }
 
+    /**
+     * Az adatbázis hozzáféréshez szükséges adatokat gyűjti be a database.properties fájlból
+     *
+     * @return DataSource instance
+     */
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -53,6 +71,11 @@ public class PersistenceJPAConfig {
         return dataSource;
     }
 
+    /**
+     * Az adartbázissal való kommunikáció szabályait állítja össze.
+     *
+     * @return Properties instance
+     */
     private Properties jpaProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.dialect", this.env.getProperty("hibernate.dialect"));
@@ -62,6 +85,12 @@ public class PersistenceJPAConfig {
         return properties;
     }
 
+    /**
+     * A tranzakciókezeléshez szükséges bean-t állítja elő.
+     *
+     * @param entityManagerFactory a project-ben található Entity-ket kezelő objektum
+     * @return JpaTransactionManager instance
+     */
     @Bean
     JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

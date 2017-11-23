@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link FourMatchRatioToFiveService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class FourMatchRatioToFiveServiceImpl extends AbstractGetService<FourMatchRatioToFiveMatchResult>

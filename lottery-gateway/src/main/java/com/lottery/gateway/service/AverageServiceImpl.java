@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link AverageService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 
 @Service

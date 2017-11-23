@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 /**
  * Az applikációhoz tartozo websecurity konfigurációt tartalmazo osztály
  */
@@ -23,26 +24,31 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(WebSecurityConfig.class);
     private UserDetailsServiceImpl userService;
+
     @Autowired
     public WebSecurityConfig(UserDetailsServiceImpl userService) {
         this.userService = userService;
     }
+
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         WebSecurityConfig.LOGGER.debug("authentikáció elkezdődött");
         auth.userDetailsService(userService).passwordEncoder(encoder());
         WebSecurityConfig.LOGGER.debug("authentikációnak vége");
     }
+
     @Bean
     public CustomBasicAuthenticationEntryPoint getBasicAuthEntryPoint() {
         return new CustomBasicAuthenticationEntryPoint();
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         // provides the default AuthenticationManager as a Bean
         return super.authenticationManagerBean();
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
@@ -53,6 +59,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .anyRequest()
             .authenticated();
     }
+
+    /**
+     * Ennek a beannek a segítségével tudjuk titkosítani illetve dekódolni a titkosított jelszavakat. Jelenleg a BCrypt
+     * hashing functiont használjuk amelynek paraméterként megadhatjuk, hogy milyen erősségű biztonságot szeretnénk
+     * elérni. A Default érték 10. Ennek növelése exponenciálisan növeli a hashelés idejét.
+     *
+     * @return PasswordEncoder bean
+     */
     @Bean
     public PasswordEncoder encoder() {
         return new BCryptPasswordEncoder(10);

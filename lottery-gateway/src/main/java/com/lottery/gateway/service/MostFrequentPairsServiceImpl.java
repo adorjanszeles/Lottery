@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * {@link MostFrequentPairsService} interfész implementációja
+ * {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class MostFrequentPairsServiceImpl extends AbstractGetService<DrawsInTwoDimension>
