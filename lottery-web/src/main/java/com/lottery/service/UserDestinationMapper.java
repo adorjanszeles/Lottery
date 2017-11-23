@@ -8,8 +8,7 @@ import org.mapstruct.Mappings;
 import org.springframework.stereotype.Service;
 
 /**
- * This interface make auto-generated implementation for itself(you can find it in Target dict).
- * Its a bean mapper interface using MapSturct.
+ * Ez alapján az interface alapján a MapStruct bean mapper implementációt gyárt. A WeeklyDraw osztályt map-peli.
  */
 @Mapper
 @Service

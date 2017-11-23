@@ -56,7 +56,7 @@ public class PersistFromCsv {
 
     /**
      * A RawWeeklyDraw instanc-okból az adatbázisba mentődő WeeklyDraw instance-okat gyártó függvény.
-     * @param rawWeeklyDraws lista 
+     * @param rawWeeklyDraws lista
      */
     public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) {
 
