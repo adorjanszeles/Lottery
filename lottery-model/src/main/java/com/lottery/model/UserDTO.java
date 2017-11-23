@@ -4,6 +4,9 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * User Data Transfer Object osztály. Az instance-aiból validált User Entity instance-ok lesznek.
+ */
 public class UserDTO {
 
     private String username;
@@ -37,6 +40,5 @@ public class UserDTO {
     public void setRole(String role) {
         this.role = role;
     }
-
 
 }
