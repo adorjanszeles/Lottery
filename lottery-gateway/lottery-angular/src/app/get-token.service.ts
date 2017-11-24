@@ -28,7 +28,7 @@ export class GetTokenService {
     getHttpOption(): any {
         return {
             headers: new HttpHeaders({
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json, text/plain',
                 'Authorization': localStorage.getItem('access_token')
             })
         }

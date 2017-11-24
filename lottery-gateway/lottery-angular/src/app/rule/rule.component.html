@@ -1,12 +1,19 @@
 <div class="rule-wrapper">
     <div class="rule-title" [ngClass]="{'result-active': resultActive === true}">
         <p [title]="title">{{title}}</p>
-        <div *ngIf="result" class="result">
+        <div *ngIf="result && result.error === null" class="result">
             <app-one-num-result *ngIf="resultType==='one number result'" [result]="result"></app-one-num-result>
             <app-five-num-result *ngIf="resultType==='five number result'" [result]="result"></app-five-num-result>
             <app-two-d-array-result id="asd" *ngIf="resultType==='2d array result'" [result]="result"></app-two-d-array-result>
             <app-string-result *ngIf="resultType==='string result'" [result]="result"></app-string-result>
         </div>
+
+        <div *ngIf="result && result.error" class="rule-error">
+            <p>
+                {{ result.error }}
+            </p>
+        </div>
+
     </div>
     <div class="filter-wrapper">
         <div class="date-picker">

@@ -35,8 +35,15 @@ export class MostFreqPairsService {
         this.resultByDate = new ResultCompact();
         let temp;
         this.http
-            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => temp = data);
-        this.resultByDate.arr = this.parseResult(temp);
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                temp = data;
+                this.resultByDate.arr = this.parseResult(temp)
+            },
+            err => {
+                this.resultByDate.error = err.error;
+                console.log(err.error)
+            });
         return this.resultByDate;
     }
 }

@@ -17,7 +17,14 @@ export class MostFreqFiveService {
     getResult(): ResultArray {
         this.result = new ResultArray();
         this.http
-            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.arr = data['result']);
+            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.result.arr = data['result']
+            },
+            err => {
+                this.result.error = err.error;
+                console.log(err.error)
+            });
         return this.result;
     }
 
@@ -25,7 +32,14 @@ export class MostFreqFiveService {
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultArray();
         this.http
-            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.arr = data['result']);
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.resultByDate.arr = data['result']
+            },
+            err => {
+                this.resultByDate.error = err.error;
+                console.log(err.error)
+            });
         return this.resultByDate;
     }
 }
