@@ -16,7 +16,7 @@ export class FourMatchFiveRatioService {
     getResult(): ResultNum {
         this.result = new ResultNum();
         this.http
-            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.num = data['result']);
+            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.num = data['result'].toFixed(1));
         return this.result;
     }
 
@@ -24,7 +24,7 @@ export class FourMatchFiveRatioService {
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultNum();
         this.http
-            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.num = data['result']);
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.num = data['result'].toFixed(1));
         return this.resultByDate;
     }
 }

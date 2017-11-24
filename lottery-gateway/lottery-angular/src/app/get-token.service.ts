@@ -21,7 +21,6 @@ export class GetTokenService {
     getToken(): void {
         this.http
             .post(this.lotteryUrl, body, httpOptions).subscribe(data => {
-            console.log(data['access_token']);
             localStorage.setItem('access_token', 'Bearer ' + data['access_token']);
         });
     }
