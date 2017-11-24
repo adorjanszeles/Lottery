@@ -30,7 +30,6 @@ public abstract class AbstractGetService<R> {
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<R> response = restTemplate.exchange(url, HttpMethod.GET, entity, resultClass);
-
         R result = response.getBody();
         return result;
     }
