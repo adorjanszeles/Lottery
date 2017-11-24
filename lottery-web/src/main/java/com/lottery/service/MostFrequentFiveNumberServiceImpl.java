@@ -1,5 +1,6 @@
 package com.lottery.service;
 
+import com.lottery.common.exceptions.InvalidDateException;
 import com.lottery.config.LotteryQualifier;
 import com.lottery.model.Lottery;
 import com.lottery.model.MostFrequentFiveNumberResult;
@@ -46,7 +47,8 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
     }
 
     @Override
-    public MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException {
+    public MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to)
+            throws ParseException {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb ot szam service futtatása elkezdődött...");
         WeeklyDrawList weeklyDrawList = super.init();
@@ -61,7 +63,7 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
         MostFrequentFiveNumberServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb ot szam service futtatása befejeződött...");
         return mostFrequentFiveNumberResult;
-    }
+}
 
     private MostFrequentFiveNumberResult execute(WeeklyDrawList weeklyDrawList) {
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();

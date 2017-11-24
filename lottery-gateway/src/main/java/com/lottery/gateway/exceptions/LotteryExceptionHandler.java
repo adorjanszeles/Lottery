@@ -1,4 +1,4 @@
-package com.lottery.common.exceptions;
+package com.lottery.gateway.exceptions;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
