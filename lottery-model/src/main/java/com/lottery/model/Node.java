@@ -1,7 +1,7 @@
 package com.lottery.model;
 
 /**
- * Segédosztály a lottószámok sorbarendezésének használatára value -> lottószám, count -> lottószám előfordulása
+ * Segédosztály a lottószámok sorbarendezésének használatára value : lottószám, count : lottószám előfordulása
  */
 public class Node implements Comparable<Node> {
 

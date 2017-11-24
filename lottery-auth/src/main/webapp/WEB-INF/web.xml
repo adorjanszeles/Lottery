@@ -21,14 +21,6 @@
     </servlet-mapping>
 
     <filter>
-        <filter-name>CorsFilter</filter-name>
-        <filter-class>com.lottery.authserver.config.CorsServletFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>CorsFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>

@@ -18,15 +18,65 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
+/**
+ * A négyes találatok aránya az ötösökhöz szabály tesztelése
+ */
+
 public class TestFourMatchRatioToFiveMatch {
 
-    private StatelessKieSession statelessKieSession;
     private static final Logger LOGGER = LoggerFactory.getLogger(TestFourMatchRatioToFiveMatch.class);
+    private StatelessKieSession statelessKieSession;
     private WeeklyDrawList weeklyDrawList;
     private FourMatchRatioToFiveMatchResult result;
     private List<Object> facts;
     private String eventName;
     private LottoAgendaEventListener listener;
+
+    /**
+     * kie session és teszteléshez használt listák létrehozása a tesztek lefutása előtt
+     *
+     * @throws MissingKieServicesException hiányzó kie sessiön kivétel
+     */
+
+    @Before
+    public void setup() throws MissingKieServicesException {
+        LotteryConfig lotteryConfig = new LotteryConfig();
+        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
+        this.result = new FourMatchRatioToFiveMatchResult();
+        this.generateWeeklyDrawList();
+        this.eventName = null;
+        this.listener = new LottoAgendaEventListener();
+
+        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
+        this.statelessKieSession.addEventListener(this.listener);
+        this.statelessKieSession.execute(this.facts);
+    }
+
+    @Test
+    public void testIsRuleFired() {
+        this.eventName = this.listener.getRuleName();
+        assertEquals("get four match ratio to five match", this.eventName);
+    }
+
+    @Test
+    public void testRuleFiredOnce() {
+        int fire = this.listener.getCountFire();
+
+        assertEquals(1, fire);
+    }
+
+    @Test
+    public void testFourRatioToFiveResultIsLargerThanZero() throws Exception {
+
+        assertTrue(this.result.getResult() > 0F);
+    }
+
+    @Test
+    public void testFourRatioToFiveResultValue() throws Exception {
+
+        assertEquals(3F / 2F, this.result.getResult().floatValue(), 0.0001);
+    }
 
     /**
      * Négyes lóttó találatok aránya az ötösökhöz szabály teszteléshez
@@ -90,50 +140,5 @@ public class TestFourMatchRatioToFiveMatch {
 
         this.weeklyDrawList.setDrawListPreparedForDrools(drawList);
     }
-
-    /**
-     * kie session és teszteléshez használt listák létrehozása a tesztek lefutása előtt
-     */
-
-    @Before
-    public void setup() throws MissingKieServicesException {
-        LotteryConfig lotteryConfig = new LotteryConfig();
-        this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
-        this.result = new FourMatchRatioToFiveMatchResult();
-        this.generateWeeklyDrawList();
-        this.eventName = null;
-        this.listener = new LottoAgendaEventListener();
-
-        this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
-        this.statelessKieSession.addEventListener(this.listener);
-        this.statelessKieSession.execute(this.facts);
-    }
-
-    @Test
-    public void testIsRuleFired() {
-        this.eventName = this.listener.getRuleName();
-        assertEquals("get four match ratio to five match", this.eventName);
-    }
-
-    @Test
-    public void testRuleFiredOnce() {
-        int fire = this.listener.getCountFire();
-
-        assertEquals(1, fire);
-    }
-
-    @Test
-    public void testFourRatioToFiveResultIsLargerThanZero() throws Exception {
-
-        assertTrue(this.result.getResult() > 0F);
-    }
-
-
-    @Test
-    public void testFourRatioToFiveResultValue() throws Exception {
-
-        assertEquals(3F / 2F, this.result.getResult().floatValue(), 0.0001);
-    }
-
 
 }

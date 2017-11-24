@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link AverageTimeBetweenTwoMatchFiveDrawsService interfész implementációja. {@link LotteryService osztály
+ * {@link AverageTimeBetweenTwoMatchFiveDrawsService} interfész implementációja. {@link LotteryService} osztály
  * extendálása.
  */
 @Service

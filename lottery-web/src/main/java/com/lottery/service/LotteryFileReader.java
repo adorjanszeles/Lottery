@@ -13,6 +13,7 @@ public interface LotteryFileReader {
      * beolvassa a csv fileból az adatokat
      *
      * @param file a csv file
+     * @throws FileNotFoundException hiányzó file kivétel
      */
     void readFromFile(File file) throws FileNotFoundException;
 

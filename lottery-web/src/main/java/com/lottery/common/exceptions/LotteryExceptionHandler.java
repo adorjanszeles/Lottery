@@ -9,6 +9,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import java.text.ParseException;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -55,10 +56,23 @@ public class LotteryExceptionHandler {
      * Globális exception kezelés
      *
      * @param ex Exception
+     * @return responseEntity
      */
-    @ExceptionHandler(Exception.class)
-    protected ResponseEntity<Object> handleException(Exception ex) {
-        LotteryExceptionHandler.LOGGER.debug("Kivétel keletkezett.", ex.getMessage());
+//    @ExceptionHandler(Exception.class)
+//    protected ResponseEntity<Object> handleException(Exception ex) {
+//        LotteryExceptionHandler.LOGGER.debug("Kivétel keletkezett.", ex.getMessage());
+//        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//    }
+
+    @ExceptionHandler(InvalidDateException.class)
+    protected ResponseEntity<Object> handleDateException(Exception ex) {
+                LotteryExceptionHandler.LOGGER.debug("Dátum Kivétel keletkezett.", ex.getMessage());
+                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+            }
+
+    @ExceptionHandler(ParseException.class)
+    protected ResponseEntity<Object> handleParseException(Exception ex) {
+        LotteryExceptionHandler.LOGGER.debug("Parszolási Kivétel keletkezett.", ex.getMessage());
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

@@ -2,12 +2,16 @@ package com.lottery.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.Date;
 
 
 /**
- * Data transfer Object for WeeklyDraw objects
+ * WeeklyDraw Data Transfer Object osztály. Az instance-aiból validált Weeklydraw Entity instance-ok lesznek.
  */
 public class WeeklyDrawDTO {
 
