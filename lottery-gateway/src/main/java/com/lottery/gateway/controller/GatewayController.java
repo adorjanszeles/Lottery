@@ -1,11 +1,15 @@
 package com.lottery.gateway.controller;
 
+import com.lottery.gateway.exceptions.InvalidDateException;
 import com.lottery.gateway.service.AddingWeeklyDrawService;
 import com.lottery.gateway.service.AuthService;
 import com.lottery.gateway.service.AverageService;
 import com.lottery.gateway.service.AverageTimeBetweenTwoMatchFiveDrawsService;
+import com.lottery.gateway.service.CheckDateFromToService;
+import com.lottery.gateway.service.CheckDateFromToServiceImpl;
 import com.lottery.gateway.service.DateIntervalsService;
 import com.lottery.gateway.service.FourMatchRatioToFiveService;
+import com.lottery.gateway.service.MinDateService;
 import com.lottery.gateway.service.MostFrequentFiveNumberService;
 import com.lottery.gateway.service.MostFrequentPairsService;
 import com.lottery.gateway.service.RarestFiveService;
@@ -32,6 +36,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.text.ParseException;
+import java.util.Date;
+
 /**
  * Lottery REST-hez gateway végpontokat tartalmazó Controller osztály
  */
@@ -49,7 +56,8 @@ public class GatewayController {
     private RarestFiveService rarestFiveService;
     private DateIntervalsService dateIntervalsService;
     private AddingWeeklyDrawService addingWeeklyDrawService;
-    private AuthService authService;
+    private MinDateService minDateService;
+    private CheckDateFromToService checkDateFromToService;
 
     private Environment env;
 
@@ -62,7 +70,8 @@ public class GatewayController {
                              RarestFiveService rarestFiveService,
                              DateIntervalsService dateIntervalsService,
                              AddingWeeklyDrawService addingWeeklyDrawService,
-                             AuthService authService,
+                             MinDateService minDateService,
+                             CheckDateFromToService checkDateFromToService,
                              Environment env) {
         this.averageService = averageService;
         this.averageTimeBetweenTwoMatchFiveDrawsService = averageTimeBetweenTwoMatchFiveDrawsService;
@@ -72,7 +81,8 @@ public class GatewayController {
         this.rarestFiveService = rarestFiveService;
         this.dateIntervalsService = dateIntervalsService;
         this.addingWeeklyDrawService = addingWeeklyDrawService;
-        this.authService = authService;
+        this.minDateService = minDateService;
+        this.checkDateFromToService = checkDateFromToService;
         this.env = env;
     }
 
@@ -102,8 +112,8 @@ public class GatewayController {
     public AverageResult getAverageFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url = this.env.getProperty("lottery-web.average") + String.format("/%s/%s", from, to);
         return this.averageService.getAverageResult(url, access_token);
     }
@@ -135,8 +145,8 @@ public class GatewayController {
     public MostFrequentFiveNumberResult getMostFrequentFiveFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url = this.env.getProperty("lottery-web.most-frequent-five-number") + String.format("/%s/%s", from, to);
         return this.mostFrequentFiveNumberService.getMostFrequentFiveNumbers(url, access_token);
     }
@@ -170,8 +180,8 @@ public class GatewayController {
     public FourMatchRatioToFiveMatchResult getFourMatchRatioToFiveFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url =
                 this.env.getProperty("lottery-web.four-match-ratio-to-five-match") + String.format("/%s/%s", from, to);
         return this.fourMatchRatioToFiveService.getFourMatchRatioToFive(url, access_token);
@@ -204,8 +214,8 @@ public class GatewayController {
     public RearestFiveResult getRearestFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url = this.env.getProperty("lottery-web.rearest-five-number") + String.format("/%s/%s", from, to);
         return this.rarestFiveService.getRearestFiveNumber(url, access_token);
     }
@@ -237,8 +247,8 @@ public class GatewayController {
     public DrawsInTwoDimension getMostFrequentPairsFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url =
                 this.env.getProperty("lottery-web.most-frequently-occuring-pairs") + String.format("/%s/%s", from, to);
         return this.mostFrequentPairsService.getMostFrequentPairs(url, access_token);
@@ -274,8 +284,8 @@ public class GatewayController {
     public AverageTimeBetweenTwoMatchFiveDrawsResult getAverageTimeBetweenTwoMatchFiveDrawsFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to,
-            @RequestHeader("Authorization") String access_token) {
-
+            @RequestHeader("Authorization") String access_token) throws ParseException, InvalidDateException {
+        this.checkDateFromToService.checkFromTo(from, to, access_token);
         String url = this.env.getProperty("lottery-web.average-time-between-two-match-five-draws") +
                      String.format("/%s/%s", from, to);
         return this.averageTimeBetweenTwoMatchFiveDrawsService.getAverageTimeBetweenTwoMatchFiveDraws(url,
@@ -295,6 +305,12 @@ public class GatewayController {
     public String getDateIntervals(@RequestHeader("Authorization") String access_token) {
         String url = this.env.getProperty("lottery-web.get-date-intervals");
         return this.dateIntervalsService.getDateIntervals(url, access_token);
+    }
+
+    @GetMapping("/get-min-date")
+    public String getMinDate(@RequestHeader("Authorization") String access_token) {
+        String url = this.env.getProperty("lottery-web.get-min-date");
+        return this.minDateService.getMinDate(url, access_token);
     }
 
     // ####################### ADD NEW WEEKLYDRAW ##############################

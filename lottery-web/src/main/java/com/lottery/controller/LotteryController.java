@@ -1,5 +1,6 @@
 package com.lottery.controller;
 
+import com.lottery.common.exceptions.InvalidDateException;
 import com.lottery.model.AverageResult;
 import com.lottery.model.AverageTimeBetweenTwoMatchFiveDrawsResult;
 import com.lottery.model.FourMatchRatioToFiveMatchResult;
@@ -100,7 +101,7 @@ public class LotteryController {
     public MostFrequentFiveNumberResult getMostFrequentFiveNumberFiltered(
             @ApiParam(value = "filter date from (yyyy-mm-dd)", required = true) @PathVariable("from") String from,
             @ApiParam(value = "filter date to (yyyy-mm-dd)", required = true) @PathVariable("to") String to)
-            throws ParseException {
+            throws ParseException, InvalidDateException {
         return this.mostFrequentFiveNumberService.executeRuleFilterByDate(from, to);
     }
 
@@ -238,6 +239,15 @@ public class LotteryController {
         lottery.setLotteryList();
         lottery.getLotteryList().addAll(weeklyDrawJPARepository.findAll());
         return "OK";
+    }
+
+    @PreAuthorize("hasRole('user') or hasRole('admin')")
+    @ApiOperation(value = "GET min", notes = "getting earliest date")
+    @GetMapping(value = "/get-min-date")
+    @ApiImplicitParam(name = "Authorization", value = "Authorization", required = true, dataType = "string", paramType = "header")
+    public String getMinDate() {
+        Date firstDate = this.dateIntervalService.getStart();
+        return firstDate.toString();
     }
 }
 
