@@ -24,9 +24,5 @@ export const TITLES: Title[] = [
     {
         name: 'Average Time Between Five Match',
         resultType: 'one number result'
-    },
-    {
-        name: 'Draw Date Intervals',
-        resultType: 'string result'
-    },
+    }
 ];
