@@ -110,7 +110,6 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
             return root.path("value").getTextValue().replace("\\n", "");
         } catch (IOException e) {
             ResourceServerConfig.LOGGER.debug("Public key lekérése az Auth szervertől sikertelen");
-            System.out.println("Public key lekérése sikertelen \n\n\n");
             throw new Error("Public key lekérése sikertelen");
         }
     }

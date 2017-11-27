@@ -68,7 +68,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LotteryFileReaderImpl.LOGGER.debug("Nem található a fájl");
         }
     }
 
