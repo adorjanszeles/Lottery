@@ -19,7 +19,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link MostFrequentlyOccuringPairsService interfész implementációja. {@link LotteryService abstract osztály
+ * {@link MostFrequentlyOccuringPairsService} interfész implementációja. {@link LotteryService} abstract osztály
  * extendálása.
  */
 @Service
@@ -41,7 +41,7 @@ public class MostFrequentlyOccuringPairsServiceImpl extends LotteryService
     @Override
     public DrawsInTwoDimension executeRule() {
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug("Leggyakoribb számpárok szabály futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         MostFrequentlyOccurringPairsResult mostFrequentlyOccurringPairsResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug("Leggyakoribb számpárok szabály futtatása befejeződött...");
         return mostFrequentlyOccurringPairsResult.getResultArray();
@@ -51,9 +51,9 @@ public class MostFrequentlyOccuringPairsServiceImpl extends LotteryService
     public DrawsInTwoDimension executeRuleFilterByDate(String from, String to) throws ParseException {
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb számpárokat számító service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         MostFrequentlyOccuringPairsServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,

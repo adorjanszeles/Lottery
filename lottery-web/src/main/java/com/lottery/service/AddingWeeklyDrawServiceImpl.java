@@ -10,13 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link AddingWeeklyDrawService interfész implementációja.
+ * {@link AddingWeeklyDrawService} interfész implementációja
  */
 
 @Service
 public class AddingWeeklyDrawServiceImpl implements AddingWeeklyDrawService {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(AddingWeeklyDrawServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AddingWeeklyDrawServiceImpl.class);
     private Lottery lottery;
     private WeeklyDrawJPARepository weeklyDrawJPARepository;
     private WeeklyDrawDestinationMapper weeklyDrawDestinationMapper;

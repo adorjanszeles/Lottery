@@ -2,6 +2,9 @@ package com.lottery.common.exceptions;
 
 import java.util.List;
 
+/**
+ * Validációs hibák wrapper osztálya
+ */
 public class ApiErrorsView {
 
     private List<ApiFieldError> fieldErrors;

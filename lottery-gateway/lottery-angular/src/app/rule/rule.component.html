@@ -1,0 +1,41 @@
+<div class="rule-wrapper">
+    <div class="rule-title" [ngClass]="{'result-active': resultActive === true}">
+        <p [title]="title">{{title}}</p>
+        <div *ngIf="result && result.error === null" class="result">
+            <app-one-num-result *ngIf="resultType==='one number result'" [result]="result"></app-one-num-result>
+            <app-five-num-result *ngIf="resultType==='five number result'" [result]="result"></app-five-num-result>
+            <app-two-d-array-result id="asd" *ngIf="resultType==='2d array result'" [result]="result"></app-two-d-array-result>
+            <app-string-result *ngIf="resultType==='string result'" [result]="result"></app-string-result>
+        </div>
+
+        <div *ngIf="result && result.error" class="rule-error">
+            <p>
+                {{ result.error }}
+            </p>
+        </div>
+
+    </div>
+    <div class="filter-wrapper">
+        <div class="date-picker">
+            <div class="checkbox">
+                <label class="">
+                <input type="checkbox" (click)="checkCheckbox($event,title.name)"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>
+                </label>
+                <p>filter by date</p>
+            </div>
+            <div class="date-from">
+                <input type="date" *ngIf="filter; else fromElse" [(ngModel)]="from"
+                       placeholder="date from" title="" required/>
+                <ng-template #fromElse><input [(ngModel)]="from" placeholder="date from" disabled/></ng-template>
+            </div>
+            <div class="date-to">
+                <input type="date" *ngIf="filter; else toElse" [(ngModel)]="to"
+                       placeholder="date to" required/>
+                <ng-template #toElse><input [(ngModel)]="to" placeholder="date to" disabled/></ng-template>
+            </div>
+        </div>
+        <button class="btn"
+                (click)="getResult(); addClass()">GET RESULTS
+        </button>
+    </div>
+</div>

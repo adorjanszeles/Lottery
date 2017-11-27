@@ -14,6 +14,7 @@
         <module>lottery-rules</module>
         <module>lottery-web</module>
         <module>lottery-auth</module>
+        <module>lottery-gateway</module>
         <!--<module>lottery-liquibase</module>-->
     </modules>
 

@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link AverageService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link AverageService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 
 @Service
@@ -38,7 +38,7 @@ public class AverageServiceImpl extends LotteryService implements AverageService
     @Override
     public AverageResult executeRule() {
         AverageServiceImpl.LOGGER.debug("Átlagot számító szabály futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         AverageResult averageResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug("Átlagot számító szabály futtatása befejeződött...");
         return averageResult;
@@ -47,9 +47,9 @@ public class AverageServiceImpl extends LotteryService implements AverageService
     @Override
     public AverageResult executeRuleFilterByDate(String from, String to) throws ParseException {
         AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett átlagot számító service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         AverageServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private UserJPARepository userRepository;
 
     @Autowired
@@ -25,6 +25,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Megkeresi a user-t felhasználónév alapján majd ideális esetben visszatér a user adataival feltöltött UserDetails
+     * objektummal.
+     *
+     * @param username user felhasználóneve akinek az adatait szeretnénk vissza kapni.
+     * @return user record ami soha sem null
+     * @throws UsernameNotFoundException Ha a user nem található vagy nincsen hozzárendelt Authority
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserDetailsServiceImpl.LOGGER.debug("SimpleUserServiceImpl user betoltése elkezdődött");

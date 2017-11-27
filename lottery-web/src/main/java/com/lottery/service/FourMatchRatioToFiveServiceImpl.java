@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link FourMatchRatioToFiveService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link FourMatchRatioToFiveService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 @Service
 public class FourMatchRatioToFiveServiceImpl extends LotteryService implements FourMatchRatioToFiveService {
@@ -38,7 +38,7 @@ public class FourMatchRatioToFiveServiceImpl extends LotteryService implements F
     @Override
     public FourMatchRatioToFiveMatchResult executeRule() {
         FourMatchRatioToFiveServiceImpl.LOGGER.debug("Négyesek aránya az ötösökhöz szabály futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult = this.execute(weeklyDrawList);
         FourMatchRatioToFiveServiceImpl.LOGGER.debug("Négyesek aránya az ötösökhöz szabály futtatása befejeződött...");
         return fourMatchRatioToFiveMatchResult;
@@ -48,15 +48,13 @@ public class FourMatchRatioToFiveServiceImpl extends LotteryService implements F
     public FourMatchRatioToFiveMatchResult executeRuleFilterByDate(String from, String to) throws ParseException {
         FourMatchRatioToFiveServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett négyesek aránya az ötösökhöz service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
-        FourMatchRatioToFiveServiceImpl.LOGGER.debug(
-                "Datum alapjan filterezett húzások query-je elkezdődött...");
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);
-        FourMatchRatioToFiveServiceImpl.LOGGER.debug(
-                "Datum alapjan filterezett húzások query-je befejeződött...");
+        FourMatchRatioToFiveServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je befejeződött...");
         weeklyDrawList.setDrawListPreparedForDrools(filteredList);
         FourMatchRatioToFiveMatchResult fourMatchRatioToFiveMatchResult = this.execute(weeklyDrawList);
         AverageServiceImpl.LOGGER.debug(

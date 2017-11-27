@@ -59,9 +59,8 @@ public class TestDrawAverage {
     public void testRuleFired() throws Exception {
         this.eventName = listener.getRuleName();
 
-        assertTrue(this.eventName.length() > 0);
+        assertTrue(!this.eventName.isEmpty());
     }
-
 
     @Test
     public void testRuleFiredOnce() throws Exception {

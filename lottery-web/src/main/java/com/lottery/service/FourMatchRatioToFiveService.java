@@ -20,7 +20,10 @@ public interface FourMatchRatioToFiveService {
     /**
      * Dátum alapján filterezett négyes találatok aránya az ötöshöz rule futtatása
      *
+     * @param from dátum intervallum kezdete
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
     FourMatchRatioToFiveMatchResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

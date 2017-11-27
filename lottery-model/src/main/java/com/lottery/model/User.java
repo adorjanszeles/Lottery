@@ -1,6 +1,10 @@
 package com.lottery.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * User objektum
@@ -18,7 +22,7 @@ public class User {
     }
 
     @Column(name = "password")
-//    @JsonIgnore
+    //    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -36,8 +40,8 @@ public class User {
         this.username = username;
     }
 
-    @Id()
-    @GeneratedValue()
+    @Id
+    @GeneratedValue
     @Column(name = "id")
     public Long getId() {
         return id;

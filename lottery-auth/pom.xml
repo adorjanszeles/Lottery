@@ -33,6 +33,17 @@
         <springsecurity.version>4.2.3.RELEASE</springsecurity.version>
         <org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.3.0.603</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>com.lottery</groupId>

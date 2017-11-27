@@ -6,6 +6,9 @@ import org.kie.api.event.rule.DefaultAgendaEventListener;
 
 import java.util.Map;
 
+/**
+ * Custom AgendaEventListened {@link DefaultAgendaEventListener} kiterjesztése
+ */
 public class LottoAgendaEventListener extends DefaultAgendaEventListener {
 
     private String ruleName;
@@ -15,6 +18,13 @@ public class LottoAgendaEventListener extends DefaultAgendaEventListener {
         this.countFire = 0;
     }
 
+    /**
+     * Az override segítségével kiegészítettem az afterMatchFired() metódust, úgy, hogy abból az elsült rule nevét is ki
+     * tudjuk szedni, ugyanis a stateful kiesession valamiért a stateless fireallrules() metódusát becsomagolta az
+     * execute() metódusba és így az elsült rule nevéhez már nem biztosít hozzáférést...
+     *
+     * @param event kiesession event
+     */
     @Override
     public void afterMatchFired(AfterMatchFiredEvent event) {
         Rule rule = event.getMatch().getRule();
@@ -24,7 +34,7 @@ public class LottoAgendaEventListener extends DefaultAgendaEventListener {
 
         StringBuilder sb = new StringBuilder("Rule fired: ").append(this.ruleName);
 
-        if (ruleMetaDataMap.size() > 0) {
+        if (!ruleMetaDataMap.isEmpty()) {
             sb.append("\n  With [" + ruleMetaDataMap.size() + "] meta-data:");
             for (String key : ruleMetaDataMap.keySet()) {
                 sb.append("\n    key=" + key + ", value=" + ruleMetaDataMap.get(key));

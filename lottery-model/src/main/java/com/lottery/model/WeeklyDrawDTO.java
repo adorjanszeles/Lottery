@@ -2,15 +2,17 @@ package com.lottery.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PositiveOrZero;
 import java.util.Date;
 
-
 /**
- * Data transfer Object for WeeklyDraw objects
+ * WeeklyDraw Data Transfer Object osztály. Az instance-aiból validált Weeklydraw Entity instance-ok lesznek.
  */
 public class WeeklyDrawDTO {
-
 
     private Date drawDate;
     private Integer fiveMatch;
@@ -30,10 +32,8 @@ public class WeeklyDrawDTO {
     public WeeklyDrawDTO() {
     }
 
-    @NotNull(message = "Empty")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past
-    public Date getDrawDate() {
+    public @NotNull(message = "Empty") @Past Date getDrawDate() {
         return drawDate;
     }
 
@@ -41,9 +41,7 @@ public class WeeklyDrawDTO {
         this.drawDate = drawDate;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Integer getFiveMatch() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Integer getFiveMatch() {
         return fiveMatch;
     }
 
@@ -51,9 +49,7 @@ public class WeeklyDrawDTO {
         this.fiveMatch = fiveMatch;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Long getFiveMatchPrize() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Long getFiveMatchPrize() {
         return fiveMatchPrize;
     }
 
@@ -61,9 +57,7 @@ public class WeeklyDrawDTO {
         this.fiveMatchPrize = fiveMatchPrize;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Integer getFourMatch() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Integer getFourMatch() {
         return fourMatch;
     }
 
@@ -71,9 +65,7 @@ public class WeeklyDrawDTO {
         this.fourMatch = fourMatch;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Long getFourMatchPrize() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Long getFourMatchPrize() {
         return fourMatchPrize;
     }
 
@@ -81,9 +73,7 @@ public class WeeklyDrawDTO {
         this.fourMatchPrize = fourMatchPrize;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Integer getThreeMatch() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Integer getThreeMatch() {
         return threeMatch;
     }
 
@@ -91,9 +81,7 @@ public class WeeklyDrawDTO {
         this.threeMatch = threeMatch;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Long getThreeMatchPrize() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Long getThreeMatchPrize() {
         return threeMatchPrize;
     }
 
@@ -101,9 +89,7 @@ public class WeeklyDrawDTO {
         this.threeMatchPrize = threeMatchPrize;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Integer getTwoMatch() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Integer getTwoMatch() {
         return twoMatch;
     }
 
@@ -111,9 +97,7 @@ public class WeeklyDrawDTO {
         this.twoMatch = twoMatch;
     }
 
-    @NotNull(message = "Empty")
-    @PositiveOrZero(message = "enter positive numbers")
-    public Long getTwoMatchPrize() {
+    public @NotNull(message = "Empty") @PositiveOrZero(message = "enter positive numbers") Long getTwoMatchPrize() {
         return twoMatchPrize;
     }
 
@@ -121,10 +105,7 @@ public class WeeklyDrawDTO {
         this.twoMatchPrize = twoMatchPrize;
     }
 
-    @NotNull(message = "Empty")
-    @Min(value = 1)
-    @Max(value = 90)
-    public Integer getFirst() {
+    public @NotNull(message = "Empty") @Min(value = 1) @Max(value = 90) Integer getFirst() {
         return first;
     }
 
@@ -132,10 +113,7 @@ public class WeeklyDrawDTO {
         this.first = first;
     }
 
-    @NotNull(message = "Empty")
-    @Min(value = 1)
-    @Max(value = 90)
-    public Integer getSecond() {
+    public @NotNull(message = "Empty") @Min(value = 1) @Max(value = 90) Integer getSecond() {
         return second;
     }
 
@@ -143,10 +121,7 @@ public class WeeklyDrawDTO {
         this.second = second;
     }
 
-    @NotNull(message = "Empty")
-    @Min(value = 1)
-    @Max(value = 90)
-    public Integer getThird() {
+    public @NotNull(message = "Empty") @Min(value = 1) @Max(value = 90) Integer getThird() {
         return third;
     }
 
@@ -154,10 +129,7 @@ public class WeeklyDrawDTO {
         this.third = third;
     }
 
-    @NotNull(message = "Empty")
-    @Min(value = 1)
-    @Max(value = 90)
-    public Integer getFourth() {
+    public @NotNull(message = "Empty") @Min(value = 1) @Max(value = 90) Integer getFourth() {
         return fourth;
     }
 
@@ -165,10 +137,7 @@ public class WeeklyDrawDTO {
         this.fourth = fourth;
     }
 
-    @NotNull(message = "Empty")
-    @Min(value = 1)
-    @Max(value = 90)
-    public Integer getFifth() {
+    public @NotNull(message = "Empty") @Min(value = 1) @Max(value = 90) Integer getFifth() {
         return fifth;
     }
 
@@ -178,21 +147,10 @@ public class WeeklyDrawDTO {
 
     @Override
     public String toString() {
-        return "WeeklyDrawDTO{" +
-                "drawDate=" + drawDate +
-                ", fiveMatch=" + fiveMatch +
-                ", fiveMatchPrize=" + fiveMatchPrize +
-                ", fourMatch=" + fourMatch +
-                ", fourMatchPrize=" + fourMatchPrize +
-                ", threeMatch=" + threeMatch +
-                ", threeMatchPrize=" + threeMatchPrize +
-                ", twoMatch=" + twoMatch +
-                ", twoMatchPrize=" + twoMatchPrize +
-                ", first=" + first +
-                ", second=" + second +
-                ", third=" + third +
-                ", fourth=" + fourth +
-                ", fifth=" + fifth +
-                '}';
+        return "WeeklyDrawDTO{" + "drawDate=" + drawDate + ", fiveMatch=" + fiveMatch + ", fiveMatchPrize=" +
+               fiveMatchPrize + ", fourMatch=" + fourMatch + ", fourMatchPrize=" + fourMatchPrize + ", threeMatch=" +
+               threeMatch + ", threeMatchPrize=" + threeMatchPrize + ", twoMatch=" + twoMatch + ", twoMatchPrize=" +
+               twoMatchPrize + ", first=" + first + ", second=" + second + ", third=" + third + ", fourth=" + fourth +
+               ", fifth=" + fifth + '}';
     }
 }

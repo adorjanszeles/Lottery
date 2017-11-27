@@ -1,5 +1,8 @@
 package com.lottery.common.exceptions;
 
+/**
+ * Globális kivételek osztálya
+ */
 public class ApiGlobalError {
 
     private String code;

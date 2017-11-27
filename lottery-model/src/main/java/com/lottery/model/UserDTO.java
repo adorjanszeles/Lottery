@@ -4,14 +4,16 @@ import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * User Data Transfer Object osztály. Az instance-aiból validált User Entity instance-ok lesznek.
+ */
 public class UserDTO {
 
     private String username;
     private String password;
     private String role;
 
-    @NotNull(message = "missing username")
-    public String getUsername() {
+    public @NotNull(message = "missing username") String getUsername() {
         return username;
     }
 
@@ -19,8 +21,7 @@ public class UserDTO {
         this.username = username;
     }
 
-    @NotNull(message = "missing password")
-    public String getPassword() {
+    public @NotNull(message = "missing password") String getPassword() {
         return password;
     }
 
@@ -28,15 +29,13 @@ public class UserDTO {
         this.password = password;
     }
 
-    @NotNull(message = "missing role")
     @ApiModelProperty(value = "allowed values:", allowableValues = "user,admin")
-    public String getRole() {
+    public @NotNull(message = "missing role") String getRole() {
         return role;
     }
 
     public void setRole(String role) {
         this.role = role;
     }
-
 
 }

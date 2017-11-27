@@ -1,0 +1,13 @@
+<div class="rule-wrapper">
+    <div class="rule-title" [ngClass]="{'result-active': resultActive === true}">
+        <p>{{title}}</p>
+        <div *ngIf="result" class="result">
+            <app-string-result *ngIf="resultType==='string result'" [result]="result"></app-string-result>
+        </div>
+    </div>
+    <div class="filter-wrapper">
+        <button class="btn"
+                (click)="getResult(); addClass()">GET RESULTS
+        </button>
+    </div>
+</div>

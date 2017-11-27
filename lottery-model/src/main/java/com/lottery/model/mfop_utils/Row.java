@@ -6,6 +6,9 @@ package com.lottery.model.mfop_utils;
  */
 public class Row {
 
+    public Row() {
+    }
+
     private Integer[] columns;
 
     public Row(Integer[] columns) {

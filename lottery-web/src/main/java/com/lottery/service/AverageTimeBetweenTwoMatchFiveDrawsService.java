@@ -20,7 +20,10 @@ public interface AverageTimeBetweenTwoMatchFiveDrawsService {
     /**
      * Két ötös találat közti átlagos idő filterezett kiszámításához írt rule futtatása
      *
+     * @param from dátum intervallum kezdete
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
     AverageTimeBetweenTwoMatchFiveDrawsResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

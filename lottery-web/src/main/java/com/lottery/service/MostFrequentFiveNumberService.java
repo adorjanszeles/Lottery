@@ -1,5 +1,6 @@
 package com.lottery.service;
 
+import com.lottery.common.exceptions.InvalidDateException;
 import com.lottery.model.MostFrequentFiveNumberResult;
 
 import java.text.ParseException;
@@ -21,7 +22,11 @@ public interface MostFrequentFiveNumberService {
     /**
      * Leggyakrabban előforduló számok dátum alapján filterezett kiszámításához írt rule futtatása
      *
+     * @param from dátum intervallum kezdete
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
-    MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException;
+    MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to)
+            throws ParseException;
 }

@@ -15,5 +15,11 @@ lottery-web/lottery-angular/node/
 lottery-web/lottery-angular/tmp/
 lottery-web/lottery-angular/out-tsc/
 
+lottery-gateway/lottery-angular/dist/
+lottery-gateway/lottery-angular/node/
+lottery-gateway/lottery-angular/tmp/
+lottery-gateway/lottery-angular/out-tsc/
+
 # dependencies
 lottery-web/lottery-angular/node_modules/
+lottery-gateway/lottery-angular/node_modules/

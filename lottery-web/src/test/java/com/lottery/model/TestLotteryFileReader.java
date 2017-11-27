@@ -63,7 +63,7 @@ public class TestLotteryFileReader {
      */
 
     private void generateResult() throws ParseException {
-        this.result = new ArrayList<WeeklyDraw>();
+        this.result = new ArrayList<>();
 
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();
@@ -99,19 +99,16 @@ public class TestLotteryFileReader {
     }
 
     private boolean compareWeeklyDraws(WeeklyDraw drawOne, WeeklyDraw drawTwo) {
-        if ((drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
-            (drawOne.getFiveMatch().equals(drawTwo.getFiveMatch())) &&
-            (drawOne.getFiveMatchPrize().equals(drawTwo.getFiveMatchPrize())) &&
-            (drawOne.getFourMatch().equals(drawTwo.getFourMatch())) &&
-            (drawOne.getFourMatchPrize().equals(drawTwo.getFourMatchPrize())) &&
-            (drawOne.getThreeMatch().equals(drawTwo.getThreeMatch())) &&
-            (drawOne.getThreeMatchPrize().equals(drawTwo.getThreeMatchPrize())) &&
-            (drawOne.getTwoMatch().equals(drawTwo.getTwoMatch())) &&
-            (drawOne.getTwoMatchPrize().equals(drawTwo.getTwoMatchPrize())) &&
-                (Arrays.equals(drawOne.generateDrawnNumbers(), drawTwo.generateDrawnNumbers()))) {
-            return true;
-        }
-        return false;
+        return (drawOne.getDrawDate().equals(drawTwo.getDrawDate())) &&
+               (drawOne.getFiveMatch().equals(drawTwo.getFiveMatch())) &&
+               (drawOne.getFiveMatchPrize().equals(drawTwo.getFiveMatchPrize())) &&
+               (drawOne.getFourMatch().equals(drawTwo.getFourMatch())) &&
+               (drawOne.getFourMatchPrize().equals(drawTwo.getFourMatchPrize())) &&
+               (drawOne.getThreeMatch().equals(drawTwo.getThreeMatch())) &&
+               (drawOne.getThreeMatchPrize().equals(drawTwo.getThreeMatchPrize())) &&
+               (drawOne.getTwoMatch().equals(drawTwo.getTwoMatch())) &&
+               (drawOne.getTwoMatchPrize().equals(drawTwo.getTwoMatchPrize())) &&
+               (Arrays.equals(drawOne.generateDrawnNumbers(), drawTwo.generateDrawnNumbers()));
     }
 
 }

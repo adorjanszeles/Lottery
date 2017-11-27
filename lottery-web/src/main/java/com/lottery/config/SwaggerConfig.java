@@ -2,7 +2,6 @@ package com.lottery.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -11,6 +10,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+/**
+ * Swagger java konfigurációs osztálya
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -22,12 +24,10 @@ public class SwaggerConfig {
                                                               "com.lottery.controller"))
                                                       .paths(PathSelectors.any())
                                                       .build()
-                                                      .apiInfo(apiInfo());
+                                                      .apiInfo(this.apiInfo());
     }
 
     private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo("Rest API", "Lottery Endpoints", "1", "", new Contact("Groupama", "", ""), "",
-                                      "");
-        return apiInfo;
+        return new ApiInfo("Rest API", "Lottery Endpoints", "1", "", new Contact("Groupama", "", ""), "", "");
     }
 }

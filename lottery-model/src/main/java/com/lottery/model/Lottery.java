@@ -7,7 +7,7 @@ import java.util.List;
  * Singleton lottó, ami egy listában tárolja a heti húzások objektumait
  */
 public class Lottery {
-    private static Object mutex = new Object();
+    private static final Object mutex = new Object();
     private List<WeeklyDraw> lotteryList;
 
     public List<WeeklyDraw> getLotteryList() {

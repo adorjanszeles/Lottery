@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * {@link MostFrequentFiveNumberService interfész implementációja. {@link LotteryService osztály extendálása.
+ * {@link MostFrequentFiveNumberService} interfész implementációja. {@link LotteryService} osztály extendálása.
  */
 
 @Service
@@ -39,7 +39,7 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
     @Override
     public MostFrequentFiveNumberResult executeRule() {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Leggyakoribb öt szám service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = this.execute(weeklyDrawList);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Leggyakoribb öt szám service futtatása befejeződött...");
         return mostFrequentFiveNumberResult;
@@ -49,9 +49,9 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
     public MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb ot szam service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);

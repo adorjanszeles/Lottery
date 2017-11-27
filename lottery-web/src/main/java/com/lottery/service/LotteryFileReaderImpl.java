@@ -6,6 +6,7 @@ import com.lottery.model.WeeklyDraw;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,7 +19,7 @@ import java.util.Scanner;
 /**
  * {@link LotteryFileReader} interfész implementációja.
  */
-
+@Service
 public class LotteryFileReaderImpl implements LotteryFileReader {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LotteryFileReaderImpl.class);
@@ -67,7 +68,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
                 }
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            LotteryFileReaderImpl.LOGGER.debug("Nem található a fájl");
         }
     }
 
@@ -98,12 +99,12 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @param cleanedLine az input fileból érkező string tömb, egy adott sor
      * @return date objektum
      */
-    private Date generateDateFromString(String[] cleanedLine){
+    private Date generateDateFromString(String[] cleanedLine) {
         String date = cleanedLine[InputColumn.DATE.getColNum()];
         Integer inputYear = Integer.parseInt(cleanedLine[InputColumn.YEAR.getColNum()]);
         Integer inputWeek = Integer.parseInt(cleanedLine[InputColumn.WEEK.getColNum()]);
 
-        if (date.equals("")) {
+        if ("".equals(date)) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, inputYear);
             calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
@@ -133,7 +134,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @return Integer
      */
     private Integer parseStringToInt(String element) {
-        if (element.equals("")) {
+        if ("".equals(element)) {
             return null;
         }
         return Integer.parseInt(element);
@@ -146,7 +147,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      * @return Long
      */
     private Long parseStringToLong(String element) {
-        if (element.equals("")) {
+        if ("".equals(element)) {
             return null;
         }
         return Long.parseLong(element);
@@ -165,7 +166,7 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
         int to = InputColumn.TWO_MATCH_PRIZE.getColNum();
         int counter = 0;
         for (int i = from; i <= to; i++) {
-            if (cleanedLine[i].equals("0")) {
+            if ("0".equals(cleanedLine[i])) {
                 counter++;
             }
         }
@@ -185,15 +186,15 @@ public class LotteryFileReaderImpl implements LotteryFileReader {
      */
     private WeeklyDraw createWeeklyDraws(String[] cleanedLine) {
         WeeklyDraw weeklyDraw = new WeeklyDraw();
-        weeklyDraw.setDrawDate(generateDateFromString(cleanedLine));
-        weeklyDraw.setFiveMatch(parseStringToInt(cleanedLine[InputColumn.FIVE_MATCH.getColNum()]));
-        weeklyDraw.setFiveMatchPrize(parseStringToLong(cleanedLine[InputColumn.FIVE_MATCH_PRIZE.getColNum()]));
-        weeklyDraw.setFourMatch(parseStringToInt(cleanedLine[InputColumn.FOUR_MATCH.getColNum()]));
-        weeklyDraw.setFourMatchPrize(parseStringToLong(cleanedLine[InputColumn.FOUR_MATCH_PRIZE.getColNum()]));
-        weeklyDraw.setThreeMatch(parseStringToInt(cleanedLine[InputColumn.THREE_MATCH.getColNum()]));
-        weeklyDraw.setThreeMatchPrize(parseStringToLong(cleanedLine[InputColumn.THREE_MATCH_PRIZE.getColNum()]));
-        weeklyDraw.setTwoMatch(parseStringToInt(cleanedLine[InputColumn.TWO_MATCH.getColNum()]));
-        weeklyDraw.setTwoMatchPrize(parseStringToLong(cleanedLine[InputColumn.TWO_MATCH_PRIZE.getColNum()]));
+        weeklyDraw.setDrawDate(this.generateDateFromString(cleanedLine));
+        weeklyDraw.setFiveMatch(this.parseStringToInt(cleanedLine[InputColumn.FIVE_MATCH.getColNum()]));
+        weeklyDraw.setFiveMatchPrize(this.parseStringToLong(cleanedLine[InputColumn.FIVE_MATCH_PRIZE.getColNum()]));
+        weeklyDraw.setFourMatch(this.parseStringToInt(cleanedLine[InputColumn.FOUR_MATCH.getColNum()]));
+        weeklyDraw.setFourMatchPrize(this.parseStringToLong(cleanedLine[InputColumn.FOUR_MATCH_PRIZE.getColNum()]));
+        weeklyDraw.setThreeMatch(this.parseStringToInt(cleanedLine[InputColumn.THREE_MATCH.getColNum()]));
+        weeklyDraw.setThreeMatchPrize(this.parseStringToLong(cleanedLine[InputColumn.THREE_MATCH_PRIZE.getColNum()]));
+        weeklyDraw.setTwoMatch(this.parseStringToInt(cleanedLine[InputColumn.TWO_MATCH.getColNum()]));
+        weeklyDraw.setTwoMatchPrize(this.parseStringToLong(cleanedLine[InputColumn.TWO_MATCH_PRIZE.getColNum()]));
         weeklyDraw.setFirst(Integer.parseInt(cleanedLine[InputColumn.FIRST_DRAW_NUM.getColNum()]));
         weeklyDraw.setSecond(Integer.parseInt(cleanedLine[InputColumn.SECOND_DRAW_NUM.getColNum()]));
         weeklyDraw.setThird(Integer.parseInt(cleanedLine[InputColumn.THIRD_DRAW_NUM.getColNum()]));

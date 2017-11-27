@@ -26,6 +26,7 @@ public abstract class LotteryService {
      *
      * @param dateInput datum kezdeze
      * @return Date objektum
+     * @throws ParseException parszolási kivétel
      */
     protected Date parseDate(String dateInput) throws ParseException {
         LotteryService.LOGGER.debug("Input dátummá parszolása elkezdődöt...");
