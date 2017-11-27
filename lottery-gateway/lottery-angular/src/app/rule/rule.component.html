@@ -18,7 +18,9 @@
     <div class="filter-wrapper">
         <div class="date-picker">
             <div class="checkbox">
-                <input type="checkbox" (click)="checkCheckbox($event,title.name)">
+                <label class="">
+                <input type="checkbox" (click)="checkCheckbox($event,title.name)"><i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>
+                </label>
                 <p>filter by date</p>
             </div>
             <div class="date-from">
