@@ -184,7 +184,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
         int to = InputColumn.TWO_MATCH_PRIZE.getColNum();
         int counter = 0;
         for (int i = from; i <= to; i++) {
-            if (cleanedLine[i].equals("0")) {
+            if ("0".equals(cleanedLine[i])) {
                 counter++;
             }
         }

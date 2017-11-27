@@ -47,10 +47,8 @@ public class PersistFromCsv {
 
         } catch (FileNotFoundException e) {
             PersistFromCsv.LOGGER.debug("nem beolvasható a fájl");
-            e.printStackTrace();
         } catch (IOException e) {
             PersistFromCsv.LOGGER.debug("probléma beolvasáskor vagy nem létezik a fájl");
-            e.printStackTrace();
         }
 
         return objectList;
