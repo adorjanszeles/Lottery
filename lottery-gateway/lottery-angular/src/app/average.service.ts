@@ -23,7 +23,6 @@ export class AverageService {
             },
             err => {
                 this.result.error = err.error;
-                console.log(err.error)
             });
         return this.result;
     }
@@ -39,7 +38,6 @@ export class AverageService {
             },
             err => {
                 this.resultByDate.error = err.error;
-                console.log(err.error)
             });
         return this.resultByDate;
     }

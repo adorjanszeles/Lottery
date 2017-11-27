@@ -24,7 +24,6 @@ export class DrawDateIntervalsService {
             },
             err => {
                 this.result.error = err.error;
-                console.log(err.error)
             });
         return this.result;
     }

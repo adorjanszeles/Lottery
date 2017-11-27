@@ -21,7 +21,6 @@ export class FourMatchFiveRatioService {
             },
             err => {
                 this.result.error = err.error;
-                console.log(err.error)
             });
         return this.result;
     }
@@ -35,7 +34,6 @@ export class FourMatchFiveRatioService {
             },
             err => {
                 this.resultByDate.error = err.error;
-                console.log(err.error)
             });
         return this.resultByDate;
     }

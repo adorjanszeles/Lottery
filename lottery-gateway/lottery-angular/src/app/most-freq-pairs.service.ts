@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ResultCompact} from './resultCompact';
-
 import {HttpClient} from '@angular/common/http';
 import {GetTokenService} from "./get-token.service";
 
@@ -16,6 +15,9 @@ export class MostFreqPairsService {
     parseResult(resultList: object[][]): number[][] {
         let resultArray = [];
         for (let i = 0; i < resultList.length; i++) {
+            if (i >= 5) {
+                return resultArray;
+            }
             resultArray.push(resultList[i]['columns'])
         }
         return resultArray;
@@ -38,11 +40,10 @@ export class MostFreqPairsService {
             .get<number>(url, this.getTokenService.getHttpOption()).subscribe(
             data => {
                 temp = data;
-                this.resultByDate.arr = this.parseResult(temp)
+                this.resultByDate.arr = this.parseResult(temp['rows'])
             },
             err => {
                 this.resultByDate.error = err.error;
-                console.log(err.error)
             });
         return this.resultByDate;
     }

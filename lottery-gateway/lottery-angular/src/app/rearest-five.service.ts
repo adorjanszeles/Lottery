@@ -23,7 +23,6 @@ export class RearestFiveService {
             },
             err => {
                 this.result.error = err.error;
-                console.log(err.error)
             });
         return this.result;
     }
@@ -37,8 +36,7 @@ export class RearestFiveService {
                 this.resultByDate.arr = data['result']
             },
             err => {
-                this.result.error = err.error;
-                console.log(err.error)
+                this.resultByDate.error = err.error;
             });
         return this.resultByDate;
     }

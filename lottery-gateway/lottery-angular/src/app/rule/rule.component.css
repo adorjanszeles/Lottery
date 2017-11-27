@@ -397,3 +397,18 @@ body {
         transform: scale(1);
     }
 }
+
+/* ##### EXCEPTIONS ##### */
+.rule-error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rule-error p {
+    font-size: 14px;
+    color: #ffffff;
+    background: #cd2b2bbf;
+    padding: 10px;
+    border-radius: 5px;
+}
