@@ -22,6 +22,7 @@ import {RuleComponent} from './rule/rule.component';
 import {OneNumResultComponent} from './one-num-result/one-num-result.component';
 import {FormsModule} from '@angular/forms';
 import {MessageService} from './message.service';
+import {ExceptionMessageComponent} from './exception-message/exception-message.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +34,8 @@ import {MessageService} from './message.service';
         MessagesComponent,
         FiveNumResultComponent,
         TwoDArrayResultComponent,
-        StringResultComponent
+        StringResultComponent,
+        ExceptionMessageComponent
     ],
     imports: [
         BrowserModule,

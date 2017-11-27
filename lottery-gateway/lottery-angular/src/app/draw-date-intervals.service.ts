@@ -21,8 +21,10 @@ export class DrawDateIntervalsService {
                 }), responseType: 'text'
             }).subscribe(response => {
             this.result.interval = response
-        });
-        console.log('string: ' + this.result.interval);
+            },
+            err => {
+                this.result.error = err.error;
+            });
         return this.result;
     }
 }

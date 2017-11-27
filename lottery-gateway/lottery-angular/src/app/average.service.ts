@@ -17,7 +17,13 @@ export class AverageService {
     getResult(): ResultNum {
         this.result = new ResultNum();
         this.http
-            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.num = data['result'].toFixed(1));
+            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.result.num = data['result'].toFixed(1)
+            },
+            err => {
+                this.result.error = err.error;
+            });
         return this.result;
     }
 
@@ -26,7 +32,13 @@ export class AverageService {
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultNum();
         this.http
-            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.num = data['result'].toFixed(1));
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.resultByDate.num = data['result'].toFixed(1)
+            },
+            err => {
+                this.resultByDate.error = err.error;
+            });
         return this.resultByDate;
     }
 }

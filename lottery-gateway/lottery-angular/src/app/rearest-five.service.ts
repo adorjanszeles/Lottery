@@ -17,7 +17,13 @@ export class RearestFiveService {
     getResult(): ResultArray {
         this.result = new ResultArray();
         this.http
-            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(data => this.result.arr = data['result']);
+            .get<number>(this.lotteryUrl, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.result.arr = data['result']
+            },
+            err => {
+                this.result.error = err.error;
+            });
         return this.result;
     }
 
@@ -25,7 +31,13 @@ export class RearestFiveService {
         const url = this.lotteryUrl + '/' + from + '/' + to;
         this.resultByDate = new ResultArray();
         this.http
-            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(data => this.resultByDate.arr = data['result']);
+            .get<number>(url, this.getTokenService.getHttpOption()).subscribe(
+            data => {
+                this.resultByDate.arr = data['result']
+            },
+            err => {
+                this.resultByDate.error = err.error;
+            });
         return this.resultByDate;
     }
 }
