@@ -41,7 +41,7 @@ public class CheckDateFromToServiceImpl implements CheckDateFromToService {
         if (toDate.before(fromDate) || fromDate.before(minDate) || toDate.before(minDate) || today.before(fromDate) ||
             today.before(toDate)) {
             System.out.println(minDate.toString());
-            throw new InvalidDateException("Wrong date interval or from date is after to date. Lottery date intervals available from: " + minDate.toString()
+            throw new InvalidDateException("Wrong date interval or from date is after to date. Lottery date intervals available from: " + format.format(minDate)
             );
         }
         return true;
