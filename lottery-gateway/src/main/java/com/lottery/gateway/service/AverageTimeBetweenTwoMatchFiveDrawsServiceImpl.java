@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link AverageTimeBetweenTwoMatchFiveDrawsService} interfész implementációja
- * {@link AbstractGetService} abstract class kiterjesztése
+ * {@link AverageTimeBetweenTwoMatchFiveDrawsService} interfész implementációja {@link AbstractGetService} abstract
+ * class kiterjesztése
  */
 @Service
 public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl

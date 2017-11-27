@@ -11,7 +11,7 @@ public class RearestFiveResult {
     private List<Integer> result;
 
     public RearestFiveResult() {
-        this.result = new ArrayList<Integer>();
+        this.result = new ArrayList<>();
     }
 
     public List<Integer> getResult() {

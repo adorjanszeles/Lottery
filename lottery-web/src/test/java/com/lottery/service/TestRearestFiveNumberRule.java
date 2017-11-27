@@ -76,7 +76,7 @@ public class TestRearestFiveNumberRule {
     @Test
     public void testResultRearestNumbers() {
 
-        assertEquals(new ArrayList<Integer>(Arrays.asList(11, 12, 13, 14, 15)), this.rearestFiveResult.getResult());
+        assertEquals(new ArrayList<>(Arrays.asList(11, 12, 13, 14, 15)), this.rearestFiveResult.getResult());
     }
 
     /**

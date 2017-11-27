@@ -58,25 +58,25 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
             rawLine[9] = rawDraw.getTwoMatch();
             rawLine[10] = rawDraw.getTwoMatchPrize();
 
-            cleanLine(rawLine);
-            checkForZeros(rawLine);
+            this.cleanLine(rawLine);
+            this.checkForZeros(rawLine);
 
             Integer[] rawDrawNumbers = new Integer[5];
-            rawDrawNumbers[0] = parseStringToInt(rawDraw.getFirst());
-            rawDrawNumbers[1] = parseStringToInt(rawDraw.getSecond());
-            rawDrawNumbers[2] = parseStringToInt(rawDraw.getThird());
-            rawDrawNumbers[3] = parseStringToInt(rawDraw.getFourth());
-            rawDrawNumbers[4] = parseStringToInt(rawDraw.getFifth());
+            rawDrawNumbers[0] = this.parseStringToInt(rawDraw.getFirst());
+            rawDrawNumbers[1] = this.parseStringToInt(rawDraw.getSecond());
+            rawDrawNumbers[2] = this.parseStringToInt(rawDraw.getThird());
+            rawDrawNumbers[3] = this.parseStringToInt(rawDraw.getFourth());
+            rawDrawNumbers[4] = this.parseStringToInt(rawDraw.getFifth());
 
-            draw.setDrawDate(generateDateFromString(rawLine[0], rawLine[1], rawLine[2]));
-            draw.setFiveMatch(parseStringToInt(rawLine[3]));
-            draw.setFiveMatchPrize(parseStringToLong(rawLine[4]));
-            draw.setFourMatch(parseStringToInt(rawLine[5]));
-            draw.setFourMatchPrize(parseStringToLong(rawLine[6]));
-            draw.setThreeMatch(parseStringToInt(rawLine[7]));
-            draw.setThreeMatchPrize(parseStringToLong(rawLine[8]));
-            draw.setTwoMatch(parseStringToInt(rawLine[9]));
-            draw.setTwoMatchPrize(parseStringToLong(rawLine[10]));
+            draw.setDrawDate(this.generateDateFromString(rawLine[0], rawLine[1], rawLine[2]));
+            draw.setFiveMatch(this.parseStringToInt(rawLine[3]));
+            draw.setFiveMatchPrize(this.parseStringToLong(rawLine[4]));
+            draw.setFourMatch(this.parseStringToInt(rawLine[5]));
+            draw.setFourMatchPrize(this.parseStringToLong(rawLine[6]));
+            draw.setThreeMatch(this.parseStringToInt(rawLine[7]));
+            draw.setThreeMatchPrize(this.parseStringToLong(rawLine[8]));
+            draw.setTwoMatch(this.parseStringToInt(rawLine[9]));
+            draw.setTwoMatchPrize(this.parseStringToLong(rawLine[10]));
             draw.setFirst(rawDrawNumbers[0]);
             draw.setSecond(rawDrawNumbers[1]);
             draw.setThird(rawDrawNumbers[2]);
@@ -122,7 +122,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
         Integer inputYear = Integer.parseInt(rawYear);
         Integer inputWeek = Integer.parseInt(rawWeek);
 
-        if (rawDate.equals("")) {
+        if ("".equals(rawDate)) {
             Calendar calendar = Calendar.getInstance();
             calendar.set(Calendar.YEAR, inputYear);
             calendar.set(Calendar.WEEK_OF_YEAR, inputWeek);
@@ -152,7 +152,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
      * @return Integer
      */
     private Integer parseStringToInt(String element) {
-        if (element.equals("")) {
+        if ("".equals(element)) {
             return null;
         }
         return Integer.parseInt(element);
@@ -165,7 +165,7 @@ public class WeeklyDrawConverterImpl implements WeeklyDrawConverter {
      * @return Long
      */
     private Long parseStringToLong(String element) {
-        if (element.equals("")) {
+        if ("".equals(element)) {
             return null;
         }
         return Long.parseLong(element);

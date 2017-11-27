@@ -1,6 +1,5 @@
 package com.lottery.service;
 
-import com.lottery.common.exceptions.InvalidDateException;
 import com.lottery.config.LotteryQualifier;
 import com.lottery.model.Lottery;
 import com.lottery.model.MostFrequentFiveNumberResult;
@@ -40,20 +39,19 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
     @Override
     public MostFrequentFiveNumberResult executeRule() {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Leggyakoribb öt szám service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = this.execute(weeklyDrawList);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Leggyakoribb öt szám service futtatása befejeződött...");
         return mostFrequentFiveNumberResult;
     }
 
     @Override
-    public MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to)
-            throws ParseException {
+    public MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to) throws ParseException {
         MostFrequentFiveNumberServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb ot szam service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         MostFrequentFiveNumberServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);
@@ -63,7 +61,7 @@ public class MostFrequentFiveNumberServiceImpl extends LotteryService implements
         MostFrequentFiveNumberServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett leggyakoribb ot szam service futtatása befejeződött...");
         return mostFrequentFiveNumberResult;
-}
+    }
 
     private MostFrequentFiveNumberResult execute(WeeklyDrawList weeklyDrawList) {
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();

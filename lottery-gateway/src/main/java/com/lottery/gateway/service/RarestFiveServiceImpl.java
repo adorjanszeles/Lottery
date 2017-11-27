@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link RarestFiveService} interfész implementációja
- * {@link AbstractGetService} abstract class kiterjesztése
+ * {@link RarestFiveService} interfész implementációja {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class RarestFiveServiceImpl extends AbstractGetService<RearestFiveResult> implements RarestFiveService {

@@ -23,7 +23,7 @@ public interface WeeklyDrawRedisRepository {
 
     Long size();
 
-    WeeklyDraw find(final String id);
+    WeeklyDraw find(String id);
 
     List<CompositeObjectSinkAdapter.HashKey> values();
 

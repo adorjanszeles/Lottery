@@ -27,35 +27,35 @@ public class WeeklyDrawRedisRepositoryImpl implements WeeklyDrawRedisRepository 
         this.hashOperations = this.redisTemplate.opsForHash();
     }
 
-    public void save(final WeeklyDraw weeklyDraw) {
-        this.hashOperations.put(KEY, weeklyDraw.getRedisId(), weeklyDraw);
+    public void save(WeeklyDraw weeklyDraw) {
+        this.hashOperations.put(WeeklyDrawRedisRepositoryImpl.KEY, weeklyDraw.getRedisId(), weeklyDraw);
     }
 
-    public void update(final WeeklyDraw weeklyDraw) {
-        this.hashOperations.put(KEY, weeklyDraw.getRedisId(), weeklyDraw);
+    public void update(WeeklyDraw weeklyDraw) {
+        this.hashOperations.put(WeeklyDrawRedisRepositoryImpl.KEY, weeklyDraw.getRedisId(), weeklyDraw);
     }
 
     public Map<Object, Object> findAll() {
-        return this.hashOperations.entries(KEY);
+        return this.hashOperations.entries(WeeklyDrawRedisRepositoryImpl.KEY);
     }
 
-    public void delete(final String id) {
-        this.hashOperations.delete(KEY, id);
+    public void delete(String id) {
+        this.hashOperations.delete(WeeklyDrawRedisRepositoryImpl.KEY, id);
     }
 
-    public void saveAll(final Map weeklyDrawList) {
-        this.hashOperations.putAll(KEY, weeklyDrawList);
+    public void saveAll(Map weeklyDrawList) {
+        this.hashOperations.putAll(WeeklyDrawRedisRepositoryImpl.KEY, weeklyDrawList);
     }
 
     public Long size() {
-        return this.hashOperations.size(KEY);
+        return this.hashOperations.size(WeeklyDrawRedisRepositoryImpl.KEY);
     }
 
-    public WeeklyDraw find(final String id) {
-        return (WeeklyDraw) this.hashOperations.get(KEY, id);
+    public WeeklyDraw find(String id) {
+        return (WeeklyDraw) this.hashOperations.get(WeeklyDrawRedisRepositoryImpl.KEY, id);
     }
 
     public List<CompositeObjectSinkAdapter.HashKey> values() {
-        return this.hashOperations.values(KEY);
+        return this.hashOperations.values(WeeklyDrawRedisRepositoryImpl.KEY);
     }
 }

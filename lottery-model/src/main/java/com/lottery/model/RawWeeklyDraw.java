@@ -22,7 +22,8 @@ public class RawWeeklyDraw {
     private String fourth;
     private String fifth;
 
-    protected RawWeeklyDraw(){}
+    protected RawWeeklyDraw() {
+    }
 
     public RawWeeklyDraw(String year,
                          String week,

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(value = "/auth", description = "Lottery Auth Gateway")
-@RequestMapping(value = "/auth")
+@RequestMapping("/auth")
 @PropertySource("classpath:lottery-web.properties")
 public class AuthGatewayController {
 

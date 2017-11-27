@@ -2,11 +2,9 @@ package com.lottery.gateway.controller;
 
 import com.lottery.gateway.exceptions.InvalidDateException;
 import com.lottery.gateway.service.AddingWeeklyDrawService;
-import com.lottery.gateway.service.AuthService;
 import com.lottery.gateway.service.AverageService;
 import com.lottery.gateway.service.AverageTimeBetweenTwoMatchFiveDrawsService;
 import com.lottery.gateway.service.CheckDateFromToService;
-import com.lottery.gateway.service.CheckDateFromToServiceImpl;
 import com.lottery.gateway.service.DateIntervalsService;
 import com.lottery.gateway.service.FourMatchRatioToFiveService;
 import com.lottery.gateway.service.MinDateService;
@@ -37,14 +35,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.ParseException;
-import java.util.Date;
 
 /**
  * Lottery REST-hez gateway végpontokat tartalmazó Controller osztály
  */
 @RestController
 @Api(value = "/gateway", description = "Lottery Rules Gateway")
-@RequestMapping(value = "/gateway")
+@RequestMapping("/gateway")
 @PropertySource("classpath:lottery-web.properties")
 public class GatewayController {
 

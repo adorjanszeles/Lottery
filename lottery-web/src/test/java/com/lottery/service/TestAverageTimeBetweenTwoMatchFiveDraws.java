@@ -121,7 +121,7 @@ public class TestAverageTimeBetweenTwoMatchFiveDraws {
         weeklyDraw4.setDrawDate(format.parse("04-02-1997"));
         weeklyDraw5.setDrawDate(format.parse("01-04-1998"));
 
-        List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
+        List<WeeklyDraw> weeklyDrawList = new ArrayList<>();
 
         weeklyDrawList.add(weeklyDraw0);
         weeklyDrawList.add(weeklyDraw1);

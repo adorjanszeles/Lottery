@@ -27,6 +27,8 @@ import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFacto
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizationServerConfig.class);
+    private static final Integer ACCESS_VALIDITY_IN_SECONDS = 600000;
+    private static final Integer REFRESH_VALIDITY_IN_SECONDS = 600000;
     private AuthenticationManager authenticationManager;
 
     @Autowired
@@ -76,10 +78,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.tokenStore(tokenStore())
-                 .tokenServices(tokenServices())
+        endpoints.tokenStore(this.tokenStore())
+                 .tokenServices(this.tokenServices())
                  .authenticationManager(this.authenticationManager)
-                 .accessTokenConverter(accessTokenConverter());
+                 .accessTokenConverter(this.accessTokenConverter());
     }
 
     /**
@@ -105,7 +107,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
      */
     @Bean
     public TokenStore tokenStore() {
-        return new JwtTokenStore(accessTokenConverter());
+        return new JwtTokenStore(this.accessTokenConverter());
     }
 
     /**
@@ -119,11 +121,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     // https://stackoverflow.com/a/29929270/6917248
     public AuthorizationServerTokenServices tokenServices() {
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
+        defaultTokenServices.setTokenStore(this.tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setTokenEnhancer(accessTokenConverter());
-        defaultTokenServices.setAccessTokenValiditySeconds(600000);
-        defaultTokenServices.setRefreshTokenValiditySeconds(1200);
+        defaultTokenServices.setTokenEnhancer(this.accessTokenConverter());
+        defaultTokenServices.setAccessTokenValiditySeconds(AuthorizationServerConfig.ACCESS_VALIDITY_IN_SECONDS);
+        defaultTokenServices.setRefreshTokenValiditySeconds(AuthorizationServerConfig.REFRESH_VALIDITY_IN_SECONDS);
         return defaultTokenServices;
     }
 }

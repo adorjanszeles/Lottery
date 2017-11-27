@@ -9,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
-
 /**
  * {@link MinDateService} interfész implementációja
  */
@@ -28,9 +26,8 @@ public class MinDateServiceImpl implements MinDateService {
         HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
         ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
-        String result = response.getBody();
 
-        return result;
+        return response.getBody();
     }
 
 }

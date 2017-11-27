@@ -39,7 +39,7 @@ public class TestMostFrequentlyOccurringPairsRule {
         LotteryConfig lotteryConfig = new LotteryConfig();
         this.statelessKieSession = lotteryConfig.getNewStatelessKieSession();
         this.weeklyDrawList = new WeeklyDrawList();
-        this.weeklyDrawList.setDrawListPreparedForDrools(getStubbedDrawList());
+        this.weeklyDrawList.setDrawListPreparedForDrools(this.getStubbedDrawList());
         this.result = new MostFrequentlyOccurringPairsResult();
         this.eventName = null;
         this.listener = new LottoAgendaEventListener();
@@ -51,7 +51,7 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.statelessKieSession.addEventListener(this.listener);
         this.statelessKieSession.execute(this.facts);
         this.eventName = this.listener.getRuleName();
-        assertEquals( "Most Frequently Occurring Pairs", this.eventName );
+        assertEquals("Most Frequently Occurring Pairs", this.eventName);
     }
 
     @Test
@@ -71,9 +71,8 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.statelessKieSession.addEventListener(this.listener);
         this.statelessKieSession.execute(this.facts);
         this.eventName = this.listener.getRuleName();
-        assertEquals( "Most Frequently Occurring Pairs", this.eventName );
+        assertEquals("Most Frequently Occurring Pairs", this.eventName);
     }
-
 
     @Test
     public void testResultIsNotEmpty() throws Exception {
@@ -81,7 +80,7 @@ public class TestMostFrequentlyOccurringPairsRule {
         this.facts = new ArrayList<>(Arrays.asList(this.weeklyDrawList, this.result));
         this.statelessKieSession.execute(this.facts);
         DrawsInTwoDimension resultArray = this.result.getResultArray();
-        assertTrue(this.result.getResultArray().getRows().size() > 0);
+        assertTrue(!this.result.getResultArray().getRows().isEmpty());
     }
 
     @Test
@@ -124,7 +123,7 @@ public class TestMostFrequentlyOccurringPairsRule {
      */
     private List<WeeklyDraw> getStubbedDrawList() {
 
-        List<WeeklyDraw> weeklyDrawList = new ArrayList<WeeklyDraw>();
+        List<WeeklyDraw> weeklyDrawList = new ArrayList<>();
         WeeklyDraw weeklyDraw0 = new WeeklyDraw();
         WeeklyDraw weeklyDraw1 = new WeeklyDraw();
         WeeklyDraw weeklyDraw2 = new WeeklyDraw();
@@ -166,7 +165,7 @@ public class TestMostFrequentlyOccurringPairsRule {
      */
     private void settWeeklyDrawsForContainingTwoPairsWithSameOccurring() {
 
-        List<Integer[]> newDraws = new LinkedList<Integer[]>();
+        List<Integer[]> newDraws = new LinkedList<>();
         newDraws.add(new Integer[]{15, 26, 3, 4, 5});
         newDraws.add(new Integer[]{18, 29, 3, 4, 54});
         newDraws.add(new Integer[]{13, 27, 3, 4, 90});

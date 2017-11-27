@@ -19,10 +19,11 @@ public interface AverageService {
 
     /**
      * kihúzott számok átlagának dátum alapján filterezett kiszámításához írt rule futtatása
+     *
      * @param from dátum intervallum kezdete
-     * @param to dátum intervallum vége
-     * @throws ParseException parszolási kivétel
+     * @param to   dátum intervallum vége
      * @return result objektum
+     * @throws ParseException parszolási kivétel
      */
     AverageResult executeRuleFilterByDate(String from, String to) throws ParseException;
 }

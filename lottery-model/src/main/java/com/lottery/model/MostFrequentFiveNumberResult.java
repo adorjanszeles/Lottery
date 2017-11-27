@@ -11,7 +11,7 @@ public class MostFrequentFiveNumberResult {
     private List<Integer> result;
 
     public MostFrequentFiveNumberResult() {
-        this.result = new ArrayList<Integer>();
+        this.result = new ArrayList<>();
     }
 
     public List<Integer> getResult() {

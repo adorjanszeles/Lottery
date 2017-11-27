@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,8 +24,8 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 import org.springframework.web.client.RestTemplate;
+
 import java.io.IOException;
 
 /**
@@ -50,7 +49,9 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId(ResourceServerConfig.RESOURCE_ID).tokenServices(tokenServices()).tokenStore(tokenStore());
+        resources.resourceId(ResourceServerConfig.RESOURCE_ID)
+                 .tokenServices(this.tokenServices())
+                 .tokenStore(this.tokenStore());
     }
 
     @Override
@@ -79,15 +80,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Bean
     public TokenStore tokenStore() {
-        return new JwtTokenStore(accessTokenConverter());
+        return new JwtTokenStore(this.accessTokenConverter());
     }
 
     @Bean
     public ResourceServerTokenServices tokenServices() {
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
+        defaultTokenServices.setTokenStore(this.tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setTokenEnhancer(accessTokenConverter());
+        defaultTokenServices.setTokenEnhancer(this.accessTokenConverter());
         return defaultTokenServices;
     }
 
@@ -96,7 +97,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         return new BCryptPasswordEncoder(10);
     }
 
-    public String getPublicKey() {
+    private String getPublicKey() {
         ResourceServerConfig.LOGGER.debug("Public Key lekérése az Auth szervertől");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -106,8 +107,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(response.getBody());
-            String publicKey = root.path("value").getTextValue().replace("\\n", "");
-            return publicKey;
+            return root.path("value").getTextValue().replace("\\n", "");
         } catch (IOException e) {
             ResourceServerConfig.LOGGER.debug("Public key lekérése az Auth szervertől sikertelen");
             System.out.println("Public key lekérése sikertelen \n\n\n");

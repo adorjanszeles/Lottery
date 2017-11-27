@@ -5,8 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link DateIntervalsService} interfész implementációja
- * {@link AbstractGetService} abstract class kiterjesztése
+ * {@link DateIntervalsService} interfész implementációja {@link AbstractGetService} abstract class kiterjesztése
  */
 @Service
 public class DateIntervalsServiceImpl extends AbstractGetService<String> implements DateIntervalsService {

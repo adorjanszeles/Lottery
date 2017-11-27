@@ -20,7 +20,7 @@ import static java.util.stream.Collectors.toList;
 @ControllerAdvice
 public class LotteryExceptionHandler {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(LotteryExceptionHandler.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LotteryExceptionHandler.class);
 
     /**
      * Validációhoz szükséges kivétel kezelés
@@ -58,17 +58,16 @@ public class LotteryExceptionHandler {
      * @param ex Exception
      * @return responseEntity
      */
-//    @ExceptionHandler(Exception.class)
-//    protected ResponseEntity<Object> handleException(Exception ex) {
-//        LotteryExceptionHandler.LOGGER.debug("Kivétel keletkezett.", ex.getMessage());
-//        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-
+    //    @ExceptionHandler(Exception.class)
+    //    protected ResponseEntity<Object> handleException(Exception ex) {
+    //        LotteryExceptionHandler.LOGGER.debug("Kivétel keletkezett.", ex.getMessage());
+    //        return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+    //    }
     @ExceptionHandler(InvalidDateException.class)
     protected ResponseEntity<Object> handleDateException(Exception ex) {
-                LotteryExceptionHandler.LOGGER.debug("Dátum Kivétel keletkezett.", ex.getMessage());
-                return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
-            }
+        LotteryExceptionHandler.LOGGER.debug("Dátum Kivétel keletkezett.", ex.getMessage());
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler(ParseException.class)
     protected ResponseEntity<Object> handleParseException(Exception ex) {

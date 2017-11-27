@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         WebSecurityConfig.LOGGER.debug("authentikáció elkezdődött");
-        auth.userDetailsService(userService).passwordEncoder(encoder());
+        auth.userDetailsService(userService).passwordEncoder(this.encoder());
         WebSecurityConfig.LOGGER.debug("authentikációnak vége");
     }
 

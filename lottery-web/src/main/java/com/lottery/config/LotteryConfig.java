@@ -3,9 +3,7 @@ package com.lottery.config;
 import com.lottery.common.enums.KieSessionName;
 import com.lottery.common.exceptions.MissingKieServicesException;
 import com.lottery.model.Lottery;
-import com.lottery.model.WeeklyDraw;
 import com.lottery.repository.WeeklyDrawJPARepository;
-import com.lottery.service.PersistFromCsv;
 import org.kie.api.KieServices;
 import org.kie.api.builder.ReleaseId;
 import org.kie.api.runtime.KieContainer;
@@ -27,9 +25,15 @@ public class LotteryConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LotteryConfig.class);
     private static final String FILE_PATH = "otos.csv";
+    private WeeklyDrawJPARepository wrepo;
+
+    public LotteryConfig() {
+    }
 
     @Autowired
-    private WeeklyDrawJPARepository wrepo;
+    public LotteryConfig(WeeklyDrawJPARepository wrepo) {
+        this.wrepo = wrepo;
+    }
 
     @Bean
     public Lottery generateLottery() throws IOException {
@@ -49,7 +53,7 @@ public class LotteryConfig {
         }
 
         // A drools rule-ok behúzása külső jar-ból történik. jelen esetben: drules-1.0.jar
-        ReleaseId releaseId = kieServices.newReleaseId( "com.lottery", "lottery-rules", "1.0" );
+        ReleaseId releaseId = kieServices.newReleaseId("com.lottery", "lottery-rules", "1.0");
         KieContainer kContainer = kieServices.newKieContainer(releaseId);
         if (kContainer == null) {
             LotteryConfig.LOGGER.debug("Hiányzó com.lottery.kie konténer");
@@ -62,7 +66,7 @@ public class LotteryConfig {
             throw new MissingKieServicesException("Hiányzó com.lottery.kie session");
         }
         LotteryConfig.LOGGER.debug("kieSession sikeresen létrejött");
-        statelesskSession.setGlobal("LOGGER", LOGGER);
+        statelesskSession.setGlobal("LOGGER", LotteryConfig.LOGGER);
         return statelesskSession;
     }
 

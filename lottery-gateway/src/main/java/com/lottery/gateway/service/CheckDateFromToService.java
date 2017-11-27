@@ -10,8 +10,8 @@ import java.text.ParseException;
 public interface CheckDateFromToService {
 
     /**
-     * @param from dátum intervallum kezdete
-     * @param to dátum intervallum vége
+     * @param from         dátum intervallum kezdete
+     * @param to           dátum intervallum vége
      * @param access_token JWT access token
      * @return boolean érték
      */

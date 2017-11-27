@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddingWeeklyDrawServiceImpl implements AddingWeeklyDrawService {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(AddingWeeklyDrawServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AddingWeeklyDrawServiceImpl.class);
     private Lottery lottery;
     private WeeklyDrawJPARepository weeklyDrawJPARepository;
     private WeeklyDrawDestinationMapper weeklyDrawDestinationMapper;
