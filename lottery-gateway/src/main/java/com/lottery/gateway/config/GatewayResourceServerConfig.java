@@ -30,7 +30,6 @@ import java.io.IOException;
 
 /**
  * GATEWAY Resource szerver konfigurációs osztály
- *
  */
 @Configuration
 @EnableWebSecurity
@@ -58,8 +57,8 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) {
         resources.resourceId(GatewayResourceServerConfig.RESOURCE_ID)
-                 .tokenServices(tokenServices())
-                 .tokenStore(tokenStore());
+                 .tokenServices(this.tokenServices())
+                 .tokenStore(this.tokenStore());
     }
 
     /**
@@ -110,7 +109,7 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
      */
     @Bean
     public TokenStore tokenStore() {
-        return new JwtTokenStore(accessTokenConverter());
+        return new JwtTokenStore(this.accessTokenConverter());
     }
 
     /**
@@ -122,9 +121,9 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
     @Bean
     public ResourceServerTokenServices tokenServices() {
         DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(tokenStore());
+        defaultTokenServices.setTokenStore(this.tokenStore());
         defaultTokenServices.setSupportRefreshToken(true);
-        defaultTokenServices.setTokenEnhancer(accessTokenConverter());
+        defaultTokenServices.setTokenEnhancer(this.accessTokenConverter());
         return defaultTokenServices;
     }
 
@@ -146,7 +145,7 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
      *
      * @return String rsa publikus kulcs
      */
-    public String getPublicKey() {
+    private String getPublicKey() {
         GatewayResourceServerConfig.LOGGER.debug("Public Key lekérése az Auth szervertől");
 
         RestTemplate restTemplate = new RestTemplate();
@@ -156,8 +155,7 @@ public class GatewayResourceServerConfig extends ResourceServerConfigurerAdapter
         try {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode root = mapper.readTree(response.getBody());
-            String publicKey = root.path("value").getTextValue().replace("\\n", "");
-            return publicKey;
+            return root.path("value").getTextValue().replace("\\n", "");
         } catch (IOException e) {
             GatewayResourceServerConfig.LOGGER.debug("Public key lekérése az Auth szervertől sikertelen");
             System.out.println("Public key lekérése sikertelen \n\n\n");

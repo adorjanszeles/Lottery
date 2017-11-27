@@ -6,8 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link AverageService} interfész implementációja
- * {@link AbstractGetService} abstract class kiterjesztése
+ * {@link AverageService} interfész implementációja {@link AbstractGetService} abstract class kiterjesztése
  */
 
 @Service
@@ -21,7 +20,7 @@ public class AverageServiceImpl extends AbstractGetService<AverageResult> implem
 
         AverageResult result = this.apiCall(url, accessToken, AverageResult.class);
 
-        AverageServiceImpl.LOGGER.debug("AVERAGE: "+ result.getResult());
+        AverageServiceImpl.LOGGER.debug("AVERAGE: " + result.getResult());
         AverageServiceImpl.LOGGER.debug("average Gateway hivas vege");
         return result;
     }

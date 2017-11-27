@@ -45,7 +45,7 @@ public class TestMostFrequentFiveNumber {
         MostFrequentFiveNumberResult mostFrequentFiveNumberResult = new MostFrequentFiveNumberResult();
         this.generateWeeklyDrawList();
         this.result = mostFrequentFiveNumberResult;
-        this.expected = new ArrayList<Integer>(Arrays.asList(4, 5, 1, 2, 3));
+        this.expected = new ArrayList<>(Arrays.asList(4, 5, 1, 2, 3));
         this.eventName = null;
         this.listener = new LottoAgendaEventListener();
 

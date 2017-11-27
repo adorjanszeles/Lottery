@@ -25,8 +25,13 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "com.lottery", entityManagerFactoryRef = "entityManagerFactory")
 @PropertySource("classpath:database.properties")
 public class PersistenceJPAConfig {
-    @Autowired
+
     private Environment env;
+
+    @Autowired
+    public PersistenceJPAConfig(Environment env) {
+        this.env = env;
+    }
 
     /**
      * Az EntityManagerFactory bean előállításáért és konfigurálásáért felelős függvény
@@ -37,11 +42,11 @@ public class PersistenceJPAConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactory.setJpaVendorAdapter(getJpaVendorAdapter());
-        entityManagerFactory.setDataSource(dataSource());
+        entityManagerFactory.setJpaVendorAdapter(this.getJpaVendorAdapter());
+        entityManagerFactory.setDataSource(this.dataSource());
         entityManagerFactory.setPersistenceUnitName("myJpaPersistenceUnit");
         entityManagerFactory.setPackagesToScan("com.lottery");
-        entityManagerFactory.setJpaProperties(jpaProperties());
+        entityManagerFactory.setJpaProperties(this.jpaProperties());
         return entityManagerFactory;
     }
 
@@ -51,8 +56,7 @@ public class PersistenceJPAConfig {
      */
     @Bean
     public JpaVendorAdapter getJpaVendorAdapter() {
-        JpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-        return adapter;
+        return new HibernateJpaVendorAdapter();
     }
 
     /**

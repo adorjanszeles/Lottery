@@ -6,8 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 /**
- * {@link FourMatchRatioToFiveService} interfész implementációja
- * {@link AbstractGetService} abstract class kiterjesztése
+ * {@link FourMatchRatioToFiveService} interfész implementációja {@link AbstractGetService} abstract class
+ * kiterjesztése
  */
 @Service
 public class FourMatchRatioToFiveServiceImpl extends AbstractGetService<FourMatchRatioToFiveMatchResult>

@@ -1,6 +1,5 @@
 package com.lottery.config;
 
-
 import com.lottery.service.UserDestinationMapperImpl;
 import com.lottery.service.WeeklyDrawDestinationMapperImpl;
 import org.springframework.context.annotation.Bean;

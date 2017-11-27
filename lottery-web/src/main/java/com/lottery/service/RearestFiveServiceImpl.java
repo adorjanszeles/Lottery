@@ -37,7 +37,7 @@ public class RearestFiveServiceImpl extends LotteryService implements RearestFiv
     @Override
     public RearestFiveResult executeRule() {
         RearestFiveServiceImpl.LOGGER.debug("Legritkábban kihúzott számok szabályának futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         RearestFiveResult rearestFiveResult = this.execute(weeklyDrawList);
         RearestFiveServiceImpl.LOGGER.debug("Legritkábban kihúzott számok szabályának futtatása befejeződött...");
         return rearestFiveResult;
@@ -47,9 +47,9 @@ public class RearestFiveServiceImpl extends LotteryService implements RearestFiv
     public RearestFiveResult executeRuleFilterByDate(String from, String to) throws ParseException {
         RearestFiveServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett legritkábban kihúzott számok service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         RearestFiveServiceImpl.LOGGER.debug("Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,
                                                                                                                toDate);

@@ -40,7 +40,7 @@ public class KieServiceImpl implements KieService {
             throw new MissingKieServicesException("Hiányzó com.lottery.kie session");
         }
         KieServiceImpl.LOGGER.debug("kieSession sikeresen létrejött");
-        this.kSession.setGlobal("LOGGER", LOGGER);
+        this.kSession.setGlobal("LOGGER", KieServiceImpl.LOGGER);
         return this.kSession;
 
     }

@@ -21,12 +21,10 @@ public class SwaggerConfig {
                                                               "com.lottery.gateway.controller"))
                                                       .paths(PathSelectors.any())
                                                       .build()
-                                                      .apiInfo(apiInfo());
+                                                      .apiInfo(this.apiInfo());
     }
 
     private ApiInfo apiInfo() {
-        ApiInfo apiInfo = new ApiInfo("Rest API", "Lottery Gateway Endpoints", "1", "", new Contact("Groupama", "", ""),
-                                      "", "");
-        return apiInfo;
+        return new ApiInfo("Rest API", "Lottery Gateway Endpoints", "1", "", new Contact("Groupama", "", ""), "", "");
     }
 }

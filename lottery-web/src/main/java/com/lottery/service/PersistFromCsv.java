@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +21,7 @@ import java.util.List;
 /**
  * A csv beolvasását végző osztály.
  */
+@Service
 public class PersistFromCsv {
 
     private WeeklyDrawJPARepository wrepo;
@@ -41,13 +43,13 @@ public class PersistFromCsv {
 
         List<RawWeeklyDraw> objectList = new ArrayList<>();
         try {
-            objectList = loadObjectList(RawWeeklyDraw.class, filename);
+            objectList = this.loadObjectList(RawWeeklyDraw.class, filename);
 
         } catch (FileNotFoundException e) {
-            LOGGER.debug("nem beolvasható a fájl");
+            PersistFromCsv.LOGGER.debug("nem beolvasható a fájl");
             e.printStackTrace();
         } catch (IOException e) {
-            LOGGER.debug("probléma beolvasáskor vagy nem létezik a fájl");
+            PersistFromCsv.LOGGER.debug("probléma beolvasáskor vagy nem létezik a fájl");
             e.printStackTrace();
         }
 
@@ -56,6 +58,7 @@ public class PersistFromCsv {
 
     /**
      * A RawWeeklyDraw instanc-okból az adatbázisba mentődő WeeklyDraw instance-okat gyártó függvény.
+     *
      * @param rawWeeklyDraws lista
      */
     public void persistAllToDB(List<RawWeeklyDraw> rawWeeklyDraws) {
@@ -65,7 +68,7 @@ public class PersistFromCsv {
             List<WeeklyDraw> weeklyDraws = converter.convertRawsToWeeklyDraws(rawWeeklyDraws);
             this.wrepo.save(weeklyDraws);
         } catch (FileNotFoundException e) {
-            LOGGER.debug("nem beolvasható a fájl" + e);
+            PersistFromCsv.LOGGER.debug("nem beolvasható a fájl" + e);
         }
     }
 
@@ -73,14 +76,15 @@ public class PersistFromCsv {
      * Meghívja a persistAllToDB függvényt és paraméterként átadja neki a populateRawWeeklyDraws függvényt.
      */
     public void readAndPersist() {
-        persistAllToDB(this.populateRawWeeklyDraws("otoswithheader.csv"));
+        this.persistAllToDB(this.populateRawWeeklyDraws("otoswithheader.csv"));
     }
 
     /**
      * A Csv beolvasását végző függvény.
-     * @param type RawWeeklyDraw osztály adattagjai alapján kell olvasni a csv-t
+     *
+     * @param type     RawWeeklyDraw osztály adattagjai alapján kell olvasni a csv-t
      * @param fileName a beolvasandó fájl neve
-     * @param <T> RawWeeklyDraw
+     * @param <T>      RawWeeklyDraw
      * @return Object List (RawWeeklyDraw lista)
      * @throws IOException ha a fájl beolvasása nem sikerül
      */
@@ -91,7 +95,7 @@ public class PersistFromCsv {
         try (MappingIterator<T> readValues = mapper.readerFor(type).with(bootstrapSchema).readValues(file)) {
             return readValues.readAll();
         } catch (Exception e) {
-            LOGGER.debug("Error occurred while loading object list from file " + fileName + ": " + e);
+            PersistFromCsv.LOGGER.debug("Error occurred while loading object list from file " + fileName + ": " + e);
             throw new Error("");
         }
     }

@@ -41,7 +41,7 @@ public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl extends LotteryServi
     public AverageTimeBetweenTwoMatchFiveDrawsResult executeRule() {
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug(
                 "Két öt találatos között eltelt idő szabály futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
+        WeeklyDrawList weeklyDrawList = this.init();
         AverageTimeBetweenTwoMatchFiveDrawsResult averageTimeBetweenTwoMatchFiveDrawsResult = this.execute(
                 weeklyDrawList);
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug(
@@ -54,9 +54,9 @@ public class AverageTimeBetweenTwoMatchFiveDrawsServiceImpl extends LotteryServi
             throws ParseException {
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett két öttalálatos között eltelt időt számító service futtatása elkezdődött...");
-        WeeklyDrawList weeklyDrawList = super.init();
-        Date fromDate = super.parseDate(from);
-        Date toDate = super.parseDate(to);
+        WeeklyDrawList weeklyDrawList = this.init();
+        Date fromDate = this.parseDate(from);
+        Date toDate = this.parseDate(to);
         AverageTimeBetweenTwoMatchFiveDrawsServiceImpl.LOGGER.debug(
                 "Datum alapjan filterezett húzások query-je elkezdődött...");
         List<WeeklyDraw> filteredList = weeklyDrawJPARepository.findWeeklyDrawByDrawDateAfterAndDrawDateBefore(fromDate,

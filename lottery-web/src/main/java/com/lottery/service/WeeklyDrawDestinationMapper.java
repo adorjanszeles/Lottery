@@ -11,10 +11,7 @@ import org.mapstruct.Mappings;
  */
 @Mapper
 public interface WeeklyDrawDestinationMapper {
-    @Mappings({
-            @Mapping(target = "redisId", ignore = true),
-            @Mapping(target = "id", ignore = true)
-    })
+    @Mappings({@Mapping(target = "redisId", ignore = true), @Mapping(target = "id", ignore = true)})
     WeeklyDraw sourceToDestination(WeeklyDrawDTO source);
 
     WeeklyDrawDTO destinationToSource(WeeklyDraw destination);

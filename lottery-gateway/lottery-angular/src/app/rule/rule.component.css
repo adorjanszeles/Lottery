@@ -106,7 +106,7 @@ body {
     font-size: 3rem;
     font-weight: 600;
     color: #fff;
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .result-active {
@@ -137,13 +137,13 @@ body {
     width: 40%;
     min-width: 190px;
     height: 150px;
-    margin: 20px 0px;
+    margin: 20px 0;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     /* background-color: #fafafa; */
-    border-radius: 0px;
+    border-radius: 0;
     color: #fff;
     font-weight: 100;
 }
@@ -245,7 +245,7 @@ body {
 
     bottom: 100%;
     left: 50%;
-    margin-left: 0px;
+    margin-left: 0;
 }
 
 .date-picker .date-from .question:hover .tooltiptext {
@@ -302,7 +302,7 @@ body {
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 1rem;
-    box-shadow: 0px 0px 35px 1px rgb(211, 211, 211);
+    box-shadow: 0 0 35px 1px rgb(211, 211, 211);
     animation: oneNumAnimation 1500ms forwards;
 }
 
@@ -318,7 +318,7 @@ body {
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 1rem;
-    box-shadow: 0px 0px 35px 1px rgb(211, 211, 211);
+    box-shadow: 0 0 35px 1px rgb(211, 211, 211);
     animation: oneNumAnimation 1500ms forwards;
 }
 
@@ -340,7 +340,7 @@ body {
     font-family: 'Roboto';
     font-weight: 900;
     font-size: 1rem;
-    box-shadow: 0px 0px 35px 1px rgb(211, 211, 211);
+    box-shadow: 0 0 35px 1px rgb(211, 211, 211);
     animation: oneNumAnimation 1500ms forwards;
 }
 
@@ -439,7 +439,7 @@ i.fa.fa-check-square-o {
 
 .checkbox label {
     display: inline-block;
-    padding: 0px 6px;
+    padding: 0 6px;
     padding-top: 2px;
     margin-bottom: 0;
     font-size: 14px;
@@ -450,7 +450,7 @@ i.fa.fa-check-square-o {
     vertical-align: top;
     cursor: pointer;
     background-color: none;
-    border: 0px solid #c8c8c8;
+    border: 0 solid #c8c8c8;
     border-radius: 3px;
     color: #c8c8c8;
     -webkit-user-select: none;

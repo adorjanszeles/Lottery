@@ -18,7 +18,7 @@ public interface WeeklyDrawJPARepository extends JpaRepository<WeeklyDraw, Long>
      * weeklyDraw-k dátum szerinti szűrése
      *
      * @param from dátum intervallum kezdete
-     * @param to dátum intervallum vége
+     * @param to   dátum intervallum vége
      * @return WeeklyDraw-kat tartalmazó lista a megadott időintervallumban
      */
     List<WeeklyDraw> findWeeklyDrawByDrawDateAfterAndDrawDateBefore(Date from, Date to);

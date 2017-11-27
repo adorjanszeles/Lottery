@@ -63,7 +63,7 @@ public class TestLotteryFileReader {
      */
 
     private void generateResult() throws ParseException {
-        this.result = new ArrayList<WeeklyDraw>();
+        this.result = new ArrayList<>();
 
         WeeklyDraw firstWeeklyDraw = new WeeklyDraw();
         WeeklyDraw secondWeeklyDraw = new WeeklyDraw();

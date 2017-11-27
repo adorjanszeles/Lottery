@@ -14,13 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserDestinationMapper {
 
-    @Mappings({
-            @Mapping(target = "id", ignore = true)
-    })
+    @Mappings({@Mapping(target = "id", ignore = true)})
     User sourceToDestination(UserDTO source);
 
-    @Mappings({
-                      @Mapping(target = "password", ignore = true)
-              })
+    @Mappings({@Mapping(target = "password", ignore = true)})
     UserDTO destinationToSource(User destination);
 }

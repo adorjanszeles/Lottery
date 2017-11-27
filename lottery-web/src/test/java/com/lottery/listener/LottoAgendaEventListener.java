@@ -34,7 +34,7 @@ public class LottoAgendaEventListener extends DefaultAgendaEventListener {
 
         StringBuilder sb = new StringBuilder("Rule fired: ").append(this.ruleName);
 
-        if (ruleMetaDataMap.size() > 0) {
+        if (!ruleMetaDataMap.isEmpty()) {
             sb.append("\n  With [" + ruleMetaDataMap.size() + "] meta-data:");
             for (String key : ruleMetaDataMap.keySet()) {
                 sb.append("\n    key=" + key + ", value=" + ruleMetaDataMap.get(key));
