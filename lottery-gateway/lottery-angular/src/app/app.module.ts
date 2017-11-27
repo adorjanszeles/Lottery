@@ -23,6 +23,7 @@ import {OneNumResultComponent} from './one-num-result/one-num-result.component';
 import {FormsModule} from '@angular/forms';
 import {MessageService} from './message.service';
 import {ExceptionMessageComponent} from './exception-message/exception-message.component';
+import {IntervalComponent} from "./interval/interval.component";
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import {ExceptionMessageComponent} from './exception-message/exception-message.c
         FiveNumResultComponent,
         TwoDArrayResultComponent,
         StringResultComponent,
-        ExceptionMessageComponent
+        ExceptionMessageComponent,
+        IntervalComponent
     ],
     imports: [
         BrowserModule,

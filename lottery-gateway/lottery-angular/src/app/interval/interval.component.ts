@@ -2,16 +2,16 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ServiceHubService} from '../service-hub.service';
 
 @Component({
-    selector: 'app-rule',
-    templateUrl: './rule.component.html',
-    styleUrls: ['./rule.component.css'],
+    selector: 'app-interval',
+    templateUrl: './interval.component.html',
+    styleUrls: ['./interval.component.css'],
     encapsulation: ViewEncapsulation.None
 })
-export class RuleComponent implements OnInit {
+export class IntervalComponent implements OnInit {
     @Input() title: string = "Draw Date Intervals";
     @Input() from = '';
     @Input() to = '';
-    @Input() resultType: string;
+    @Input() resultType: string = "string result";
     result: any;
     filter = false;
     resultActive = false;
