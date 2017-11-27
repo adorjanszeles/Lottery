@@ -28,5 +28,5 @@ public interface MostFrequentFiveNumberService {
      * @throws ParseException parszolási kivétel
      */
     MostFrequentFiveNumberResult executeRuleFilterByDate(String from, String to)
-            throws ParseException, InvalidDateException;
+            throws ParseException;
 }

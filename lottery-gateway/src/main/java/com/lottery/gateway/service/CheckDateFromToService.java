@@ -13,6 +13,8 @@ public interface CheckDateFromToService {
      * @param from dátum intervallum kezdete
      * @param to dátum intervallum vége
      * @param access_token JWT access token
+     * @throws ParseException parszolási kivétel
+     * @throws InvalidDateException dátum kivétel
      * @return boolean érték
      */
     boolean checkFromTo(String from, String to, String access_token) throws ParseException, InvalidDateException;
